@@ -1,0 +1,10 @@
+$bgSecondary: #f5f5ee;
+$bgPrimary: #ffffff;
+$textPrimary: #323232;
+$textSecondary: #888888;
+mat-toolbar{
+    background: $bgSecondary;
+}
+.container{
+    padding: 0 5%;
+}
