@@ -1,22 +1,22 @@
-<div class="sidenav">
+<section class="sidenav">
     <mat-drawer-container class="example-container">
-        <mat-drawer #drawer mode="over" class="example-sidenav">
-            I'm a menu
+        <mat-drawer #drawer mode="over" class="example-sidenav" style="width: 60%">
+            <app-sidenav [drawer]="drawer"></app-sidenav>
         </mat-drawer>
-        <div class="exemple-sidenav-content">
+        <mat-drawer-content class="exemple-sidenav-content">
             <mat-toolbar>
                 <mat-toolbar-row class="container" *ngIf="(screenWidth <= 768) ? false : true; else sidenav">
-                        <button mat-button>logo</button>
-                        <button mat-button>Home</button>
-                        <button mat-button>Portfólio</button>
-                        <button mat-button>Sobre</button>
-            
-                        <!-- MENU DROPDOW -->
-                        <!-- <mat-menu>
-                            <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-                            <button mat-menu-item>Item 1</button>
-                            <button mat-menu-item>Item 2</button>
-                        </mat-menu> -->
+                    <button mat-button>logo</button>
+                    <button mat-button>Home</button>
+                    <button mat-button>Portfólio</button>
+                    <button mat-button>Sobre</button>
+        
+                    <!-- MENU DROPDOW -->
+                    <!-- <mat-menu>
+                        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+                        <button mat-menu-item>Item 1</button>
+                        <button mat-menu-item>Item 2</button>
+                    </mat-menu> -->
                 </mat-toolbar-row>
                 <ng-template #sidenav>
                     <mat-toolbar-row class="container">
@@ -27,6 +27,6 @@
                     </mat-toolbar-row>
                 </ng-template>
             </mat-toolbar>
-        </div>
+        </mat-drawer-content>
     </mat-drawer-container>
-</div>
+</section>
