@@ -12,10 +12,15 @@ export class ToolbarComponent implements OnInit {
     this.screenWidth = window.innerWidth;
   }
   public screenWidth: number;
+  public sideNavOpened: boolean = false;
   constructor() { }
 
   ngOnInit() {
     this.screenWidth = window.innerWidth;
   }
 
+  public openSideNav(){
+    this.sideNavOpened = !this.sideNavOpened;
+    console.log(this.sideNavOpened)
+  }
 }
