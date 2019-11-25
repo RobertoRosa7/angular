@@ -8,4 +8,9 @@ mat-toolbar{
 }
 .container{
     padding: 0 5%;
+    button{
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: $textSecondary;
+    }
 }

@@ -1,19 +1,23 @@
 <mat-toolbar>
     <mat-toolbar-row class="container" *ngIf="(screenWidth <= 768) ? false : true; else sidenav">
-            <button mat-button>My Application Logo</button>
+            <button mat-button>logo</button>
             <button mat-button>Home</button>
             <button mat-button>Portfólio</button>
             <button mat-button>Sobre</button>
-            <mat-menu>
-                <!-- <button mat-menu-item>Item 1</button> -->
-                <!-- <button mat-menu-item>Item 2</button> -->
-            </mat-menu>
+
+            <!-- MENU DROPDOW -->
+            <!-- <mat-menu>
+                <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+                <button mat-menu-item>Item 1</button>
+                <button mat-menu-item>Item 2</button>
+            </mat-menu> -->
     </mat-toolbar-row>
-    <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button> -->
     <ng-template #sidenav>
-        <button mat-icon-button>
-            <mat-icon>menu</mat-icon>
-        </button>
-        <button mat-icon-button>My Application Logo</button>
+        <mat-toolbar-row class="container">
+            <button mat-icon-button>
+                <mat-icon>menu</mat-icon>
+            </button>
+            <button mat-button>Logo</button>
+        </mat-toolbar-row>
     </ng-template>
 </mat-toolbar>
