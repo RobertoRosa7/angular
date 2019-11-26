@@ -4,11 +4,24 @@
         <div class="container-home">
             <div class="content-home">
                 <div class="row">
-                    <div class="middle">
+                    <div class="middle" style="height: 60%">
                         <h1 class="title">Projetos recentes</h1>
+                        <span class="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                        <button mat-raised-button>TODOS PROJETOS</button>
                     </div>
-                    <div class="middle">
-                        middle primary
+                    <div class="middle" style="justify-content: flex-start;">
+                        <div class="icon">
+                            <button mat-icon-button><mat-icon>arrow_forward</mat-icon></button>
+                        </div>
+                        <div class="cards">
+                            <mat-card *ngFor="let item of [1,2,3,4]" style="margin-bottom: 10px">
+                                <mat-card-title>Lorem ipsum dolor</mat-card-title>
+                                <mat-card-subtitle>Lorem ipsum dolor sit amet consectetur adipisicing elit.</mat-card-subtitle>
+                                <!-- <mat-card-content>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, quas laudantium? Excepturi non doloribus reiciendis consequatur at aut quo quos, voluptatum maiores, dolorum quaerat consectetur iure quibusdam fugit, alias autem.
+                                </mat-card-content> -->
+                            </mat-card>
+                        </div>
                     </div>
                 </div>
             </div>
