@@ -1,0 +1,53 @@
+.page-home{
+    background: #f4f4f4;
+    width: 100%;
+    max-width: 1920px;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+
+    .background-banner{
+        background: #fff;
+        height: 300px;
+        width: 100%;
+        position: absolute;
+        top:0;
+        left:0;
+        z-index: -1;
+    }
+    .welcome-home{
+        height: 100%;
+
+        .container-home{
+            padding: 0 5%;
+            height: 100%;
+
+            .content-home{
+                z-index: 3;
+                height: 100%;
+                padding: 15px;
+                .row{
+                    display: flex;
+                    flex: 1;
+                    height: 100%;
+                }
+                .middle{
+                    width: 49%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    height: 60%;
+
+                    .title{
+                        font-size: 3em;
+                        font-weight: normal;
+                        font-style: normal;
+                        font-family: 'Roboto';
+                        font-display: swap;
+                    }
+                }
+            }
+        }
+    }
+}

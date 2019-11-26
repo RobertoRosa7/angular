@@ -10,8 +10,16 @@ export class SidenavComponent implements OnInit {
 
   public listsLinks: any[] = [
     {
-      home: 'HOME',
-      icon: 'home',
+      name: 'HOME',
+      icon: undefined,
+    },
+    {
+      name: 'portfólio',
+      icon: undefined
+    },
+    {
+      name: 'sobre',
+      icon: undefined
     }
   ]
   constructor() { }
