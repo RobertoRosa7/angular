@@ -1,1 +1,11 @@
-<router-outlet></router-outlet>
+<section class="sidenav">
+    <mat-drawer-container class="example-container">
+        <mat-drawer #drawer mode="over" class="example-sidenav" style="width: 60%">
+            <app-sidenav [drawer]="drawer"></app-sidenav>
+        </mat-drawer>
+        <mat-drawer-content class="exemple-sidenav-content">
+            <app-toolbar [drawer]="drawer"></app-toolbar>
+            <router-outlet></router-outlet>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</section>

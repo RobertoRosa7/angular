@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, HostListener } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,6 +7,7 @@ import { Component, OnInit, ViewEncapsulation, HostListener } from '@angular/cor
   encapsulation: ViewEncapsulation.Emulated
 })
 export class ToolbarComponent implements OnInit {
+  @Input('drawer') drawer;
   @HostListener('window:resize', ['$event'])
   onResize(event?){
     this.screenWidth = window.innerWidth;
@@ -22,5 +23,8 @@ export class ToolbarComponent implements OnInit {
   public openSideNav(){
     this.sideNavOpened = !this.sideNavOpened;
     console.log(this.sideNavOpened)
+  }
+  public drawerToggle(){
+    this.drawer.toggle();
   }
 }
