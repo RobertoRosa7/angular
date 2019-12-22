@@ -7,6 +7,8 @@ import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class HomeComponent implements OnInit {
+  
+  public title: string = 'Welcome to my Project';
 
   constructor() { }
   ngOnInit() {
