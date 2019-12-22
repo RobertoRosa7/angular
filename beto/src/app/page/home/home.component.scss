@@ -32,6 +32,7 @@
                     display: flex;
                     // flex: 1;
                     height: 100%;
+                    flex-wrap: wrap;
                 }
                 .middle{
                     width: 49%;
@@ -39,7 +40,45 @@
                     flex-direction: column;
                     justify-content: center;
                     align-items: flex-start;
-
+                    position: relative;
+                    @media (max-width: 350px){
+                        width: 100%;
+                    }
+                    .tooltip{
+                        text-align: center;
+                        color: #323232;
+                        position: absolute;
+                        z-index: 100;
+                        padding: 15px;
+                        top:0;
+                        left:0;
+                    }
+                    .tooltip::after{
+                        content: '';
+                        width: 0;
+                        height: 0;
+                        border-left: 10px solid transparent;
+                        border-right: 10px solid transparent;
+                        border-top: 10px solid transparent;
+                        position: absolute;
+                        left: 50%;
+                        bottom: -10px;
+                        margin-left: -10px;
+                    }
+                    .tooltip.top::after{
+                        top: -20px;
+                        bottom: auto;
+                        border-bottom: 10px solid #111;
+                    }
+                    .tooltip.left::after{
+                        left: 10px;
+                        margin: 0;
+                    }
+                    .tooltip.right::after{
+                        right: 10px;
+                        left: auto;
+                        margin: 0;
+                    }
                     .title{
                         font-size: 3.5em;
                         font-weight: normal;
