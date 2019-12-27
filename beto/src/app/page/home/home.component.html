@@ -2,9 +2,23 @@
     <div class="background-banner"></div>
     <div class="welcome-home" id="welcome">
         <div class="container-home">
+            <h1 class="display-3">{{title}}</h1>
             <div class="content-home">
                 <div class="row">
-                  <h1 class="display-3">{{title}}</h1>
+                    <div class="middle">
+                        <mat-radio-group class="radios" [(ngModel)]="options">
+                            <mat-radio-button value="dragAndDrop">Drag and Drop</mat-radio-button>
+                            <mat-radio-button value="unsubscribe">Unsubscribe</mat-radio-button>
+                            <mat-radio-button value="switchMerge">Switch / Merge</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div class="middle">
+                        <ng-container [ngSwitch]="options">
+                            <app-drag-and-drop *ngSwitchCase="'dragAndDrop'"></app-drag-and-drop>
+                            <app-unsubscribe *ngSwitchCase="'unsubscribe'"></app-unsubscribe>
+                            <app-switch-merge *ngSwitchCase="'switchMerge'"></app-switch-merge>
+                        </ng-container>
+                    </div>
                 </div>
             </div>
         </div>

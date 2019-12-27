@@ -1,0 +1,25 @@
+<div class="switch-merge">
+    <div class="form">
+        <mat-form-field floatLabel="always" appearance="outline">
+            <mat-label>Search Names:</mat-label>
+            <input
+                name="search"
+                #searchBy
+                autocomplete="off"
+                [(ngModel)]="searchByNames"
+                matInput 
+                placeholder="search people">
+        </mat-form-field>         
+    </div>
+    <div class="list-people">
+        <mat-list>
+            <mat-list-item *ngFor="let p of people$ | async">
+                <h3 matLine><strong>{{p.lastname}}, {{p.firstname}}</strong></h3>
+                <p matLine>Email: {{p.email}}</p>
+                <p matLine>City: {{p.city}}</p>
+                <p matLine>Country: {{p.country}}</p>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</div>

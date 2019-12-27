@@ -1,0 +1,9 @@
+<div class="unsubscribe">
+    <div class="buttons">
+        <button mat-button color="warn" (click)="subscribe()">Subscribe All</button>
+        <mat-spinner *ngIf="showSpinnerSubscribe" diameter="20" color="warn"></mat-spinner>
+    </div>
+    <div class="buttons">
+        <button [disabled]="!showSpinnerSubscribe" mat-button color="primary" (click)="unsubscribe()">Unsubscribe All</button>
+    </div>
+</div>

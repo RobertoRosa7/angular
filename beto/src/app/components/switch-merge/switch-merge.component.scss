@@ -1,0 +1,12 @@
+.switch-merge{
+    width: 100%;
+    .form{
+        width: 100%;
+        ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix{
+            width: 500px;
+        }
+    }
+    .list-people{
+        background: #fff;
+    }
+}

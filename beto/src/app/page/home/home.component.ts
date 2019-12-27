@@ -9,7 +9,7 @@ import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 export class HomeComponent implements OnInit {
   
   public title: string = 'Welcome to my Project';
-
+  public options: string = 'DragAndDrop';
   constructor() { }
   ngOnInit() {
   
