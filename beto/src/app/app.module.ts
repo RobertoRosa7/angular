@@ -13,6 +13,9 @@ import { FormsModule } from '@angular/forms';
 import { UnsubscribeComponent } from './components/unsubscribe/unsubscribe.component';
 import { SwitchMergeComponent } from './components/switch-merge/switch-merge.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FlexModule } from '@angular/flex-layout';
+import { ClientsComponent } from './page/clients/clients.component';
+import { ProductsService } from './services/products.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     SidenavComponent,
     DragAndDropComponent,
     UnsubscribeComponent,
-    SwitchMergeComponent
+    SwitchMergeComponent,
+    ClientsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +46,10 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatProgressSpinnerModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexModule
   ],
-  providers: [],
+  providers: [ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 <mat-toolbar>
     <mat-toolbar-row class="container" *ngIf="(screenWidth <= 768) ? false : true; else sidenav">
-        <button mat-button>logo</button>
-        <button mat-button>Home</button>
+        <button mat-button routerLink="/">logo</button>
+        <button mat-button routerLink="/clients">Clients</button>
         <button mat-button>Portfólio</button>
         <button mat-button>Sobre</button>
 
