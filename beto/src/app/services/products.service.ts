@@ -17,4 +17,7 @@ export class ProductsService {
   public getProductsError(): Observable<Product[]>{
     return this.http.get<Product[]>(`${this.api}/productserr`);
   }
+  public getProductsDelay(): Observable<Product[]>{
+    return this.http.get<Product[]>(`${this.api}/productsdelay`);
+  }
 }
