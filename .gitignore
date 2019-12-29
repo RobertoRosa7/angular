@@ -1,3 +1,4 @@
 /node_modules
 /beto/node_modules
+/beto/dist
 .env
