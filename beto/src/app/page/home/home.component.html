@@ -4,19 +4,21 @@
         <div class="container-home">
             <h1 class="display-3">{{title}}</h1>
             <div class="content-home">
-                <div class="row">
-                    <div class="middle">
-                        <mat-radio-group class="radios" [(ngModel)]="options">
+                <div fxFlex="100" fxLayout="row wrap" fxLayoutGap="10px">
+                    <div fxFlex="20">
+                        <mat-radio-group fxLayout="column" [(ngModel)]="options">
                             <mat-radio-button value="dragAndDrop">Drag and Drop</mat-radio-button>
                             <mat-radio-button value="unsubscribe">Unsubscribe</mat-radio-button>
                             <mat-radio-button value="switchMerge">Switch / Merge</mat-radio-button>
+                            <mat-radio-button value="form-simple-validate">Form / Simple Validate</mat-radio-button>
                         </mat-radio-group>
                     </div>
-                    <div class="middle">
+                    <div fxFlex="70">
                         <ng-container [ngSwitch]="options">
                             <app-drag-and-drop *ngSwitchCase="'dragAndDrop'"></app-drag-and-drop>
                             <app-unsubscribe *ngSwitchCase="'unsubscribe'"></app-unsubscribe>
                             <app-switch-merge *ngSwitchCase="'switchMerge'"></app-switch-merge>
+                            <app-form-simple-validate *ngSwitchCase="'form-simple-validate'"></app-form-simple-validate>
                         </ng-container>
                     </div>
                 </div>

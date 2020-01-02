@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './page/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatButtonModule, MatMenuModule, MatListModule, MatIconModule, MatSidenavModule, MatCardModule, MatSnackBarModule, MatFormFieldModule, MatAutocompleteModule, MatRadioModule, MatProgressSpinnerModule, MatInputModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatMenuModule, MatListModule, MatIconModule, MatSidenavModule, MatCardModule, MatSnackBarModule, MatFormFieldModule, MatAutocompleteModule, MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatProgressBarModule, MatDialogModule, MatDatepickerModule, MAT_DATE_LOCALE, MatNativeDateModule, MatSelectModule } from '@angular/material';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DragAndDropComponent } from './components/drag-and-drop/drag-and-drop.component';
@@ -16,6 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexModule } from '@angular/flex-layout';
 import { ClientsComponent } from './page/clients/clients.component';
 import { ProductsService } from './services/products.service';
+import { DialogEditProductComponent } from './components/dialog-edit-product/dialog-edit-product.component';
+import { DrivenFormsComponent } from './page/driven-forms/driven-forms.component';
+import { FormSimpleValidateComponent } from './components/form-simple-validate/form-simple-validate.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { ProductsService } from './services/products.service';
     DragAndDropComponent,
     UnsubscribeComponent,
     SwitchMergeComponent,
-    ClientsComponent
+    ClientsComponent,
+    DialogEditProductComponent,
+    DrivenFormsComponent,
+    FormSimpleValidateComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +53,19 @@ import { ProductsService } from './services/products.service';
     MatProgressSpinnerModule,
     MatInputModule,
     HttpClientModule,
-    FlexModule
+    FlexModule,
+    MatProgressBarModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
-  providers: [ProductsService],
+  entryComponents:[
+    DialogEditProductComponent
+  ],
+  providers: [
+    ProductsService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
