@@ -14,7 +14,7 @@ export class DrivenFormsComponent implements OnInit {
     birth: new Date(),
     state: '',
     street: '',
-    phone1: '',
+    email: '',
     phone2: '',
     city: '',
     gender: ''

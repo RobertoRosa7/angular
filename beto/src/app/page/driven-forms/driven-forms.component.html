@@ -9,17 +9,47 @@
                     <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
                         <mat-form-field floatLabel="always" appearance="outline" fxFlex="45">
                             <mat-label>First Name</mat-label>
-                            <input name="firstName" [(ngModel)]="client.firstName" matInput class="form-control" value="" placeholder="First Name" type="text">
+                            <input
+                                #firstName="ngModel"
+                                required
+                                minlength="4"
+                                name="firstName" 
+                                [(ngModel)]="client.firstName" 
+                                matInput class="form-control" 
+                                value="" 
+                                placeholder="First Name" 
+                                type="text">
+                            <mat-error *ngIf="firstName.errors?.required">Please enter first name</mat-error>
+                            <mat-error *ngIf="firstName.errors?.minlength">First name must b 4 or more character</mat-error>
                         </mat-form-field>
                         <mat-form-field floatLabel="always" appearance="outline" fxFlex="45">
                             <mat-label>Last Name</mat-label>
-                            <input name="lastName" [(ngModel)]="client.lastName" matInput class="form-control" value="" placeholder="Last Name" type="text">
+                            <input
+                                #lastName="ngModel"
+                                required
+                                minlength="4"
+                                name="lastName" 
+                                [(ngModel)]="client.lastName" 
+                                matInput class="form-control" 
+                                value="" 
+                                placeholder="Last Name" 
+                                type="text">
+                            <mat-error *ngIf="lastName.errors?.required">Please enter last name</mat-error>
+                            <mat-error *ngIf="lastName.errors?.minlength">Last name must b 4 or more character</mat-error>
                         </mat-form-field>
                     </div>
 
                     <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
                         <mat-form-field floatLabel="always" appearance="outline" fxFlex="45">
-                            <input name="birth" [(ngModel)]="client.birth" placeholder="Date of Birth" matInput [matDatepicker]="dtbirth">
+                            <input
+                                #birth
+                                required 
+                                name="birth" 
+                                [(ngModel)]="client.birth" 
+                                placeholder="Date of Birth" 
+                                matInput 
+                                [matDatepicker]="dtbirth">
+                            <mat-error *ngIf="birth.errors?.required">Please enter your date.</mat-error>
                             <mat-datepicker-toggle matSuffix [for]="dtbirth"></mat-datepicker-toggle>
                             <mat-datepicker #dtbirth></mat-datepicker>
                         </mat-form-field>
@@ -54,8 +84,20 @@
                     </div>
                     <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start" fxLayoutGap="20px">
                         <mat-form-field floatLabel="always" appearance="outline" fxFlex="45">
-                            <mat-label>Phone 1</mat-label>
-                            <input name="phone1" [(ngModel)]="client.phone1" matInput type="text" placeholder="Telefone 1" value="" class="form-control">
+                            <mat-label>Email</mat-label>
+                            <input 
+                                required
+                                email
+                                #email="ngModel"
+                                name="email"
+                                [(ngModel)]="client.email" 
+                                matInput 
+                                type="email" 
+                                placeholder="E-mail" 
+                                value="" 
+                                class="form-control">
+                            <mat-error *ngIf="email.errors?.required">Please type e-mail.</mat-error>
+                            <mat-error *ngIf="email.errors?.email">Please type e-mail valid.</mat-error>
                         </mat-form-field>
                         <mat-form-field floatLabel="always" appearance="outline" fxFlex="45">
                             <mat-label>Phone 2</mat-label>
@@ -67,7 +109,7 @@
                             <mat-icon>close</mat-icon>
                             <span>Cancelar</span>
                         </button>
-                        <button mat-button color="primary" type="submit">
+                        <button [disabled]="!formClient.valid" mat-button color="primary" type="submit">
                             <mat-icon>done</mat-icon>
                             <span>Submit</span>
                         </button>

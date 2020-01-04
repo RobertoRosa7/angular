@@ -11,6 +11,8 @@
                             <mat-radio-button value="unsubscribe">Unsubscribe</mat-radio-button>
                             <mat-radio-button value="switchMerge">Switch / Merge</mat-radio-button>
                             <mat-radio-button value="form-simple-validate">Form / Simple Validate</mat-radio-button>
+                            <mat-radio-button value="reactive-form">Form / Reactive</mat-radio-button>
+                            <mat-radio-button value="reactive-form-group">Form Group / Reactive</mat-radio-button>
                         </mat-radio-group>
                     </div>
                     <div fxFlex="70">
@@ -19,6 +21,8 @@
                             <app-unsubscribe *ngSwitchCase="'unsubscribe'"></app-unsubscribe>
                             <app-switch-merge *ngSwitchCase="'switchMerge'"></app-switch-merge>
                             <app-form-simple-validate *ngSwitchCase="'form-simple-validate'"></app-form-simple-validate>
+                            <app-reactive-form *ngSwitchCase="'reactive-form'"></app-reactive-form>
+                            <app-reactive-form-group *ngSwitchCase="'reactive-form-group'"></app-reactive-form-group>
                         </ng-container>
                     </div>
                 </div>

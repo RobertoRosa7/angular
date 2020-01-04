@@ -1,0 +1,77 @@
+<section fxLayout="column" fxFill>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-card class="info-card mat-elevation-z8" fxFlex="80" style="margin-top: 60px;">
+            <mat-card-title></mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
+            <mat-card-content fxLayout="colum" fxLayoutAlign="stretch">
+                <form [formGroup]="clientForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayout="start stretch">
+
+                    <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
+                        <mat-form-field floatLabel="always" appearance="outline" fxFlex="45">
+                            <mat-label>First Name</mat-label>
+                            <input 
+                                formControlName="firstName"
+                                name="firstName"
+                                matInput 
+                                class="form-control" 
+                                value="" 
+                                placeholder="First Name" 
+                                type="text" 
+                                required minlength="3">
+                        </mat-form-field>
+                        <mat-form-field floatLabel="always" appearance="outline" fxFlex="45">
+                            <mat-label>Last Name</mat-label>
+                            <input 
+                                formControlName="lastName"
+                                name="lastName" 
+                                matInput 
+                                class="form-control" 
+                                value="" 
+                                placeholder="Last Name" 
+                                type="text" 
+                                required minlength="3">
+                        </mat-form-field>
+                    </div>
+
+                    <div formGroupName="names" fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
+                        <mat-form-field floatLabel="always" appearance="outline" fxFlex="45">
+                            <mat-label>First Name</mat-label>
+                            <input 
+                                formControlName="firstName"
+                                name="firstName"
+                                matInput 
+                                class="form-control" 
+                                value="" 
+                                placeholder="First Name" 
+                                type="text" 
+                                required minlength="3">
+                        </mat-form-field>
+                        <mat-form-field floatLabel="always" appearance="outline" fxFlex="45">
+                            <mat-label>Last Name</mat-label>
+                            <input 
+                                formControlName="lastName"
+                                name="lastName" 
+                                matInput 
+                                class="form-control" 
+                                value="" 
+                                placeholder="Last Name" 
+                                type="text" 
+                                required minlength="3">
+                        </mat-form-field>
+                    </div>
+
+                    <div style="margin-top: 50px;" fxFlex="100" fxLayout="row" fxLayoutAlign="start" fxLayoutGap="20px">
+                        <button mat-raised-button color="accent" type="reset">
+                            <mat-icon>close</mat-icon>
+                            <span>Cancelar</span>
+                        </button>
+                        <button mat-button color="primary" type="submit">
+                            <mat-icon>done</mat-icon>
+                            <span>Submit</span>
+                        </button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</section>

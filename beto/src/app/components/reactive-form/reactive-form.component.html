@@ -5,22 +5,34 @@
             <mat-card-subtitle></mat-card-subtitle>
             <mat-card-content fxLayout="colum" fxLayoutAlign="stretch">
                 <form (ngSubmit)="onSubmit()" #formClient="ngForm" fxLayout="column" fxLayout="start stretch">
-                    
+
                     <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
                         <mat-form-field floatLabel="always" appearance="outline" fxFlex="45">
                             <mat-label>First Name</mat-label>
-                            <input #firstName name="firstName" [(ngModel)]="client.firstName" matInput class="form-control" value="" placeholder="First Name" type="text" required minlength="3">
-                            <mat-hint>{{ firstName.className }}</mat-hint>
+                            <input 
+                                [formControl]="firstName" 
+                                name="firstName"
+                                matInput 
+                                class="form-control" 
+                                value="" 
+                                placeholder="First Name" 
+                                type="text" 
+                                required minlength="3">
                         </mat-form-field>
                         <mat-form-field floatLabel="always" appearance="outline" fxFlex="45">
                             <mat-label>Last Name</mat-label>
-                            <input #lastName="ngModel" name="lastName" [(ngModel)]="client.lastName" matInput class="form-control" value="" placeholder="Last Name" type="text" required minlength="3">
-                            <mat-hint *ngIf="lastName.invalid && (lastName.touched || lastName.dirty)" class="field-error">
-                                <p>Digite um nome válido.</p>
-                            </mat-hint>
+                            <input 
+                                [formControl]="lastName" 
+                                name="lastName" 
+                                matInput 
+                                class="form-control" 
+                                value="" 
+                                placeholder="Last Name" 
+                                type="text" 
+                                required minlength="3">
                         </mat-form-field>
                     </div>
-                   
+
                     <div style="margin-top: 50px;" fxFlex="100" fxLayout="row" fxLayoutAlign="start" fxLayoutGap="20px">
                         <button mat-raised-button color="accent" type="reset">
                             <mat-icon>close</mat-icon>
@@ -29,6 +41,9 @@
                         <button [disabled]="!formClient.valid" mat-button color="primary" type="submit">
                             <mat-icon>done</mat-icon>
                             <span>Submit</span>
+                        </button>
+                        <button mat-button color="accent" type="button" (click)="applyName()">
+                            <span>Apply name</span>
                         </button>
                     </div>
                 </form>

@@ -9,7 +9,7 @@ import { MatToolbarModule, MatButtonModule, MatMenuModule, MatListModule, MatIco
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DragAndDropComponent } from './components/drag-and-drop/drag-and-drop.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UnsubscribeComponent } from './components/unsubscribe/unsubscribe.component';
 import { SwitchMergeComponent } from './components/switch-merge/switch-merge.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,6 +19,8 @@ import { ProductsService } from './services/products.service';
 import { DialogEditProductComponent } from './components/dialog-edit-product/dialog-edit-product.component';
 import { DrivenFormsComponent } from './page/driven-forms/driven-forms.component';
 import { FormSimpleValidateComponent } from './components/form-simple-validate/form-simple-validate.component';
+import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
+import { ReactiveFormGroupComponent } from './components/reactive-form-group/reactive-form-group.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { FormSimpleValidateComponent } from './components/form-simple-validate/f
     ClientsComponent,
     DialogEditProductComponent,
     DrivenFormsComponent,
-    FormSimpleValidateComponent
+    FormSimpleValidateComponent,
+    ReactiveFormComponent,
+    ReactiveFormGroupComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,8 @@ import { FormSimpleValidateComponent } from './components/form-simple-validate/f
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   entryComponents:[
     DialogEditProductComponent
