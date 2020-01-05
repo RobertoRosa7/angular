@@ -1,0 +1,148 @@
+<section fxLayout="column" fxFill>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-card class="info-card mat-elevation-z8" fxFlex="80" style="margin-top: 60px;">
+            <mat-card-title></mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
+            <mat-card-content fxLayout="colum" fxLayoutAlign="stretch">
+                <form [formGroup]="clientForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayout="start stretch">
+                    <div fxFlex="100">
+                        <p>Personal:</p>
+                    </div>
+                    <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start">
+                        <mat-form-field floatLabel="always" appearance="outline" fxFlex="45" fxFlex.sm="100">
+                            <mat-label>First Name</mat-label>
+                            <input 
+                                formControlName="firstName"
+                                name="firstName"
+                                matInput 
+                                class="form-control" 
+                                value="" 
+                                placeholder="First Name" 
+                                type="text" 
+                                required minlength="3">
+                        </mat-form-field>
+                        <mat-form-field floatLabel="always" appearance="outline" fxFlex="45" fxFlex.sm="100">
+                            <mat-label>Last Name</mat-label>
+                            <input 
+                                formControlName="lastName"
+                                name="lastName" 
+                                matInput 
+                                class="form-control" 
+                                value="" 
+                                placeholder="Last Name" 
+                                type="text" 
+                                required minlength="3">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="100">
+                        <p>Address:</p>
+                    </div>
+                    <div formGroupName="address" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start">
+                        <mat-form-field floatLabel="always" appearance="outline" fxFlex="30" fxFlex.sm="100">
+                            <mat-label>Street</mat-label>
+                            <input 
+                                formControlName="street"
+                                name="street"
+                                matInput 
+                                class="form-control" 
+                                value="" 
+                                placeholder="Street" 
+                                type="text" 
+                                required minlength="3">
+                        </mat-form-field>
+                        <mat-form-field floatLabel="always" appearance="outline" fxFlex="30" fxFlex.sm="100">
+                            <mat-label>City</mat-label>
+                            <input 
+                                formControlName="city"
+                                name="city" 
+                                matInput 
+                                class="form-control" 
+                                value="" 
+                                placeholder="City" 
+                                type="text" 
+                                required 
+                                minlength="3">
+                        </mat-form-field>
+                        <mat-form-field floatLabel="always" appearance="outline" fxFlex="30" fxFlex.sm="100">
+                            <mat-label>State</mat-label>
+                            <input 
+                                formControlName="state"
+                                name="state" 
+                                matInput 
+                                class="form-control" 
+                                value="" 
+                                placeholder="State" 
+                                type="text" 
+                                required 
+                                minlength="3">
+                        </mat-form-field>
+                    </div>
+
+                    <div fxFlex="100" fxLayout="row">
+                        <p>Phone:</p>
+                        <button type="button" mat-icon-button color="accent" (click)="addPhone()">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </div>
+                    <div formArrayName="phones" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start">
+                        <mat-form-field *ngFor="let p of phones.controls; let i = index" floatLabel="always" appearance="outline" fxFlex="30" fxFlex.sm="100">
+                            <mat-label>Phone</mat-label>
+                            <input 
+                                [formControlName]="i"
+                                name="phone" 
+                                matInput 
+                                class="form-control" 
+                                value="" 
+                                placeholder="phone" 
+                                type="text" 
+                                required 
+                                minlength="11">
+                        </mat-form-field>
+                    </div>
+                  
+                    <div fxFlex="100" fxLayout="row">
+                        <p>Children:</p>
+                        <button type="button" mat-icon-button color="accent" (click)="addFormChildren()">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </div>
+                    <div formArrayName="children" fxFlex="100" fxLayout="column">
+                        <ng-container *ngFor="let c of children.controls; let i = index">
+                            <div [formGroupName]="i" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start" fxLayoutGap="12px">
+                                <mat-form-field floatLabel="always" appearance="outline" fxFlex="45" fxFlex.sm="100">
+                                    <mat-label>Name Child</mat-label>
+                                    <input 
+                                        formControlName="name"
+                                        matInput 
+                                        class="form-control" 
+                                        placeholder="Name Child" 
+                                        type="text">
+                                </mat-form-field>
+                                <mat-form-field floatLabel="always" appearance="outline" fxFlex="45" fxFlex.sm="100">
+                                    <mat-label>Age</mat-label>
+                                    <input 
+                                        formControlName="age"
+                                        matInput 
+                                        class="form-control" 
+                                        placeholder="Age" 
+                                        type="number">
+                                </mat-form-field>
+                            </div>
+                        </ng-container>
+                    </div>
+
+                    <div style="margin-top: 50px;" fxFlex="100" fxLayout="row" fxLayoutAlign="start" fxLayoutGap="20px">
+                        <button mat-raised-button color="accent" type="reset">
+                            <mat-icon>close</mat-icon>
+                            <span>Cancelar</span>
+                        </button>
+                        <button mat-button color="primary" type="submit">
+                            <mat-icon>done</mat-icon>
+                            <span>Submit</span>
+                        </button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</section>
