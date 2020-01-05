@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class ProductsService {
   private readonly api: string = 'http://localhost:8080';
-
+  public showComponent: string;
   constructor(private http: HttpClient) { }
 
   public getProducts(): Observable<Product[]>{

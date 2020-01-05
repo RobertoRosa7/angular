@@ -1,10 +1,44 @@
-<mat-nav-list>
-    <button mat-icon-button (click)="closeSideMenu()">
-        <mat-icon>keyboard_backspace</mat-icon>
-    </button>
-    <mat-list-item *ngFor="let item of listsLinks">
-        <button mat-button class="side-button">
-            {{item.name}}
+<section>
+    <div class="container">
+        <button mat-icon-button (click)="closeSideMenu()">
+            <mat-icon>keyboard_backspace</mat-icon>
         </button>
-    </mat-list-item>
-</mat-nav-list>
+        <div class="profile" style="margin-top: 50px;">
+            <div>
+                <span>Welcome to my Project</span>
+            </div>
+        </div>
+
+        <mat-nav-list>
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Components</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-panel-description>
+                        <div fxFlex="100" fxLayout="row wrap" fxLayoutGap="10px">
+                            <div fxFlex="20">
+                                <mat-radio-group fxLayout="column" (change)="updateChange($event)" [(ngModel)]="options">
+                                    <mat-radio-button value="dragAndDrop">Drag and Drop</mat-radio-button>
+                                    <mat-radio-button value="unsubscribe">Unsubscribe</mat-radio-button>
+                                    <mat-radio-button value="switchMerge">Switch / Merge</mat-radio-button>
+                                    <mat-radio-button value="form-simple-validate">Form / Simple Validate</mat-radio-button>
+                                    <mat-radio-button value="reactive-form">Form / Reactive</mat-radio-button>
+                                    <mat-radio-button value="reactive-form-group">Form Group / Reactive</mat-radio-button>
+                                    <mat-radio-button value="reactive-form-builder">Form Builder / Reactive</mat-radio-button>
+                                    <mat-radio-button value="reactive-form-array">Form Array / Reactive</mat-radio-button>
+                                    <mat-radio-button value="reactive-form-validate">Form Validate / Reactive</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                    </mat-panel-description>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <!-- <ng-container *ngFor="let item of listsLinks">
+                <button mat-button class="side-button">
+                    {{item.name}}
+                </button>
+            </ng-container> -->
+        </mat-nav-list>
+    </div>
+</section>

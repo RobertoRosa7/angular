@@ -7,7 +7,9 @@ import { DrivenFormsComponent } from './page/driven-forms/driven-forms.component
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent
+    path: '', component: HomeComponent, children: [
+      {path: 'component/:name', component: HomeComponent}
+    ]
   },
   {
     path: 'http-request', component: ClientsComponent

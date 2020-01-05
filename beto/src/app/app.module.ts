@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './page/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatButtonModule, MatMenuModule, MatListModule, MatIconModule, MatSidenavModule, MatCardModule, MatSnackBarModule, MatFormFieldModule, MatAutocompleteModule, MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatProgressBarModule, MatDialogModule, MatDatepickerModule, MAT_DATE_LOCALE, MatNativeDateModule, MatSelectModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatMenuModule, MatListModule, MatIconModule, MatSidenavModule, MatCardModule, MatSnackBarModule, MatFormFieldModule, MatAutocompleteModule, MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatProgressBarModule, MatDialogModule, MatDatepickerModule, MAT_DATE_LOCALE, MatNativeDateModule, MatSelectModule, MatExpansionModule } from '@angular/material';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DragAndDropComponent } from './components/drag-and-drop/drag-and-drop.component';
@@ -24,6 +24,7 @@ import { ReactiveFormGroupComponent } from './components/reactive-form-group/rea
 import { ReactiveFormBuilderComponent } from './components/reactive-form-builder/reactive-form-builder.component';
 import { ReactiveFormArrayComponent } from './components/reactive-form-array/reactive-form-array.component';
 import { ReactiveFormValidateComponent } from './components/reactive-form-validate/reactive-form-validate.component';
+import { GetContentComponent } from './components/get-content/get-content.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ReactiveFormValidateComponent } from './components/reactive-form-valida
     ReactiveFormBuilderComponent,
     ReactiveFormArrayComponent,
     ReactiveFormValidateComponent,
+    GetContentComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ import { ReactiveFormValidateComponent } from './components/reactive-form-valida
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule
   ],
   entryComponents:[
     DialogEditProductComponent

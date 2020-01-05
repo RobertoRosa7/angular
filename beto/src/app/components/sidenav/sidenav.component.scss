@@ -2,3 +2,9 @@
     width: 100%;
     text-transform: uppercase;
 }
+::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]){
+    box-shadow: none !important;
+}
+::ng-deep .mat-expansion-panel-body{
+    padding: 0 !important;
+}

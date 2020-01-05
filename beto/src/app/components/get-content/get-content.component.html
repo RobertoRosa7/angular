@@ -1,0 +1,13 @@
+<div fxFlex="70">
+    <ng-container [ngSwitch]="options">
+        <app-drag-and-drop *ngSwitchCase="'dragAndDrop'"></app-drag-and-drop>
+        <app-unsubscribe *ngSwitchCase="'unsubscribe'"></app-unsubscribe>
+        <app-switch-merge *ngSwitchCase="'switchMerge'"></app-switch-merge>
+        <app-form-simple-validate *ngSwitchCase="'form-simple-validate'"></app-form-simple-validate>
+        <app-reactive-form *ngSwitchCase="'reactive-form'"></app-reactive-form>
+        <app-reactive-form-group *ngSwitchCase="'reactive-form-group'"></app-reactive-form-group>
+        <app-reactive-form-builder *ngSwitchCase="'reactive-form-builder'"></app-reactive-form-builder>
+        <app-reactive-form-array *ngSwitchCase="'reactive-form-array'"></app-reactive-form-array>
+        <app-reactive-form-validate *ngSwitchCase="'reactive-form-validate'"></app-reactive-form-validate>
+    </ng-container>
+</div>
