@@ -23,6 +23,7 @@ import { ReactiveFormComponent } from './components/reactive-form/reactive-form.
 import { ReactiveFormGroupComponent } from './components/reactive-form-group/reactive-form-group.component';
 import { ReactiveFormBuilderComponent } from './components/reactive-form-builder/reactive-form-builder.component';
 import { ReactiveFormArrayComponent } from './components/reactive-form-array/reactive-form-array.component';
+import { ReactiveFormValidateComponent } from './components/reactive-form-validate/reactive-form-validate.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ReactiveFormArrayComponent } from './components/reactive-form-array/rea
     ReactiveFormComponent,
     ReactiveFormGroupComponent,
     ReactiveFormBuilderComponent,
-    ReactiveFormArrayComponent
+    ReactiveFormArrayComponent,
+    ReactiveFormValidateComponent,
   ],
   imports: [
     BrowserModule,
