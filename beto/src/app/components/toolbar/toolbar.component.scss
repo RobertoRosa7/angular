@@ -1,16 +1,13 @@
-$bgSecondary: #f5f5ee;
-$bgPrimary: #ffffff;
-$textPrimary: #323232;
-$textSecondary: #888888;
+@import './../../../styles.scss';
 
 mat-toolbar{
-    background: $bgSecondary;
+    background: var(--color-black-medium);
 }
 .container{
     padding: 0 5%;
     button{
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        color: $textSecondary;
+        color: var(--color-black-silver);
     }
 }

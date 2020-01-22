@@ -1,0 +1,22 @@
+@import '../../../styles.scss';
+
+.store{
+    background: var(--color-black-dark);
+    color: var(--color-black-silver);
+    height: 100%;
+
+    .container{
+        padding: 0 5%; 
+    }
+    .card {
+        background: var(--color-black-medium);
+        color: var(--color-white)
+    }
+}
+.display-title{
+    font-family: var(--font-main);
+    color: var(--color-green);
+    font-size: 3em;
+    letter-spacing: 0.2em;
+    font-weight: bold;
+}

@@ -25,6 +25,9 @@ import { ReactiveFormBuilderComponent } from './components/reactive-form-builder
 import { ReactiveFormArrayComponent } from './components/reactive-form-array/reactive-form-array.component';
 import { ReactiveFormValidateComponent } from './components/reactive-form-validate/reactive-form-validate.component';
 import { GetContentComponent } from './components/get-content/get-content.component';
+import { StoreComponent } from './page/store/store.component';
+import { ProductsComponent } from './components/products/products.component';
+import { DepartmentComponent } from './components/department/department.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { GetContentComponent } from './components/get-content/get-content.compon
     ReactiveFormArrayComponent,
     ReactiveFormValidateComponent,
     GetContentComponent,
+    StoreComponent,
+    ProductsComponent,
+    DepartmentComponent,
   ],
   imports: [
     BrowserModule,

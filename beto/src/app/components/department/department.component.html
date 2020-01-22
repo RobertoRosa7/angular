@@ -1,0 +1,35 @@
+<section class="department">
+    <div class="container">
+        <mat-card class="card" fxFlex>
+            <mat-card-title>Department</mat-card-title>
+            <mat-card-content>
+                <div fxLayout="column" fxLayoutAlign="space-between">
+                    <mat-form-field class="custom-form" floatLabel="always" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Name" [(ngModel)]="depName">
+                        <mat-hint class="hint">The Department name</mat-hint>
+                    </mat-form-field>
+                    <div class="actions">
+                        <div class="buttons">
+                            <button (click)="save()" mat-button class="btn-save">Save</button>
+                            <button (click)="cancel()" mat-button class="btn-cancel">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <mat-list class="list">
+                    <h3 style="color: var(--color-white)" mat-subheader>Department</h3>
+                    <mat-list-item *ngFor="let dep of departments">
+                        <mat-icon style="color: var(--color-white)" mat-list-icon>folder</mat-icon>
+                        <p style="color: var(--color-black-silver)" mat-line>{{dep.name}}</p>
+                        <button style="color: var(--color-red)" mat-icon-button (click)="delete(dep)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        <button style="color: var(--color-black-silver)" mat-icon-button (click)="edit(dep)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</section>

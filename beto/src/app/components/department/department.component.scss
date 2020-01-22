@@ -1,0 +1,46 @@
+@import '../../../styles.scss';
+
+.department {
+    .container{
+        .card{
+            background: var(--color-black-medium);
+            color: var(--color-white);
+            box-shadow: none;
+            .custom-form{
+                mat-label{
+                    color: var(--color-black-silver);
+                }
+                input::placeholder{
+                    color: var(--color-white);
+                }
+            }
+            ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
+                color: var(--color-black-silver);
+            }
+            .hint {
+                color: var(--color-green);
+            }
+            .actions{
+                display: flex;
+                justify-content: flex-end;
+            }
+            .buttons{
+                display: flex;
+                justify-content: space-between;
+                width: 70%;
+
+                .btn-save{
+                    background: var(--color-green);
+                    width: var(--btn-size);
+                }
+                .btn-cancel{
+                    background: var(--color-red);
+                    width: var(--btn-size);
+                }
+            }
+            .list{
+                color: var(--color-black-silver);
+            }
+        }
+    }
+}

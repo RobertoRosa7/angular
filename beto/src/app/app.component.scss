@@ -1,9 +1,16 @@
+@import '../styles.scss';
+
 .sidenav{
     position: relative;
     height: 100%;
     padding: 0 5%;
     border:none;
     box-sizing: border-box;
+    
+    mat-drawer {
+        background-color: var(--color-black-medium);
+        color: var(--color-black-silver);
+    }
 }
 .example-container {
     height: 100%;

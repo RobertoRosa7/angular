@@ -1,22 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+:root {
+    --color-black-dark: #1F1F25;
+    --color-black-medium: #2b2c32;
+    --color-black-light: #3a3a45;
+    --color-black-silver: #59596b;
+    --color-red: #e22a53;
+    --color-green: #00ff00;
+    --color-white: #ffffff;
+    --font-main: 'Raleway';
+    --btn-size: 120px;
+}
 html, body { 
     height: 100%;
     box-sizing: border-box;
 }
 body { 
     margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif;
     padding: 0;
     position: relative;
-    background: #f3f3f3f3;
+    background: var(--color-black-dark);
+    font-family: var(--font-main);
 }
 .snack-success{
     // background: darkseagreen;
-    background: #88e463;
-    color: #323232;
+    background: var(--color-green);
+    color: var(--color-black-silver);
 }
 .snack-error{
-    background: pink;
-    color: black;
+    background: var(--color-red);
+    color: var(--color-black-medium);
 }

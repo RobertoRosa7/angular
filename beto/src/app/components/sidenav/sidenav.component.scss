@@ -1,10 +1,23 @@
+@import '../../../styles.scss';
+
 .side-button{
     width: 100%;
     text-transform: uppercase;
+    background: var(--color-black-medium);
+}
+.title, .description{
+    color: var(--color-black-silver);
+
+}
+::ng-deep .mat-expansion-panel {
+    background: var(--color-black-dark);
 }
 ::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]){
     box-shadow: none !important;
 }
 ::ng-deep .mat-expansion-panel-body{
     padding: 0 !important;
+}
+::ng-deep .mat-expansion-indicator::after{
+    color: var(--color-red);
 }
