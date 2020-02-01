@@ -42,6 +42,41 @@ export class ProductsService {
     }
     return this.storeProduct$.asObservable();
   }
+  public addProductStore(prod: ProductStore): Observable<ProductStore>{
+    const deps = (prod.departments as DepartmentsModel[]).map(d => d._id);
+
+    return this.http.post<ProductStore>(`${this.api}/v1/products`, {...prod, departments: deps})
+    .pipe( tap((p: ProductStore) => {
+        this.storeProduct$.getValue().push({...prod, _id: p._id});
+        return this.orderByName(this.storeProduct$.getValue());
+      })
+    )
+  }
+  public delProductStore(prod: ProductStore): Observable<any>{
+    return this.http.delete<any>(`${this.api}/v1/products/${prod._id}`)
+    .pipe( tap(() => {
+      const prodVirtualList = this.storeProduct$.getValue();
+      const index = prodVirtualList.findIndex(id => id._id == prod._id);
+      if(index >= 0) prodVirtualList.splice(index, 1);
+    }))
+  }
+  public editProductStore(prod: ProductStore): Observable<ProductStore>{
+    const deps = (prod.departments as DepartmentsModel[]).map(d => d._id);
+
+    return this.http.patch<ProductStore>(`${this.api}/v1/products/${prod._id}`, {...prod, departments: deps})
+    .pipe( tap((p) => {
+      const prodVirtualList = this.storeProduct$.getValue();
+      const index = prodVirtualList.findIndex(id => id._id == prod._id);
+
+      if(index >= 0){
+        prodVirtualList[index] = prod;
+        // prodVirtualList[index].name = p.name;
+        // prodVirtualList[index].departments = p.departments;
+        // prodVirtualList[index].price = p.price;
+        // prodVirtualList[index].stock = p.stock;
+      }
+    }))
+  }
   private orderByName(list: any[]){
     return list.sort((a, b) => {
       if(a.name > b.name) return 1;

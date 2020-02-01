@@ -70,7 +70,7 @@ export class DepartmentComponent implements OnInit {
     this.snackbar.open(msg, 'ok', {duration: 3000});
   }
 
-  public unsubscribe(){
+  ngOnDestroy(){
     this.unsubscribe$.next();
   }
 
