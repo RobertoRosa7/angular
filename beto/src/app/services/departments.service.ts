@@ -26,7 +26,7 @@ export class DepartmentsService {
   public get(): Observable<DepartmentsModel[]>{
     if(!this.loaded){
       this.http.get<DepartmentsModel[]>(this.api)
-        .pipe( tap((deps) => (deps) ? deps.sort((a, b) => { if(a.name > b.name) return 1; if(a.name < b.name) return -1; return 0; }) : []))
+        .pipe( tap((deps) => (deps) ? this.orderByName(deps): []))
         .subscribe(this.depSubject$);
       this.loaded = true;
     }
@@ -41,7 +41,7 @@ export class DepartmentsService {
     // adicionando novos department no subject ordenado pelo nome
     .pipe( tap((dep: DepartmentsModel) => {
       this.depSubject$.getValue().push(dep)
-      return this.depSubject$.getValue().sort((a, b) => {if(a.name > b.name) return 1; if(a.name < b.name) return -1;return 0; })
+      return this.orderByName(this.depSubject$.getValue());
     }))
   }
   public del(d: DepartmentsModel): Observable<any>{
@@ -63,5 +63,12 @@ export class DepartmentsService {
       const index = depVirtualList.findIndex(id => id._id == d._id);
       if(index >= 0) depVirtualList[index].name = dep.name;
     }))
+  }
+  private orderByName(list: any[]){
+    return list.sort((a, b) => {
+      if(a.name > b.name) return 1;
+      if(a.name < b.name) return -1;
+      return 0;
+    });
   }
 }
