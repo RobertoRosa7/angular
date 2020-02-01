@@ -1,12 +1,12 @@
 <section class="department">
     <div class="container">
         <mat-card class="card" fxFlex>
-            <mat-card-title>Department</mat-card-title>
+            <mat-card-title>Departments</mat-card-title>
             <mat-card-content>
                 <div fxLayout="column" fxLayoutAlign="space-between">
                     <mat-form-field class="custom-form" floatLabel="always" appearance="outline">
                         <mat-label>Name</mat-label>
-                        <input matInput placeholder="Name" [(ngModel)]="depName">
+                        <input (keyup.enter)="save()" matInput placeholder="Name" [(ngModel)]="depName">
                         <mat-hint class="hint">The Department name</mat-hint>
                     </mat-form-field>
                     <div class="actions">
@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <mat-list class="list">
-                    <h3 style="color: var(--color-white)" mat-subheader>Department</h3>
+                    <h3 style="color: var(--color-white)" mat-subheader>Departments&nbsp;&nbsp;<small *ngIf="departments" style="color: var(--color-green);">( {{departments.length}} )</small></h3>
                     <mat-list-item *ngFor="let dep of departments">
                         <mat-icon style="color: var(--color-white)" mat-list-icon>folder</mat-icon>
                         <p style="color: var(--color-black-silver)" mat-line>{{dep.name}}</p>
