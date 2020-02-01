@@ -8,7 +8,7 @@ export interface Product {
 }
 export interface ProductStore {
     name: string,
-    department: DepartmentsModel[] | String[],
+    departments: DepartmentsModel[] | String[],
     price: number,
     stock: number,
     _id?: string

@@ -11,6 +11,9 @@
         background-color: var(--color-black-medium);
         color: var(--color-black-silver);
     }
+    mat-drawer-content {
+        background-color: var(--color-black-dark);
+    }
 }
 .example-container {
     height: 100%;

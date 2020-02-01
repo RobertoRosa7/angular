@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product, ProductStore } from '../models/products.model';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { DepartmentsService } from './departments.service';
+import { DepartmentsModel } from '../models/departments-model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +15,29 @@ export class ProductsService {
   private storeProduct$: BehaviorSubject<ProductStore[]> = new BehaviorSubject<ProductStore[]>(null);
   private loaded: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private depServices: DepartmentsService
+    ) { }
 
-  public getStoreProducts(): Observable<ProductStore[]>{
+  public getProductStore(): Observable<ProductStore[]>{
+    /**
+     * fazendo combinação de listas, duas requisições usando rxjs
+     * com operators - necessário uso do pipe
+     * sem operators - não é necessário do do pipe passando duas listas de arrays
+     */
     if(!this.loaded){
-      this.http.get<ProductStore[]>(`${this.api}/v1/products`)
-        .pipe(tap((prods) => (prods) ? this.orderByName(prods): []))
-        .subscribe(this.storeProduct$)
+      combineLatest(this.http.get<ProductStore[]>(`${this.api}/v1/products`),this.depServices.get())
+        .pipe(
+          map(([prods, deps]) => {
+            for(let p of prods){
+              const ids = (p.departments as string[]);
+              p.departments = ids.map(id => deps.find(dep => dep._id == id));
+            }
+            return prods;
+          }),
+          tap((prods) => (prods) ? this.orderByName(prods) : [])
+        ).subscribe(this.storeProduct$)
       this.loaded = true;
     }
     return this.storeProduct$.asObservable();
