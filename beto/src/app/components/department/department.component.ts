@@ -49,7 +49,8 @@ export class DepartmentComponent implements OnInit {
     }
   }
   public cancel(){
-    console.log('cancel');
+    this.depName = '';
+    this.depEidt = null;
   }
   public edit(dep: DepartmentsModel){
     this.depName = dep.name;

@@ -6,7 +6,7 @@
                 <div fxLayout="column" fxLayoutAlign="space-between">
                     <mat-form-field class="custom-form" floatLabel="always" appearance="outline">
                         <mat-label>Name</mat-label>
-                        <input (keyup.enter)="save()" matInput placeholder="Name" [(ngModel)]="depName">
+                        <input (keyup.enter)="save()" matInput placeholder="Department name" [(ngModel)]="depName">
                         <mat-hint class="hint">The Department name</mat-hint>
                     </mat-form-field>
                     <div class="actions">
@@ -16,19 +16,34 @@
                         </div>
                     </div>
                 </div>
-                <mat-list class="list">
-                    <h3 style="color: var(--color-white)" mat-subheader>Departments&nbsp;&nbsp;<small *ngIf="departments" style="color: var(--color-green);">( {{departments.length}} )</small></h3>
-                    <mat-list-item *ngFor="let dep of departments">
-                        <mat-icon style="color: var(--color-white)" mat-list-icon>folder</mat-icon>
-                        <p style="color: var(--color-black-silver)" mat-line>{{dep.name}}</p>
-                        <button style="color: var(--color-red)" mat-icon-button (click)="delete(dep)">
-                            <mat-icon>delete</mat-icon>
-                        </button>
-                        <button style="color: var(--color-black-silver)" mat-icon-button (click)="edit(dep)">
-                            <mat-icon>edit</mat-icon>
-                        </button>
-                    </mat-list-item>
-                </mat-list>
+                <ng-container *ngIf="departments?.length > 0; else empty">
+                    <mat-list class="list">
+                        <!-- <h3 style="color: var(--color-white)" mat-subheader>Departments&nbsp;&nbsp;<small *ngIf="departments" style="color: var(--color-green-light);">( {{departments.length}} )</small></h3> -->
+                        <h3 style="color: var(--color-white)" mat-subheader>
+                            <span [matBadge]="departments?.length" matBadgePosition="above after" matBadgeOverlap="false">Departments</span>
+                        </h3>
+                        <mat-list-item *ngFor="let dep of departments">
+                            <mat-icon style="color: var(--color-white)" mat-list-icon>folder</mat-icon>
+                            <p style="color: var(--color-light); font-weight: 200;" mat-line>{{dep.name}}</p>
+                            <button mat-icon-button [matMenuTriggerFor]="menu">
+                                <mat-icon style="color: var(--color-light)">more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button style="color: var(--color-red)" mat-menu-item (click)="delete(dep)">
+                                    <span>Excluir</span>
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                                <button style="color: var(--color-light)" mat-menu-item (click)="edit(dep)">
+                                    <span>Editar</span>
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </mat-menu>
+                        </mat-list-item>
+                    </mat-list>
+                </ng-container>
+                <ng-template #empty>
+                    <div class="empty">No departments</div>
+                </ng-template>
             </mat-card-content>
         </mat-card>
     </div>

@@ -11,14 +11,14 @@
                     color: var(--color-black-silver);
                 }
                 input::placeholder{
-                    color: var(--color-white);
+                    color: var(--color-light);
                 }
             }
             ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
                 color: var(--color-black-silver);
             }
             .hint {
-                color: var(--color-green);
+                color: var(--color-green-light);
             }
             .actions{
                 display: flex;
@@ -39,7 +39,17 @@
                 }
             }
             .list{
-                color: var(--color-black-silver);
+                color: var(--color-light);
+            }
+            .empty{
+                font-size: var(--display-1);
+                font-weight: 400;
+                font-style: normal;
+                letter-spacing: 0.08em;
+                color: var(--color-light);
+            }
+            ::ng-deep .mat-badge-content{
+                background-color: var(--color-green-dark);
             }
         }
     }

@@ -1,15 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 :root {
-    --color-black-dark: #1F1F25;
-    --color-black-medium: #2b2c32;
-    --color-black-light: #3a3a45;
-    --color-black-silver: #59596b;
-    --color-red: #e22a53;
-    --color-green: #00ff00;
+    // colors
+    --color-black: #323232;
     --color-white: #ffffff;
+    --color-red: #e22a53;
+    --color-green: #145A32;
+    --color-black-silver: #59596b;
+    --color-light: #B2BABB;
+
+    // colors -dark
+    --color-black-dark: #1F1F25;
+    --color-green-dark: #0B5345;
+    --color-red-dark: #641E16;
+
+    // colors - medium
+    --color-black-medium: #2b2c32;
+    --color-green-medium: #27AE60;
+    --color-red-medium: #CB4335;
+
+    // colors - light
+    --color-black-light: #3a3a45;
+    --color-green-light: #52BE80;
+    --color-red-light: #FB5252;
+
+    // fonts
     --font-main: 'Raleway';
+
+    // size
     --btn-size: 120px;
+    --display-1: 3em;
+    --size-small: 0.9em;
 }
 html, body { 
     height: 100%;
@@ -30,4 +51,23 @@ body {
 .snack-error{
     background: var(--color-red);
     color: var(--color-black-medium);
+}
+.custom-panel-options{
+    background: var(--color-black-medium);
+    color: var(--color-light);
+}
+::-webkit-scrollbar-track {
+    // background-color: #F4F4F4;
+    background-color: var(--color-black-dark);
+}
+::-webkit-scrollbar {
+    width: 6px;
+    // background: #F4F4F4;
+    background-color: var(--color-black-medium);
+}
+::-webkit-scrollbar-thumb {
+    // background: #c4c4c4;
+    // background: #dad7d7;
+    background-color: var(--color-black-light);
+    border-radius: 10px;
 }

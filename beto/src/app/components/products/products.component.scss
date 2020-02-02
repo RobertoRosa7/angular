@@ -1,1 +1,119 @@
 @import '../../../styles.scss';
+
+.products {
+    .container{
+        .card{
+            background: var(--color-black-medium);
+            color: var(--color-white);
+            box-shadow: none;
+            .custom-form{
+                width: 100%;
+                mat-label{
+                    color: var(--color-black-silver);
+                }
+                input::placeholder, select::placeholder{
+                    color: var(--color-light);
+                }
+                ::ng-deep .mat-select-placeholder, 
+                ::ng-deep .mat-select-value, 
+                ::ng-deep .mat-select-arrow{
+                    color: var(--color-light);
+                }
+                ::ng-deep .mat-select-value-text{
+                    color: var(--color-white) !important;
+                }
+                
+            }
+            ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
+                color: var(--color-black-silver);
+            }
+            .hint {
+                color: var(--color-green-light);
+            }
+            .actions{
+                display: flex;
+                justify-content: flex-end;
+            }
+            .buttons{
+                display: flex;
+                justify-content: space-between;
+                width: 50%;
+
+                .btn-save{
+                    background: var(--color-green);
+                    width: var(--btn-size);
+                }
+                .btn-cancel{
+                    background: var(--color-red);
+                    width: var(--btn-size);
+                }
+                button:disabled{
+                    background: var(--color-black-silver);
+                    color: var(--color-white);
+                }
+            }
+            .list{
+                color: var(--color-black-silver);
+            }
+            .empty{
+                font-size: var(--display-1);
+                font-weight: 400;
+                font-style: normal;
+                letter-spacing: 0.08em;
+                color: var(--color-light);
+            }
+            ::ng-deep .mat-badge-content{
+                background-color: var(--color-green-dark);
+            }
+            .prod-desc{
+                margin: 10px 0;
+               
+                p {
+                    font-size: var(--size-small);
+                    font-weight: 200;
+                    font-style: normal;
+                    color: var(--color-light);
+                    letter-spacing: 0.08em;
+                    line-height: 25px;
+                }
+                .chip{
+                    span{
+                        display: inline-block;
+                        width: 100%;
+                        text-align: center;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
+                }
+                .custom-badges{
+                    opacity: .75;
+                    color: var(--color-green);
+                }
+                .price{
+                    color: var(--color-green-light);
+                }
+            }
+        }
+    }
+}
+// só funciona fora da class produts
+.item-options{
+    ::ng-deep .mat-option-text{
+        color: var(--color-light) !important;
+    }
+   
+    ::ng-deep .mat-pseudo-checkbox{
+        color: var(--color-green);
+    }
+    ::ng-deep .mat-pseudo-checkbox-checked{
+        background-color: var(--color-red);
+    }
+    &:hover{
+        background-color: rgba(0,0,0,0.1) !important;
+    }
+}
+.custom-item-select{
+    font-size: 0.75em;
+    opacity: 0.75;
+}

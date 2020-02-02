@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './page/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatButtonModule, MatMenuModule, MatListModule, MatIconModule, MatSidenavModule, MatCardModule, MatSnackBarModule, MatFormFieldModule, MatAutocompleteModule, MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatProgressBarModule, MatDialogModule, MatDatepickerModule, MAT_DATE_LOCALE, MatNativeDateModule, MatSelectModule, MatExpansionModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatMenuModule, MatListModule, MatIconModule, MatSidenavModule, MatCardModule, MatSnackBarModule, MatFormFieldModule, MatAutocompleteModule, MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatProgressBarModule, MatDialogModule, MatDatepickerModule, MAT_DATE_LOCALE, MatNativeDateModule, MatSelectModule, MatExpansionModule, MatBadgeModule, MatChipsModule} from '@angular/material';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DragAndDropComponent } from './components/drag-and-drop/drag-and-drop.component';
@@ -28,6 +28,7 @@ import { GetContentComponent } from './components/get-content/get-content.compon
 import { StoreComponent } from './page/store/store.component';
 import { ProductsComponent } from './components/products/products.component';
 import { DepartmentComponent } from './components/department/department.component';
+import {CurrencyMaskModule } from 'ng2-currency-mask';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,10 @@ import { DepartmentComponent } from './components/department/department.componen
     MatNativeDateModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    CurrencyMaskModule,
+    MatChipsModule,
+    MatBadgeModule
   ],
   entryComponents:[
     DialogEditProductComponent

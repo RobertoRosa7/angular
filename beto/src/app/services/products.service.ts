@@ -5,6 +5,7 @@ import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { DepartmentsService } from './departments.service';
 import { DepartmentsModel } from '../models/departments-model';
+import { DepartmentComponent } from '../components/department/department.component';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,9 @@ export class ProductsService {
         .pipe(
           map(([prods, deps]) => {
             for(let p of prods){
-              const ids = (p.departments as string[]);
-              p.departments = ids.map(id => deps.find(dep => dep._id == id));
+              // const ids = (p.departments as string[]);
+              // p.departments = ids.map(id => deps.find(dep => dep._id == id));
+              p.departments = (p.departments as string[]).map(id => deps.find(dep => dep._id == id));
             }
             return prods;
           }),
