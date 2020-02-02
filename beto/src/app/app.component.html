@@ -1,6 +1,6 @@
 <section class="sidenav">
     <mat-drawer-container class="example-container">
-        <mat-drawer opened="true" #drawer mode="side"  class="example-sidenav" style="width: 15%">
+        <mat-drawer [opened]="toogleSide" #drawer mode="side"  class="example-sidenav" style="width: 15%">
             <app-sidenav [drawer]="drawer"></app-sidenav>
         </mat-drawer>
         <mat-drawer-content class="exemple-sidenav-content">

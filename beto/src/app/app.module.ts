@@ -29,6 +29,9 @@ import { StoreComponent } from './page/store/store.component';
 import { ProductsComponent } from './components/products/products.component';
 import { DepartmentComponent } from './components/department/department.component';
 import {CurrencyMaskModule } from 'ng2-currency-mask';
+import { BooksComponent } from './components/books/books.component';
+import { DvdsComponent } from './components/dvds/dvds.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +55,9 @@ import {CurrencyMaskModule } from 'ng2-currency-mask';
     StoreComponent,
     ProductsComponent,
     DepartmentComponent,
+    BooksComponent,
+    DvdsComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
