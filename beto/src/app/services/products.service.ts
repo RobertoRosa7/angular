@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product, ProductStore } from '../models/products.model';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, filter } from 'rxjs/operators';
 import { DepartmentsService } from './departments.service';
 import { DepartmentsModel } from '../models/departments-model';
 import { DepartmentComponent } from '../components/department/department.component';
@@ -30,10 +30,10 @@ export class ProductsService {
     if(!this.loaded){
       combineLatest(this.http.get<ProductStore[]>(`${this.api}/v1/products`),this.depServices.get())
         .pipe(
+          // filter para evitar bug de carregamento dos departmento com delay
+          filter(([prods, deps]) => prods != null && deps != null),
           map(([prods, deps]) => {
             for(let p of prods){
-              // const ids = (p.departments as string[]);
-              // p.departments = ids.map(id => deps.find(dep => dep._id == id));
               p.departments = (p.departments as string[]).map(id => deps.find(dep => dep._id == id));
             }
             return prods;

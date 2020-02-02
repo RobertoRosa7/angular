@@ -23,7 +23,7 @@
                         </mat-form-field>
                         <mat-form-field class="custom-form" floatLabel="always" appearance="outline">
                             <mat-label>Stock</mat-label>
-                            <input matInput placeholder="Stock" formControlName="stock">
+                            <input currencyMask [options]="{prefix: '', precision: 0, align:'left'}" matInput placeholder="Stock" formControlName="stock">
                             <mat-hint class="hint">Stock</mat-hint>
                         </mat-form-field>
                     </div>

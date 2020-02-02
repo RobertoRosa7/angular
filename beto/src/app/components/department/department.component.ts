@@ -60,7 +60,7 @@ export class DepartmentComponent implements OnInit {
     this.depServices.del(dep)
       .subscribe(
         () => this.notification('departamento excluído com sucesso.'),
-        (err) => this.notification(err.error)
+        (err) => this.notification(err.error.msg)
       )
   }
   public clearField(){

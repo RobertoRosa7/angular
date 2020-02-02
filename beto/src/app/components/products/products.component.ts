@@ -67,7 +67,7 @@ export class ProductsComponent implements OnInit {
     this.prodService.delProductStore(prod)
       .subscribe(
         () => this.notification('Produto excluído com sucesso.'),
-        (err) => this.notification(err.error)
+        (err) => this.notification(err.error.msg)
       )
   }
   public edit(prod: ProductStore){
@@ -79,6 +79,7 @@ export class ProductsComponent implements OnInit {
     this.form.resetForm();
   }
   private notification(msg){
+    console.log(msg)
     this.snackbar.open(msg, 'ok', {duration: 3000});
   }
 }
