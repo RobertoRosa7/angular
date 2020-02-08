@@ -10,5 +10,9 @@ mat-toolbar{
         letter-spacing: 0.08em;
         // color: var(--color-black-silver);
         color: var(--color-light);
+        margin: 0 10px;
+    }
+    .active-link{
+        border: 1px solid var(--color-red-light)
     }
 }

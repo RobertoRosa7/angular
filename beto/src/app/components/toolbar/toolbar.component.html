@@ -3,10 +3,10 @@
         <button (click)="drawerToggle()" mat-icon-button>
             <mat-icon>menu</mat-icon>
         </button>
-        <button mat-button routerLink="/">Home</button>
-        <button mat-button routerLink="/http-request">Http Request</button>
-        <button mat-button routerLink="/forms">Forms</button>
-        <button mat-button routerLink="/store">Store</button>
+        <button routerLinkActive="active-link" mat-button routerLink="app">Home</button>
+        <button routerLinkActive="active-link" mat-button routerLink="http-request">Http Request</button>
+        <button routerLinkActive="active-link" mat-button routerLink="forms">Forms</button>
+        <button routerLinkActive="active-link" mat-button routerLink="store">Store</button>
         <!-- MENU DROPDOW -->
         <!-- <mat-menu>
             <button mat-button [matMenuTriggerFor]="menu">Menu</button>

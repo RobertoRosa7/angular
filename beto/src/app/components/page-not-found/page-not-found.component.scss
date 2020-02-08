@@ -1,0 +1,12 @@
+@import '../../../styles.scss';
+
+.the-page-not-found{
+    width: 100%;
+    margin: 0 auto;
+
+    h1{
+        text-align: center;
+        font-size: var(--display-1);
+        color: var(--color-white);
+    }
+}
