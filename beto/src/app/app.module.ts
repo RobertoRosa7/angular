@@ -32,6 +32,8 @@ import {CurrencyMaskModule } from 'ng2-currency-mask';
 import { BooksComponent } from './components/books/books.component';
 import { DvdsComponent } from './components/dvds/dvds.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { DvdDetailsComponent } from './components/dvds/dvd-details/dvd-details.component';
+import { BookDetailsComponent } from './components/books/book-details/book-details.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     BooksComponent,
     DvdsComponent,
     PageNotFoundComponent,
+    DvdDetailsComponent,
+    BookDetailsComponent,
   ],
   imports: [
     BrowserModule,

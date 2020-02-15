@@ -12,7 +12,7 @@ export class DvdService {
   public dvds$ = this.dvdSubject$.asObservable();
 
   constructor() { 
-    timer(2000)
+    timer(1000)
       .subscribe(() => 
         this.dvdSubject$.next([
           {title: 'dvd 1', genre: 'Action', year: 2000},
@@ -26,7 +26,7 @@ export class DvdService {
   }
   public theFetchDvd(i: number): Observable<Dvd>{
     return this.dvds$.pipe(
-      map((dvd: Dvd[]) => (i >= 0 && i < dvd.length) ? dvd[i] : null),
+      map((dvd: Dvd[]) => (dvd && i >= 0 && i < dvd.length) ? dvd[i] : null),
       delay(1000)
     )
   }

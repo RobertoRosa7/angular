@@ -1,0 +1,15 @@
+<section class="dvd-details">
+    <div class="container">
+        <button mat-icon-button color="accent" (click)="back()">
+            <mat-icon mat-list-icon>arrow_back</mat-icon>
+        </button>
+        <ul *ngIf="dvd$ | async as dvd; else loading" class="dvd-list">
+            <li><strong>Title:</strong> {{dvd.title}}</li>
+            <li><strong>Year:</strong> {{dvd.year}}</li>
+            <li><strong>Genre:</strong> {{dvd.genre}}</li>
+        </ul>
+        <ng-template #loading>
+            <mat-spinner class="loading"></mat-spinner>
+        </ng-template>
+    </div>
+</section>

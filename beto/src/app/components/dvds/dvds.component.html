@@ -10,7 +10,7 @@
                 <button mat-icon-button>
                     <mat-icon>more_horiz</mat-icon>
                 </button>
-                <button routerLink="/dvd/{{i}}" mat-icon-button>
+                <button [routerLink]="'/dvd/' + encrypto(prefix + i.toString())" mat-icon-button>
                     <mat-icon>info</mat-icon>
                 </button>
                 <button color="accent" mat-icon-button>

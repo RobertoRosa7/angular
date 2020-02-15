@@ -1,0 +1,17 @@
+@import './../../../../styles.scss';
+
+.dvd-details{
+    color: var(--color-light);
+    .container{
+        padding: 0 5%;
+
+        .dvd-list{
+            line-height: 1.5em;
+        }
+        .loading{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+        }
+    }
+}
