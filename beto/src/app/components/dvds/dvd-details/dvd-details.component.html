@@ -3,6 +3,7 @@
         <button mat-icon-button color="accent" (click)="back()">
             <mat-icon mat-list-icon>arrow_back</mat-icon>
         </button>
+        <h1 *ngIf="title">Fetching details for DVD: {{title}}</h1>
         <ul *ngIf="dvd$ | async as dvd; else loading" class="dvd-list">
             <li><strong>Title:</strong> {{dvd.title}}</li>
             <li><strong>Year:</strong> {{dvd.year}}</li>
