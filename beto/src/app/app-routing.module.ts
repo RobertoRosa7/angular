@@ -18,7 +18,11 @@ const routes: Routes = [
   {path: 'store', component: StoreComponent},
   {path: 'http-request', component: ClientsComponent},
   {path: 'forms', component: DrivenFormsComponent},
-  {path: 'book', component: BooksComponent},
+  {path: 'book', component: BooksComponent, children: [
+    {
+      path: 'book/:index', component: BooksComponent
+    }
+  ]},
   {path: 'dvd', component: DvdsComponent},
 
   {path: '', pathMatch: 'full', redirectTo: 'app'},

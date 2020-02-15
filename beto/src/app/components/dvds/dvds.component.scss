@@ -1,0 +1,22 @@
+@import './../../../styles.scss';
+
+.dvds{
+    color: var(--color-light);
+    .container{
+        .dvd-title{
+            font-size: var(--display-1);
+        }
+        .dvd-itens{
+            color: var(--color-light);
+        }
+        .add-button{
+            position: fixed;
+            right: 40px;
+            bottom: 40px;
+        }
+        .text-sm{
+            // importanto um mixin definido no scss raiz
+            @include text-sm-light;
+        }
+    }
+}

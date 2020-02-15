@@ -1,1 +1,25 @@
-<p>dvds works!</p>
+<section class="dvds">
+    <div class="container">
+        <mat-list>
+            <h2 class="dvd-title">DVD's List</h2>
+            <mat-list-item class="dvd-itens" *ngFor="let d of dvd$ | async; let i = index;">
+                <mat-icon mat-list-icon>album</mat-icon>
+                <h4 class="text-md" mat-line>{{d.title}}</h4>
+                <small class="text-sm" mat-line>Genre: {{d.genre}}</small>
+                <small class="text-sm" mat-line>Year: {{d.year}}</small>
+                <button mat-icon-button>
+                    <mat-icon>more_horiz</mat-icon>
+                </button>
+                <button routerLink="/dvd/{{i}}" mat-icon-button>
+                    <mat-icon>info</mat-icon>
+                </button>
+                <button color="accent" mat-icon-button>
+                    <mat-icon>delete_outline</mat-icon>
+                </button>
+            </mat-list-item>
+        </mat-list>
+        <button mat-fab class="add-button">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</section>

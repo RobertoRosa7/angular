@@ -1,0 +1,19 @@
+@import './../../../styles.scss';
+
+.books{
+    color: var(--color-light);
+
+    .container{
+        .book-title{
+            font-size: var(--display-1);
+        }
+        .books-itens{
+            color: var(--color-light);
+        }
+        .add-button{
+            position: fixed;
+            right: 40px;
+            bottom: 40px;
+        }
+    }
+}

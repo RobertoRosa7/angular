@@ -1,1 +1,15 @@
-<p>books works!</p>
+<section class="books">
+    <div class="container">
+        <mat-nav-list>
+            <h2 class="book-title">Book List</h2>
+            <a routerLink="/book/{{i}}" class="books-itens" mat-list-item *ngFor="let b of books$ | async; let i = index;">
+                <mat-icon mat-list-icon>library_books</mat-icon>
+                <h4 mat-line>{{b.title}}</h4>
+                <h5 mat-line>Pages: {{b.pages}}</h5>
+            </a>
+        </mat-nav-list>
+        <button mat-fab class="add-button">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</section>
