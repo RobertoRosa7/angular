@@ -4,6 +4,8 @@ import { Dvd } from 'src/app/models/dvd';
 import { DvdService } from 'src/app/services/dvd.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { FormCreateComponent } from './form-create/form-create.component';
 
 @Component({
   selector: 'app-dvds',
@@ -18,7 +20,8 @@ export class DvdsComponent implements OnInit {
   constructor(
     private dvdService: DvdService,
     private utils: UtilsService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -42,5 +45,27 @@ export class DvdsComponent implements OnInit {
     const hash = this.encrypto(data);
 
     this.router.navigate([`/dvd/${hash}`])
-  } 
+  }
+  public openFormCreate(){
+    const config: MatDialogConfig = {
+      panelClass: 'full-screen',
+    }
+    this.dialog.open(FormCreateComponent, config)
+      .afterClosed()
+      .subscribe((res: any) => {
+        if(typeof res == 'string' && res == 'cancel') return;
+        const year = (res.year != '') ? new Date(res.year).toISOString().substring(0, 10).split('-')[0] : null
+        
+        let payload: Dvd = {
+          "title": res.title,
+          "genre": res.genre,
+          // "year": (res.year) ? new Date(res.year).toISOString().substring(0, 10) : null
+          "year": year
+        }
+        this.dvdService.theCreateDvd(payload);
+      });
+  }
+  public remove(i: number){
+    this.dvdService.theRemoveDvd(i);
+  }
 }

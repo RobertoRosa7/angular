@@ -1,0 +1,42 @@
+@import './../../../../styles.scss';
+
+.form-create{
+    background: var(--color-black-dark) !important;
+    .container{
+        .buttons{
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+
+            .btn-container{
+                max-width: 320px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                button{
+                    text-transform: uppercase;
+                    width: 45%;
+                    &:last-child{
+                        color: var(--color-green-light);
+                    }
+                }
+            }
+        }
+    }
+}
+.item-options{
+    ::ng-deep .mat-option-text{
+        color: var(--color-light) !important;
+    }
+   
+    ::ng-deep .mat-pseudo-checkbox{
+        color: var(--color-green);
+    }
+    ::ng-deep .mat-pseudo-checkbox-checked{
+        background-color: var(--color-red);
+    }
+    &:hover{
+        background-color: rgba(0,0,0,0.1) !important;
+    }
+}

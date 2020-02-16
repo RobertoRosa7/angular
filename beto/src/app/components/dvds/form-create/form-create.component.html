@@ -1,0 +1,47 @@
+<section class="form-create">
+    <div class="container">
+        <form [formGroup]="formDvd" fxLayout="column" fxLayoutAlign="center start">
+            <div fxLayout="row" style="width: 100%;">
+                <mat-form-field fxFlex="100" floatLabel="always" appearance="outline">
+                    <mat-label>Título</mat-label>
+                    <input
+                        formControlName="title" 
+                        matInput 
+                        placeholder="Dê um título para seu filme ou série">
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutGap="20px" fxFlex="100">
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Gênero</mat-label>
+                    <mat-select
+                        formControlName="genre"
+                        panelClass="custom-panel-options" 
+                        placeholder="Genero">
+                        <ng-container *ngFor="let genre of generos">
+                            <mat-option class="item-options" [value]="genre">{{genre}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Data</mat-label>
+                    <input
+                        formControlName="year"
+                        [matDatepicker]="picker1"
+                        maxlength="8"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" 
+                        matInput 
+                        placeholder="data">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker panelClass="custom-datapicker"  #picker1></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="buttons">
+                <div class="btn-container">
+                    <button mat-button type="reset" mat-dialog-close="cancel" color="accent">Cancelar</button>
+                    <button mat-button type="submit" [mat-dialog-close]="formDvd.value" >Criar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

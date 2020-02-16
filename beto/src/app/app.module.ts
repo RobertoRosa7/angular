@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './page/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatButtonModule, MatMenuModule, MatListModule, MatIconModule, MatSidenavModule, MatCardModule, MatSnackBarModule, MatFormFieldModule, MatAutocompleteModule, MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatProgressBarModule, MatDialogModule, MatDatepickerModule, MAT_DATE_LOCALE, MatNativeDateModule, MatSelectModule, MatExpansionModule, MatBadgeModule, MatChipsModule} from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatMenuModule, MatListModule, MatIconModule, MatSidenavModule, MatCardModule, MatSnackBarModule, MatFormFieldModule, MatAutocompleteModule, MatRadioModule, MatProgressSpinnerModule, MatInputModule, MatProgressBarModule, MatDialogModule, MatDatepickerModule, MAT_DATE_LOCALE, MatNativeDateModule, MatSelectModule, MatExpansionModule, MatBadgeModule, MatChipsModule, DateAdapter, MAT_DATE_FORMATS} from '@angular/material';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DragAndDropComponent } from './components/drag-and-drop/drag-and-drop.component';
@@ -34,6 +34,7 @@ import { DvdsComponent } from './components/dvds/dvds.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { DvdDetailsComponent } from './components/dvds/dvd-details/dvd-details.component';
 import { BookDetailsComponent } from './components/books/book-details/book-details.component';
+import { FormCreateComponent } from './components/dvds/form-create/form-create.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { BookDetailsComponent } from './components/books/book-details/book-detai
     PageNotFoundComponent,
     DvdDetailsComponent,
     BookDetailsComponent,
+    FormCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,10 +94,11 @@ import { BookDetailsComponent } from './components/books/book-details/book-detai
     MatExpansionModule,
     CurrencyMaskModule,
     MatChipsModule,
-    MatBadgeModule
+    MatBadgeModule,
   ],
   entryComponents:[
-    DialogEditProductComponent
+    DialogEditProductComponent,
+    FormCreateComponent
   ],
   providers: [
     ProductsService,
