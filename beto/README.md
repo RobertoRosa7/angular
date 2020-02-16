@@ -25,3 +25,35 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Add new Module - angular/cli
+Run `ng generate module [name] -m app --routing` para aplicar hierarquicamente os módulos dentro do
+módule raiz e também adicionar rotas para este novo módulo.
+
+[x] Atenção:
+    Na rota raiz da aplicação deve ser `forRoot`, enquanto das rotas que são adicionadas
+em módulos adicionais deve ser `forChild`
+
+## Add new Service - angular/cli
+Run `ng generate service [name] --no-spec`
+
+## Add new Component - angular/cli
+Run `ng generate component [name] --no-spec`
+
+## Add new Interface - angular/cli
+Run `ng generate interface [name] --no-spec`
+
+## Add new Directive - angular/cli
+Run `ng generate directive [name] --no-spec`
+
+## Add new class - angular/cli
+Run `ng generate class [name] --no-spec`
+
+## Add new Pipe - angular/cli
+Run `ng generate pipe [name] --no-spec`
+
+## Add new Guard - angular/cli
+Run `ng generate guard [name] --no-spec`
+
+## Add new Enum - angular/cli
+Run `ng generate enum [name] --no-spec`

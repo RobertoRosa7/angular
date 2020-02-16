@@ -36,6 +36,7 @@ import { DvdDetailsComponent } from './components/dvds/dvd-details/dvd-details.c
 import { BookDetailsComponent } from './components/books/book-details/book-details.component';
 import { FormCreateComponent } from './components/dvds/form-create/form-create.component';
 import { BookAuthorsComponent } from './components/books/book-authors/book-authors.component';
+import { EletronicsModule } from './eletronics/eletronics.module';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { BookAuthorsComponent } from './components/books/book-authors/book-autho
     CurrencyMaskModule,
     MatChipsModule,
     MatBadgeModule,
+    EletronicsModule,
   ],
   entryComponents:[
     DialogEditProductComponent,
