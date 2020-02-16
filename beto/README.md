@@ -35,25 +35,25 @@ módule raiz e também adicionar rotas para este novo módulo.
 em módulos adicionais deve ser `forChild`
 
 ## Add new Service - angular/cli
-Run `ng generate service [name] --no-spec`
+Run `ng generate service [name]`
 
 ## Add new Component - angular/cli
-Run `ng generate component [name] --no-spec`
+Run `ng generate component [name]`
 
 ## Add new Interface - angular/cli
-Run `ng generate interface [name] --no-spec`
+Run `ng generate interface [name]`
 
 ## Add new Directive - angular/cli
-Run `ng generate directive [name] --no-spec`
+Run `ng generate directive [name]`
 
 ## Add new class - angular/cli
-Run `ng generate class [name] --no-spec`
+Run `ng generate class [name]`
 
 ## Add new Pipe - angular/cli
-Run `ng generate pipe [name] --no-spec`
+Run `ng generate pipe [name]`
 
 ## Add new Guard - angular/cli
-Run `ng generate guard [name] --no-spec`
+Run `ng generate guard [name]`
 
 ## Add new Enum - angular/cli
-Run `ng generate enum [name] --no-spec`
+Run `ng generate enum [name]`
