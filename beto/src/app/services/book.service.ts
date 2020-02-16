@@ -12,7 +12,7 @@ export class BookService {
   public books$ = this.bookSubject$.asObservable();
 
   constructor() {
-    timer(2000)
+    timer(1000)
       .subscribe(() => 
       this.bookSubject$.next([
         {title: 'Book 1', pages: 200, authors: ['Jhon', 'Nicolas']},
@@ -25,7 +25,7 @@ export class BookService {
   }
   public theFetchBook(i: number): Observable<Book>{
     return this.books$.pipe(
-      map((books: Book[]) => (i >= 0 && i < books.length) ? books[i] : null),
+      map((books: Book[]) => (books && i >= 0 && i < books.length) ? books[i] : null),
       delay(1000)
     )
   }

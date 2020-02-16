@@ -1,0 +1,9 @@
+@import './../../../../styles.scss';
+
+.books-details{
+    color: var(--color-light);
+    margin-bottom: 30px;
+    .container{
+        padding: 0 5%;
+    }
+}

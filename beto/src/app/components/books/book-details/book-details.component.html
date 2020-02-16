@@ -1,1 +1,27 @@
-<p>book-details works!</p>
+<section class="books-details">
+    <div class="container">
+        <div fxFlex fxLayout="row" fxLayoutAlign="center stretch">
+            <div fxFlex>
+                <div 
+                    *ngIf="book$ | async as book" 
+                    fxLayout="row" 
+                    fxLayoutAlign="space-between center">
+                    <div class="desc">
+                        <p>Title: {{book.title}}</p>
+                        <p>Pages: {{book.pages}}</p>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="20px">
+                        <button mat-button>
+                            <mat-icon>people_outline</mat-icon>
+                            Authors
+                        </button>
+                        <button (click)="remove()" mat-button color="accent">
+                            <mat-icon>people_outline</mat-icon>
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

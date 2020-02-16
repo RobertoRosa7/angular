@@ -12,16 +12,17 @@ import { BookDetailsComponent } from './components/books/book-details/book-detai
 
 
 const routes: Routes = [
-  {
-    path: 'app', component: HomeComponent, children: [
+  // chidren - indica que será criado um subcamadas dentro da rota raiz
+  {path: 'app', component: HomeComponent, children: [
       {path: 'component/:name', component: HomeComponent},
     ]
   },
   {path: 'store', component: StoreComponent},
   {path: 'http-request', component: ClientsComponent},
   {path: 'forms', component: DrivenFormsComponent},
-  {path: 'book', component: BooksComponent},
-  {path: 'book/:index', component: BookDetailsComponent},
+  {path: 'book', component: BooksComponent, children:[
+    {path: ':index', component: BookDetailsComponent}
+  ]},
   {path: 'dvd', component: DvdsComponent},
   {path: 'dvd/:index', component: DvdDetailsComponent},
   {path: '', pathMatch: 'full', redirectTo: 'app'},
