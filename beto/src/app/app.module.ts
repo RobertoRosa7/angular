@@ -35,6 +35,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { DvdDetailsComponent } from './components/dvds/dvd-details/dvd-details.component';
 import { BookDetailsComponent } from './components/books/book-details/book-details.component';
 import { FormCreateComponent } from './components/dvds/form-create/form-create.component';
+import { BookAuthorsComponent } from './components/books/book-authors/book-authors.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { FormCreateComponent } from './components/dvds/form-create/form-create.c
     DvdDetailsComponent,
     BookDetailsComponent,
     FormCreateComponent,
+    BookAuthorsComponent,
   ],
   imports: [
     BrowserModule,

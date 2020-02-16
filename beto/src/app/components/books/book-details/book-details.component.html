@@ -11,7 +11,7 @@
                         <p>Pages: {{book.pages}}</p>
                     </div>
                     <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="20px">
-                        <button mat-button>
+                        <button (click)="showAuthors()" mat-button>
                             <mat-icon>people_outline</mat-icon>
                             Authors
                         </button>
@@ -22,6 +22,7 @@
                     </div>
                 </div>
             </div>
+            <router-outlet></router-outlet>
         </div>
     </div>
 </section>

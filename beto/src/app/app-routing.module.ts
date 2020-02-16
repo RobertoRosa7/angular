@@ -9,6 +9,7 @@ import { BooksComponent } from './components/books/books.component';
 import { DvdsComponent } from './components/dvds/dvds.component';
 import { DvdDetailsComponent } from './components/dvds/dvd-details/dvd-details.component';
 import { BookDetailsComponent } from './components/books/book-details/book-details.component';
+import { BookAuthorsComponent } from './components/books/book-authors/book-authors.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,9 @@ const routes: Routes = [
   {path: 'http-request', component: ClientsComponent},
   {path: 'forms', component: DrivenFormsComponent},
   {path: 'book', component: BooksComponent, children:[
-    {path: ':index', component: BookDetailsComponent}
+    {path: ':index', component: BookDetailsComponent, children: [
+      {path: 'authors/:authors', component: BookAuthorsComponent}
+    ]}
   ]},
   {path: 'dvd', component: DvdsComponent},
   {path: 'dvd/:index', component: DvdDetailsComponent},

@@ -16,6 +16,8 @@ export class BookDetailsComponent implements OnInit {
   public book$: Observable<Book> = null;
   private readonly prefix: string = 'book-';
   private index: number;
+  private authors: string[];
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private bookService: BookService,
@@ -36,14 +38,24 @@ export class BookDetailsComponent implements OnInit {
     this.book$ = this.activatedRoute.paramMap
       .pipe(
         tap((params: ParamMap) => this.index = parseInt(this.decrypto(params.get('index')))),
-        switchMap((params: ParamMap) => this.bookService.theFetchBook(parseInt(this.decrypto(params.get('index')))))
+        switchMap((params: ParamMap) => this.bookService.theFetchBook(parseInt(this.decrypto(params.get('index'))))),
+        tap(b => this.authors = (b) ? b.authors : [])
       )
   }
-  private decrypto(index){
-    return this.utils.decrypto(index).replace(this.prefix,'');
+  private decrypto(payload){
+    return this.utils.decrypto(payload).replace(this.prefix,'');
+  }
+  private encrypto(payload){
+    return this.utils.encrypto(`${this.prefix}${payload}`);
   }
   public remove(){
     this.bookService.theRemoveBook(this.index);
     this.router.navigate(['book']);
+  }
+  public showAuthors(){
+    const params = this.encrypto(JSON.stringify({id: this.index,authors: this.authors}));
+    const index = this.encrypto(`${this.prefix}${this.index}`);
+    const URL = `/book/${index}/authors`;
+    this.router.navigate([URL, params]);
   }
 }

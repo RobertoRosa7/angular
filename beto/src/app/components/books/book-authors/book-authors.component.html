@@ -1,0 +1,15 @@
+<section class="book-authors">
+    <div class="container">
+        <mat-divider vertical="true"></mat-divider>
+        <div fxFlex style="width: 200px;">
+            <div *ngIf="authors$ | async as authors">
+                <mat-list>
+                    <mat-list-item *ngFor="let author of authors">
+                        <mat-icon mat-icon-list>person</mat-icon>
+                        <h3 mat-line>{{author}}</h3>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </div>
+    </div>
+</section>
