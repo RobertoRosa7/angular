@@ -70,6 +70,7 @@ import { EletronicsModule } from './eletronics/eletronics.module';
   ],
   imports: [
     BrowserModule,
+    EletronicsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -98,7 +99,7 @@ import { EletronicsModule } from './eletronics/eletronics.module';
     CurrencyMaskModule,
     MatChipsModule,
     MatBadgeModule,
-    EletronicsModule,
+    // EletronicsModule,
   ],
   entryComponents:[
     DialogEditProductComponent,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Eletronic } from 'src/app/models/eletronic';
 import { Observable } from 'rxjs';
 import { EletronicsService } from 'src/app/services/eletronics.service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-eletronic-list',
@@ -10,13 +11,18 @@ import { EletronicsService } from 'src/app/services/eletronics.service';
 })
 export class EletronicListComponent implements OnInit {
   public eletronics$: Observable<Eletronic[]>;
+  private readonly prefix: string = 'eletro-';
 
   constructor(
-    private eletroService: EletronicsService
+    private eletroService: EletronicsService,
+    private utils: UtilsService
   ) { }
 
   ngOnInit() {
     this.eletronics$ = this.eletroService.eletronics$;
   }
 
+  public encrypto(text){
+    return this.utils.encrypto(text);
+  }
 }
