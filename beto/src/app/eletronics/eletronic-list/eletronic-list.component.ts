@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Eletronic } from 'src/app/models/eletronic';
+import { Observable } from 'rxjs';
+import { EletronicsService } from 'src/app/services/eletronics.service';
 
 @Component({
   selector: 'app-eletronic-list',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./eletronic-list.component.scss']
 })
 export class EletronicListComponent implements OnInit {
+  public eletronics$: Observable<Eletronic[]>;
 
-  constructor() { }
+  constructor(
+    private eletroService: EletronicsService
+  ) { }
 
   ngOnInit() {
+    this.eletronics$ = this.eletroService.eletronics$;
   }
 
 }
