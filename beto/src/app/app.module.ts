@@ -70,7 +70,7 @@ import { EletronicsModule } from './eletronics/eletronics.module';
   ],
   imports: [
     BrowserModule,
-    EletronicsModule,
+    // EletronicsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,

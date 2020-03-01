@@ -26,6 +26,7 @@ const routes: Routes = [
       {path: 'authors/:authors', component: BookAuthorsComponent}
     ]}
   ]},
+  {path: 'eletronics', loadChildren: './eletronics/eletronics.module#EletronicsModule'},
   {path: 'dvd', component: DvdsComponent},
   {path: 'dvd/:index', component: DvdDetailsComponent},
   {path: '', pathMatch: 'full', redirectTo: 'app'},

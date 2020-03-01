@@ -5,7 +5,7 @@
             class="list-item"
             mat-list-item
             *ngFor="let e of eletronics$ | async; let i = index"
-            [routerLink]="'/eletronic/' + encrypto(prefix + i)">
+            [routerLink]="'/eletronics/' + encrypto(prefix + i)">
             <mat-icon mat-list-icon>library_books</mat-icon>
             <h4 mat-line>{{e.name}}</h4>
             <h5 mat-line>Price: {{e.price | currency:'R$ '}}</h5>
