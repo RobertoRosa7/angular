@@ -3,17 +3,18 @@
       <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
   
         <mat-card class="login-card mat-elevation-z8" >
-            <mat-card-title>Login</mat-card-title>
+            <mat-card-title style="cursor: pointer; text-align: center;" routerLink="/app">Login</mat-card-title>
             <mat-card-content fxLayout="column" >
               <mat-form-field class="custom-form" floatLabel="always" appearance="outline">
                 <mat-label>E-mail</mat-label>
                 <input matInput formControlName="email" type="email"
-                    placeholder="E-mail" autocomplete="email" readonly="false">
+                    placeholder="E-mail" autocomplete="email" readonly="false" required>
               </mat-form-field>
+              
               <mat-form-field class="custom-form" floatLabel="always" appearance="outline">
                 <mat-label>Password</mat-label>
                 <input matInput formControlName="password" type="password"  
-                  placeholder="Password" autocomplete="password">
+                  placeholder="Password" autocomplete="password" minlength="6" required>
               </mat-form-field>
             </mat-card-content>
             <mat-card-actions fxLayout="row" fxLayoutAlign="end center" >

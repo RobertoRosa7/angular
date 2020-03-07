@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   private readonly api: string = 'http://localhost:8080/api/v2/auth/';
+  private user$: BehaviorSubject<User> = new BehaviorSubject<User>(null);
+  private loggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     private http: HttpClient
@@ -16,5 +19,22 @@ export class AuthService {
 
   public register(user: User): Observable<User>{
     return this.http.post<User>(`${this.api}register`, user);
+  }
+
+  public login(credentials: {"email":string, "password":string}): Observable<User>{
+    return this.http.post<User>(`${this.api}login`, credentials)
+      .pipe(
+        tap((u: any) => {
+          localStorage.setItem('token', u.token);
+          this.loggedIn$.next(true);
+          this.user$.next(u);
+        })
+      )
+  }
+  public isAuthenticated(): Observable<boolean>{
+    return this.loggedIn$.asObservable();
+  }
+  public fetchUser(): Observable<User>{
+    return this.user$.asObservable();
   }
 }
