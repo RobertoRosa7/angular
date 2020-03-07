@@ -39,6 +39,7 @@ import { BookAuthorsComponent } from './components/books/book-authors/book-autho
 import { EletronicsModule } from './eletronics/eletronics.module';
 import { MainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -76,32 +77,8 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MaterialModule,
     // MainModule, // carregado no app-routing lazy loading
-    FormsModule,
-    FlexModule,
-    ReactiveFormsModule,
-    CurrencyMaskModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatListModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatCardModule,
-    MatSnackBarModule,
-    MatFormFieldModule,
-    MatAutocompleteModule,
-    MatRadioModule,
-    MatProgressSpinnerModule,
-    MatInputModule,
-    MatProgressBarModule,
-    MatDialogModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSelectModule,
-    MatExpansionModule,
-    MatChipsModule,
-    MatBadgeModule,
     AuthModule,
   ],
   entryComponents:[
