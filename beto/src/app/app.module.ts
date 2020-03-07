@@ -37,6 +37,7 @@ import { BookDetailsComponent } from './components/books/book-details/book-detai
 import { FormCreateComponent } from './components/dvds/form-create/form-create.component';
 import { BookAuthorsComponent } from './components/books/book-authors/book-authors.component';
 import { EletronicsModule } from './eletronics/eletronics.module';
+import { MainModule } from './main/main.module';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,7 @@ import { EletronicsModule } from './eletronics/eletronics.module';
   ],
   imports: [
     BrowserModule,
-    // EletronicsModule,
+    // EletronicsModule, // carregado no app-routing.module lazy loading
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -99,6 +100,7 @@ import { EletronicsModule } from './eletronics/eletronics.module';
     CurrencyMaskModule,
     MatChipsModule,
     MatBadgeModule,
+    MainModule,
     // EletronicsModule,
   ],
   entryComponents:[
