@@ -38,6 +38,7 @@ import { FormCreateComponent } from './components/dvds/form-create/form-create.c
 import { BookAuthorsComponent } from './components/books/book-authors/book-authors.component';
 import { EletronicsModule } from './eletronics/eletronics.module';
 import { MainModule } from './main/main.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { MainModule } from './main/main.module';
     MatExpansionModule,
     MatChipsModule,
     MatBadgeModule,
+    AuthModule,
   ],
   entryComponents:[
     DialogEditProductComponent,
