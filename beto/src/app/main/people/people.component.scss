@@ -1,0 +1,9 @@
+@import '../../../styles.scss';
+
+.people{
+    color: var(--color-light);
+
+    .p-lists p{
+        color: var(--color-white);
+    }
+}

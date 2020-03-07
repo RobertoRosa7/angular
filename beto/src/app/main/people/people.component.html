@@ -1,1 +1,15 @@
-<p>people works!</p>
+<section class="people">
+    <h3>People</h3>
+    <mat-list class="p-lists" *ngIf="(people$ | async)?.length > 0; else noperson">
+        <mat-list-item *ngFor="let p of (people$ | async)">
+            <p mat-line>{{p.name}}</p>
+            <p mat-line>{{p.email}}</p>
+            <p mat-line>{{p.country}}</p>
+            <p mat-line>{{p.company}}</p>
+        </mat-list-item>
+    </mat-list>
+    
+    <ng-template #noperson>
+        <h3>No person found!</h3>
+    </ng-template>
+</section>

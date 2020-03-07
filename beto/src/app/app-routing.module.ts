@@ -27,6 +27,7 @@ const routes: Routes = [
     ]}
   ]},
   {path: 'eletronics', loadChildren: './eletronics/eletronics.module#EletronicsModule'},
+  {path: 'main', loadChildren: './main/main.module#MainModule'},
   {path: 'dvd', component: DvdsComponent},
   {path: 'dvd/:index', component: DvdDetailsComponent},
   {path: '', pathMatch: 'full', redirectTo: 'app'},

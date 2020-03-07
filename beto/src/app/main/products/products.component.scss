@@ -1,0 +1,9 @@
+@import '../../../styles.scss';
+
+.products{
+    color: var(--color-light);
+
+    .p-lists p{
+        color: var(--color-white);
+    }
+}

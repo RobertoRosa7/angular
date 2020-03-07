@@ -6,17 +6,21 @@
         <button routerLinkActive="active-link" mat-button routerLink="app">Home</button>
         <button routerLinkActive="active-link" mat-button routerLink="http-request">Http Request</button>
         <button routerLinkActive="active-link" mat-button routerLink="forms">Forms</button>
-        <button routerLinkActive="active-link" mat-button routerLink="store">Store</button>
-        <button routerLinkActive="active-link" mat-button routerLink="book">Books</button>
-        <button routerLinkActive="active-link" mat-button routerLink="dvd">Dvd's</button>
-        <button routerLinkActive="active-link" mat-button routerLink="eletronics">Eletronic</button>
+        <button routerLinkActive="active-link" [matMenuTriggerFor]="store" mat-button>Store</button>
+        
+        <!-- <button routerLinkActive="active-link" mat-button routerLink="book">Books</button> -->
+        <!-- <button routerLinkActive="active-link" mat-button routerLink="dvd">Dvd's</button> -->
+        <!-- <button routerLinkActive="active-link" mat-button routerLink="eletronics">Eletronic</button> -->
         
         <!-- MENU DROPDOW -->
-        <!-- <mat-menu>
-            <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-            <button mat-menu-item>Item 1</button>
-            <button mat-menu-item>Item 2</button>
-        </mat-menu> -->
+        <mat-menu #store>
+            <button class="menu-item" routerLinkActive="active-link" mat-button routerLink="store">Store</button>
+            <button class="menu-item" routerLinkActive="active-link" mat-button routerLink="book">Books</button>
+            <button class="menu-item" routerLinkActive="active-link" mat-button routerLink="dvd">Dvd's</button>
+            <button class="menu-item" routerLinkActive="active-link" mat-button routerLink="eletronics">Eletronic</button>
+            <button class="menu-item" routerLinkActive="active-link" mat-button routerLink="main/people">People</button>
+            <button class="menu-item" routerLinkActive="active-link" mat-button routerLink="main/products">Products</button>
+        </mat-menu>
     </mat-toolbar-row>
     <!-- <ng-template #sidenav>
         <mat-toolbar-row class="container">

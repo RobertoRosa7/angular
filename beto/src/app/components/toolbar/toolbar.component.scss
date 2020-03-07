@@ -16,3 +16,14 @@ mat-toolbar{
         border: 1px solid var(--color-red-light);
     }
 }
+.menu-item{
+    text-transform: uppercase;
+}
+::ng-deep .mat-menu-panel{
+    background-color: var(--color-black-medium);
+    color: var(--color-light);
+}
+::ng-deep .mat-menu-content{
+    display: flex;
+    flex-direction: column;
+}
