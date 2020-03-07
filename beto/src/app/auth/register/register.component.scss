@@ -1,0 +1,52 @@
+@import '../../../styles.scss';
+
+.register{
+    .register-form {
+        max-width: 600px;
+        margin-top: 40px;
+    }
+    .card {
+        background: var(--color-black-medium);
+        color: var(--color-white);
+        box-shadow: none;
+        .custom-form{
+            mat-label{
+                color: var(--color-black-silver);
+            }
+            input::placeholder, select::placeholder{
+                color: var(--color-light);
+            }
+            ::ng-deep .mat-select-placeholder, 
+            ::ng-deep .mat-select-value, 
+            ::ng-deep .mat-select-arrow{
+                color: var(--color-light);
+            }
+            ::ng-deep .mat-select-value-text{
+                color: var(--color-white) !important;
+            }
+        }
+        ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
+            color: var(--color-black-silver);
+        }
+    }
+}
+// só funciona fora da class produts
+.item-options{
+    ::ng-deep .mat-option-text{
+        color: var(--color-light) !important;
+    }
+   
+    ::ng-deep .mat-pseudo-checkbox{
+        color: var(--color-green);
+    }
+    ::ng-deep .mat-pseudo-checkbox-checked{
+        background-color: var(--color-red);
+    }
+    &:hover{
+        background-color: rgba(0,0,0,0.1) !important;
+    }
+}
+.custom-item-select{
+    font-size: 0.75em;
+    opacity: 0.75;
+}

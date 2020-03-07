@@ -74,12 +74,12 @@ import { MaterialModule } from './material.module';
   imports: [
     BrowserModule,
     // EletronicsModule, // carregado no app-routing.module lazy loading
-    AppRoutingModule,
     BrowserAnimationsModule,
+    AuthModule,
+    AppRoutingModule,
     HttpClientModule,
     MaterialModule,
     // MainModule, // carregado no app-routing lazy loading
-    AuthModule,
   ],
   entryComponents:[
     DialogEditProductComponent,

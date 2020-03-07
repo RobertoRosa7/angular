@@ -1,1 +1,98 @@
-<p>register works!</p>
+<section class="register" fxLayout="row" fxLayoutAlign="space-around center" >
+    <div align="center" fxLayout="row" fxLayoutAlign="center center"  class="register-form">
+      <form role="form" [formGroup]="formRegister" (ngSubmit)="onSubmit()">
+        <mat-card class="mat-elevation-z8 card" flex="80">
+
+          <mat-card-title>Sign up</mat-card-title>
+          
+          <mat-card-content fxLayout="column" fxLayoutAlign="space-around stretch">
+            <div fxLayout="row" fxLayoutAlign="space-between stretch">
+              
+              <mat-form-field class="custom-form" floatLabel="always" appearance="outline" fxFlex="45">
+                <mat-label>First name</mat-label>
+                <input matInput type="text" formControlName="firstname" 
+                  autocomplete="firstname" placeholder="First Name">
+              </mat-form-field>               
+              
+              <mat-form-field class="custom-form" floatLabel="always" appearance="outline" fxFlex="45">
+                <mat-label>Last name</mat-label>
+                <input matInput type="text" formControlName="lastname" 
+                  autocomplete="lastname" placeholder="Last Name" >
+              </mat-form-field>               
+            </div>
+            
+            <mat-form-field class="custom-form" floatLabel="always" appearance="outline">
+              <mat-label>Address</mat-label>
+              <input matInput type="text" formControlName="address" 
+                    autocomplete="address" placeholder="Address" >
+            </mat-form-field>
+            
+            <div fxLayout="row" fxLayoutAlign="space-between stretch">
+              <mat-form-field class="custom-form" floatLabel="always" appearance="outline" fxFlex="60"> 
+              <mat-label>City</mat-label>
+                <input matInput type="text" formControlName="city" 
+                  autocomplete="citt" placeholder="City"  >
+              </mat-form-field>
+              
+              <mat-form-field class="custom-form" floatLabel="always" appearance="outline" fxFlex="30">
+                <mat-label>State</mat-label>
+                <mat-select panelClass="custom-panel-options" matNativeControl placeholder="State" formControlName="state">
+                  <mat-option class="item-options" *ngFor="let state of states" [value]="state">
+                    {{state}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>          
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between stretch">
+              <mat-form-field class="custom-form" floatLabel="always" appearance="outline" fxFlex="45"> 
+              <mat-label>Phone</mat-label>
+                <input matInput type="text" formControlName="phone" 
+                  autocomplete="Phone" placeholder="Phone"  >
+              </mat-form-field>
+              
+              <mat-form-field class="custom-form" floatLabel="always" appearance="outline" fxFlex="45">
+                <mat-label>Mobile phone</mat-label>
+                <input matInput type="text" formControlName="mobilephone" 
+                  autocomplete="mobilephone" placeholder="Mobile Phone">
+              </mat-form-field>
+            </div>  
+            
+            <div fxLayout="row" fxLayoutAlign="space-between stretch">
+              <mat-form-field class="custom-form" floatLabel="always" appearance="outline" fxFlex="100">
+              <mat-label>E-mail</mat-label>
+                <input matInput type="email" formControlName="email" 
+                  class="form-control" value="" autocomplete="email" placeholder="E-mail">
+              </mat-form-field>  
+            </div>
+            
+            <div fxLayout="row" fxLayoutAlign="space-between stretch">
+              <mat-form-field class="custom-form" floatLabel="always" appearance="outline" fxFlex="45">
+              <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password1" 
+                  type="password" autocomplete="off" placeholder="Password">
+                <!-- <mat-placeholder>
+                  <mat-icon>lock</mat-icon> New password
+                </mat-placeholder> -->
+              </mat-form-field>
+              
+              <mat-form-field class="custom-form" floatLabel="always" appearance="outline" fxFlex="45">
+                <mat-label>Password confirmation</mat-label>
+                <input matInput type="password" formControlName="password2" 
+                      class="form-control"  autocomplete="off" placeholder="Password confirmation">
+                <!-- <mat-placeholder>
+                  <mat-icon>lock_outline</mat-icon> Password confirmation
+                </mat-placeholder> -->
+              </mat-form-field>
+            </div>
+            
+            <div fxLayout="row" fxLayoutAlign="end end" >
+                <button mat-button color="primary" type="submit" [disabled]="!formRegister.valid">
+                  <mat-icon>done</mat-icon>&nbsp;Register
+                </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </form>
+    </div>
+  </section>
