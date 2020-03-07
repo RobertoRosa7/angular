@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { User } from '../user';
+import { AuthService } from '../auth.service';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -52,7 +56,10 @@ export class RegisterComponent implements OnInit {
     'Tocantins (TO)'
   ]
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private snackbar: MatSnackBar,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -60,7 +67,15 @@ export class RegisterComponent implements OnInit {
   }
 
   public onSubmit(){
-    console.log(this.formRegister.value);
+    const user: User = {...this.formRegister.value, "password": this.formRegister.value.password1};
+    this.authService.register(user)
+      .subscribe(
+        (u) => {
+          this.notification('User register successfuly!');
+          this.router.navigateByUrl('/auth/login');
+        },
+        (e) => this.notification(e.error.msg)
+      );
   }
   private matchPasswords(group: FormGroup){
     if(group){
@@ -69,5 +84,8 @@ export class RegisterComponent implements OnInit {
       if(password1 == password2) return null;
     }
     return {matching: false};
+  }
+  private notification(msg){
+    this.snackbar.open(msg, 'ok', {duration: 3000});
   }
 }

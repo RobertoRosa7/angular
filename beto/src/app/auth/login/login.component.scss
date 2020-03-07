@@ -1,0 +1,29 @@
+@import '../../../styles.scss';
+
+.login-card {
+    width: 400px;
+    margin-top: 100px;
+
+    background: var(--color-black-medium);
+    color: var(--color-white);
+    box-shadow: none;
+    .custom-form{
+        mat-label{
+            color: var(--color-black-silver);
+        }
+        input::placeholder, select::placeholder{
+            color: var(--color-light);
+        }
+        ::ng-deep .mat-select-placeholder, 
+        ::ng-deep .mat-select-value, 
+        ::ng-deep .mat-select-arrow{
+            color: var(--color-light);
+        }
+        ::ng-deep .mat-select-value-text{
+            color: var(--color-white) !important;
+        }
+    }
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
+        color: var(--color-black-silver);
+    }
+}
