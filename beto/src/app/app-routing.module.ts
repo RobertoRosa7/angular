@@ -15,21 +15,22 @@ import { BookAuthorsComponent } from './components/books/book-authors/book-autho
 const routes: Routes = [
   // chidren - indica que será criado um subcamadas dentro da rota raiz
   {path: 'app', component: HomeComponent, children: [
+      {path: '', component: StoreComponent},
       {path: 'component/:name', component: HomeComponent},
+      {path: 'store', component: StoreComponent},
+      {path: 'http-request', component: ClientsComponent},
+      {path: 'forms', component: DrivenFormsComponent},
+      {path: 'book', component: BooksComponent, children:[
+        {path: ':index', component: BookDetailsComponent, children: [
+          {path: 'authors/:authors', component: BookAuthorsComponent}
+        ]}
+      ]},
+      {path: 'eletronics', loadChildren: './eletronics/eletronics.module#EletronicsModule'},
+      {path: 'main', loadChildren: './main/main.module#MainModule'},
+      {path: 'dvd', component: DvdsComponent},
+      {path: 'dvd/:index', component: DvdDetailsComponent},
     ]
   },
-  {path: 'store', component: StoreComponent},
-  {path: 'http-request', component: ClientsComponent},
-  {path: 'forms', component: DrivenFormsComponent},
-  {path: 'book', component: BooksComponent, children:[
-    {path: ':index', component: BookDetailsComponent, children: [
-      {path: 'authors/:authors', component: BookAuthorsComponent}
-    ]}
-  ]},
-  {path: 'eletronics', loadChildren: './eletronics/eletronics.module#EletronicsModule'},
-  {path: 'main', loadChildren: './main/main.module#MainModule'},
-  {path: 'dvd', component: DvdsComponent},
-  {path: 'dvd/:index', component: DvdDetailsComponent},
   {path: '', pathMatch: 'full', redirectTo: 'app'},
   {path: '**', component: PageNotFoundComponent}
 ];

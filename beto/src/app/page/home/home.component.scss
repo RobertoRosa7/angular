@@ -125,3 +125,37 @@
     font-size: 4em;
     color: var(--color-red-light);
 }
+.sidenav{
+    position: relative;
+    height: 100%;
+    padding: 0 5%;
+    border:none;
+    box-sizing: border-box;
+    
+    mat-drawer {
+        background-color: var(--color-black-medium);
+        color: var(--color-black-silver);
+    }
+    mat-drawer-content {
+        background-color: var(--color-black-dark);
+    }
+}
+.example-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-black-dark);
+}
+  
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.example-sidenav {
+    padding: 10px;
+}
