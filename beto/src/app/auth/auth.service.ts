@@ -5,6 +5,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
+  // providedIn - automaticamente fornecido para módulo raiz
   providedIn: 'root'
 })
 export class AuthService {

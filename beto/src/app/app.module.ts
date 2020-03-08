@@ -12,7 +12,7 @@ import { DragAndDropComponent } from './components/drag-and-drop/drag-and-drop.c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UnsubscribeComponent } from './components/unsubscribe/unsubscribe.component';
 import { SwitchMergeComponent } from './components/switch-merge/switch-merge.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FlexModule } from '@angular/flex-layout';
 import { ClientsComponent } from './page/clients/clients.component';
 import { ProductsService } from './services/products.service';
@@ -40,6 +40,7 @@ import { EletronicsModule } from './eletronics/eletronics.module';
 import { MainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
 import { MaterialModule } from './material.module';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { MaterialModule } from './material.module';
     BrowserModule,
     // EletronicsModule, // carregado no app-routing.module lazy loading
     BrowserAnimationsModule,
-    AuthModule,
+    // AuthModule,
+    AuthModule.forRoot(), // módulo exportado com serviços
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
@@ -87,6 +89,8 @@ import { MaterialModule } from './material.module';
   ],
   providers: [
     ProductsService,
+    // interceptor raiz do projeto
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
