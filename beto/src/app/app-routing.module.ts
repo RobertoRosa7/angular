@@ -10,6 +10,7 @@ import { DvdsComponent } from './components/dvds/dvds.component';
 import { DvdDetailsComponent } from './components/dvds/dvd-details/dvd-details.component';
 import { BookDetailsComponent } from './components/books/book-details/book-details.component';
 import { BookAuthorsComponent } from './components/books/book-authors/book-authors.component';
+import { AuthGuardService } from './auth/auth-guard.service';
 
 
 const routes: Routes = [
@@ -29,7 +30,7 @@ const routes: Routes = [
       {path: 'main', loadChildren: './main/main.module#MainModule'},
       {path: 'dvd', component: DvdsComponent},
       {path: 'dvd/:index', component: DvdDetailsComponent},
-    ]
+    ], canActivate: [ AuthGuardService ]
   },
   {path: '', pathMatch: 'full', redirectTo: 'app'},
   {path: '**', component: PageNotFoundComponent}
