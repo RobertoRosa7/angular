@@ -1,5 +1,8 @@
 import { Component, HostListener } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { AuthService } from './auth/auth.service';
+import { Observable } from 'rxjs';
+import { User } from './auth/user';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +19,8 @@ export class AppComponent {
   public screenWdith: number;
   public xsmallScreen: boolean = false;
   public smallScreen: boolean = false;
-
   constructor(
-    public breakpoint: BreakpointObserver,
+    public breakpoint: BreakpointObserver
   ){
     breakpoint.observe([Breakpoints.XSmall, Breakpoints.Small])
       .subscribe(br => {

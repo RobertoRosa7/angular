@@ -1,28 +1,64 @@
 <mat-toolbar>
     <mat-toolbar-row class="container">
-        <button (click)="drawerToggle()" mat-icon-button>
-            <mat-icon>menu</mat-icon>
-        </button>
-        <button mat-button routerLink="/">Home</button>
-        <button mat-button routerLink="http-request">Http Request</button>
-        <button mat-button routerLink="forms">Forms</button>
-        <button mat-button [matMenuTriggerFor]="store">Store</button>
-        <button mat-button routerLink="/auth/login">Sign In</button>
-        <button mat-button routerLink="/auth/register">Sign Up</button>
+        <div>
+            <button (click)="drawerToggle()" mat-icon-button>
+                <mat-icon>menu</mat-icon>
+            </button>
+            <button mat-button routerLink="/">Home</button>
+            <button mat-button routerLink="http-request">Http Request</button>
+            <button mat-button routerLink="forms">Forms</button>
+            <button mat-button [matMenuTriggerFor]="store">Store</button>
+              <!-- MENU DROPDOW -->
+            <mat-menu #store>
+                <button class="menu-item" mat-menu-item routerLink="store">Store</button>
+                <button class="menu-item" mat-menu-item routerLink="book">Books</button>
+                <button class="menu-item" mat-menu-item routerLink="dvd">Dvd's</button>
+                <button class="menu-item" mat-menu-item routerLink="eletronics">Eletronic</button>
+                <button class="menu-item" mat-menu-item routerLink="main/people">People</button>
+                <button class="menu-item" mat-menu-item routerLink="main/products">Products</button>
+            </mat-menu>
+        </div>
+
+        <div>
+            <ng-container *ngIf="!(authenticated$ | async)">
+                <button mat-button routerLink="/auth/login">Sign In</button>
+                <button mat-button routerLink="/auth/register">Sign Up</button>
+            </ng-container>
+    
+            <ng-container *ngIf="(authenticated$ | async) && (user$ | async)">
+                <button mat-icon-button [matMenuTriggerFor]="userMenu">
+                    <mat-icon>account_circle</mat-icon>
+                </button>
+                <mat-menu #userMenu>
+                    <p class="menu-item" mat-menu-item>{{ (user$ | async)?.email }}</p>
+                    
+                    <mat-divider></mat-divider>
+
+                    <!-- <button class="menu-item" mat-menu-item>
+                        <mat-icon>dialpad</mat-icon>
+                        <span>Radial</span>
+                    </button> -->
+                    
+                    <!-- <button class="menu-item" mat-menu-item>
+                        <mat-icon>voicemail</mat-icon>
+                        <span>check voicemail</span>
+                    </button> -->
+
+                    <!-- <button class="menu-item" mat-menu-item>
+                        <mat-icon>notifications_off</mat-icon>
+                        <span>disable alert</span>
+                    </button> -->
+                    <button (click)="logout()" class="menu-item" mat-menu-item>
+                        <mat-icon>input</mat-icon>
+                        <span>sign out</span>
+                    </button>
+                </mat-menu>
+            </ng-container>
+        </div>
         
         <!-- <button routerLinkActive="active-link" mat-button routerLink="book">Books</button> -->
         <!-- <button routerLinkActive="active-link" mat-button routerLink="dvd">Dvd's</button> -->
         <!-- <button routerLinkActive="active-link" mat-button routerLink="eletronics">Eletronic</button> -->
-        
-        <!-- MENU DROPDOW -->
-        <mat-menu #store>
-            <button class="menu-item" mat-button routerLink="store">Store</button>
-            <button class="menu-item" mat-button routerLink="book">Books</button>
-            <button class="menu-item" mat-button routerLink="dvd">Dvd's</button>
-            <button class="menu-item" mat-button routerLink="eletronics">Eletronic</button>
-            <button class="menu-item" mat-button routerLink="main/people">People</button>
-            <button class="menu-item" mat-button routerLink="main/products">Products</button>
-        </mat-menu>
     </mat-toolbar-row>
     <!-- <ng-template #sidenav>
         <mat-toolbar-row class="container">

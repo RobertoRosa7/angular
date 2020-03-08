@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, HostListener, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/auth/user';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -14,17 +17,24 @@ export class ToolbarComponent implements OnInit {
   }
   public screenWidth: number;
   public sideNavOpened: boolean = false;
-  constructor() { }
-
+  public authenticated$: Observable<boolean>;
+  public user$: Observable<User>;
+  constructor(
+    private authService: AuthService
+  ) { 
+    this.authenticated$ = this.authService.isAuthenticated();
+    this.user$ = this.authService.fetchUser();
+  }
   ngOnInit() {
     this.screenWidth = window.innerWidth;
   }
-
   public openSideNav(){
     this.sideNavOpened = !this.sideNavOpened;
-    console.log(this.sideNavOpened)
   }
   public drawerToggle(){
     this.drawer.toggle();
+  }
+  public logout(){
+    console.log('logout');
   }
 }
