@@ -39,8 +39,9 @@ import { BookAuthorsComponent } from './components/books/book-authors/book-autho
 import { EletronicsModule } from './eletronics/eletronics.module';
 import { MainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './app-material.module';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { FirebaseModule } from './page/firebase/firebase.module';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     HttpClientModule,
     MaterialModule,
     // MainModule, // carregado no app-routing lazy loading
+    // FirebaseModule // carregado no app-routing lazy loading
   ],
   entryComponents:[
     DialogEditProductComponent,

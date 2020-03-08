@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { MaterialModule } from '../material.module';
+import { MaterialModule } from '../app-material.module';
 import { AuthInterceptor } from './auth.interceptor';
 
 

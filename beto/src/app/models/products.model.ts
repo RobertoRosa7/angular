@@ -13,3 +13,9 @@ export interface ProductStore {
     stock: number,
     _id?: string
 }
+export interface ProductFirebase{
+    name: string,
+    price: number,
+    stock: number,
+    _id?: string
+}
