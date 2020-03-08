@@ -85,13 +85,18 @@
                 </mat-placeholder> -->
               </mat-form-field>
             </div>
-            
-            <div fxLayout="row" fxLayoutAlign="end end" >
-                <button mat-button color="primary" type="submit" [disabled]="!formRegister.valid">
-                  <mat-icon>done</mat-icon>&nbsp;Register
-                </button>
+            <div class="reset">
+              <a routerLink="/auth/login">Já tenho conta</a>            
             </div>
           </mat-card-content>
+          <mat-card-actions>
+            <div fxLayout="row" fxLayoutAlign="end end" >
+              <button mat-button color="primary" type="submit" [disabled]="!formRegister.valid">
+                <mat-icon style="font-size: 18px; margin-top: 4px; margin-left: -7px">done</mat-icon>
+                Register
+              </button>
+          </div>
+          </mat-card-actions>
         </mat-card>
       </form>
     </div>

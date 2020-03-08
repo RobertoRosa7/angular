@@ -1,9 +1,10 @@
-<div fxLayout="column" >
-    <div fxLayoutAlign="center" fxLayout="row">
-      <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
-  
-        <mat-card class="login-card mat-elevation-z8" >
+<section fxLayout="column" class="login">
+    <div class="form-container" fxLayoutAlign="center" fxLayout="column">
+      <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+        <mat-card class="login-card mat-elevation-z8">
             <mat-card-title style="cursor: pointer; text-align: center;" routerLink="/app">Login</mat-card-title>
+            
             <mat-card-content fxLayout="column" >
               <mat-form-field class="custom-form" floatLabel="always" appearance="outline">
                 <mat-label>E-mail</mat-label>
@@ -16,16 +17,22 @@
                 <input matInput formControlName="password" type="password"  
                   placeholder="Password" autocomplete="password" minlength="6" required>
               </mat-form-field>
+              
+              <div class="reset">
+                <a routerLink="/auth/register">Não tenho conta</a>
+                <a routerLink="/auth/reset">Esqueci a senha</a>
+              </div>
+             
             </mat-card-content>
+
             <mat-card-actions fxLayout="row" fxLayoutAlign="end center" >
-              <button mat-button color="primary" type="submit" [disabled]="!loginForm.valid">
-                <mat-icon>check</mat-icon>
+              <button mat-button type="submit" [disabled]="!loginForm.valid">
+                <mat-icon style="font-size: 18px; margin-top: 4px; margin-left: -7px">check</mat-icon>
                 Login
               </button>
             </mat-card-actions>
-  
         </mat-card>
       </form>
   
     </div>
-  </div>
+</section>

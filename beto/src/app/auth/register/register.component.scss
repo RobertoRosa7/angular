@@ -29,6 +29,27 @@
             color: var(--color-black-silver);
         }
     }
+    .reset{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .reset a{
+        text-decoration: none;
+        font-size: 13px;
+        font-style: normal;
+        font-family: 'Roboto';
+        color: var(--color-light);
+        display: inline-block;
+    }
+    button:disabled{
+        color: var(--color-light);
+        border: 1px solid transparent;
+        background: var(--color-black-light);
+    }
+    button{
+        color: var(--color-green-light);
+        border: 1px solid var(--color-green-light);
+    }
 }
 // só funciona fora da class produts
 .item-options{

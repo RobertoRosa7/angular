@@ -14,7 +14,9 @@ export class LoginComponent implements OnInit {
   public loginForm = this.fb.group({
     "email": ['', [Validators.required, Validators.email]],
     "password": ['', [Validators.required, Validators.minLength(6)]]
-  })
+  });
+  private isLoading: boolean = false;
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -27,13 +29,18 @@ export class LoginComponent implements OnInit {
 
   public onSubmit(){
     const credentials: {"email":string, "password":string} = this.loginForm.value;
+    this.isLoading = true;
     this.authService.login(credentials)
       .subscribe(
         (u) => {
           this.notification('Login successfuly!');
           this.router.navigateByUrl('/app/main/people');
+          this.isLoading = false;
         },
-        (e) => this.notification(e.error.msg)
+        (e) => {
+          this.notification(e.error.msg);
+          this.isLoading = false;
+        }
       )
   }
   private notification(msg){
