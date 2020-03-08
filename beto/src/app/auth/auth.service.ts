@@ -37,4 +37,9 @@ export class AuthService {
   public fetchUser(): Observable<User>{
     return this.user$.asObservable();
   }
+  public logout(){
+    localStorage.removeItem('token');
+    this.loggedIn$.next(false);
+    this.user$.next(null);
+  }
 }

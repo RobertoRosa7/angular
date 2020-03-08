@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation, HostListener, Input } from '@angu
 import { Observable } from 'rxjs';
 import { User } from 'src/app/auth/user';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
@@ -19,12 +20,15 @@ export class ToolbarComponent implements OnInit {
   public sideNavOpened: boolean = false;
   public authenticated$: Observable<boolean>;
   public user$: Observable<User>;
+
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { 
     this.authenticated$ = this.authService.isAuthenticated();
     this.user$ = this.authService.fetchUser();
   }
+  
   ngOnInit() {
     this.screenWidth = window.innerWidth;
   }
@@ -35,6 +39,7 @@ export class ToolbarComponent implements OnInit {
     this.drawer.toggle();
   }
   public logout(){
-    console.log('logout');
+    this.authService.logout();
+    this.router.navigateByUrl('/auth/login');
   }
 }

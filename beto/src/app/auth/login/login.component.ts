@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         (u) => {
           console.log(u);
           this.notification('Login successfuly!');
-          this.router.navigateByUrl('/app');
+          this.router.navigateByUrl('/app/main/people');
         },
         (e) => this.notification(e.error.msg)
       )
