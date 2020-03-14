@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FirebaseProductsService } from 'src/app/services/firebase-products.service';
 import { MatSnackBar } from '@angular/material';
@@ -11,9 +11,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  @ViewChild('name', {static:true}) productName:ElementRef;
   public products$: Observable<ProductFirebase[]>;
   public displayedColumns: string[] = ['name', 'price', 'stock', 'operations'];
-
   public productForm = this.fb.group({
     "name": ['', [Validators.required]],
     "price": [0, [Validators.required]],
@@ -38,8 +38,8 @@ export class ProductsComponent implements OnInit {
   private createProduct(p: ProductFirebase){
     this.firebaseService.createProduct(p)
       .then(res => {
-        console.log(res);
         this.notification('Product added successfuly.');
+        this.resetAndFocus();
       })
       .catch((e) => {
         console.log(e);
@@ -47,9 +47,34 @@ export class ProductsComponent implements OnInit {
       })
   }
   private updateProduct(p: ProductFirebase){
-
+    this.firebaseService.updateProduct(p)
+      .then(res => {
+        this.notification('Product updated successfuly');
+        this.resetAndFocus();
+      })
+      .catch((e) => {
+        console.error(e);
+        this.notification('Error to delete product');
+      })
+  }
+  public editProduct(p: ProductFirebase){
+    this.productForm.setValue(p);
+  }
+  public delProduct(p: ProductFirebase){
+    this.firebaseService.deleteProduct(p)
+      .then(res =>{
+        this.notification('Product deleted successfuly');
+      })
+      .catch((e) => {
+        console.error(e);
+        this.notification('Error to delete product');
+      })
   }
   private notification(msg){
     this.snackbar.open(msg, 'ok', {duration:2000});
+  }
+  private resetAndFocus(){
+    this.productForm.reset({"name":'', "price":0, "stock":0, "_id":undefined});
+    this.productName.nativeElement.focus();
   }
 }

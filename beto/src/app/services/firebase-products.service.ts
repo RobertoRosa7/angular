@@ -19,6 +19,19 @@ export class FirebaseProductsService {
     return this.angularCollection.valueChanges();
   }
   public createProduct(p: ProductFirebase){
-    return this.angularCollection.add(p);
+    p._id = this.afs.createId();
+    
+    // método para cadastrar novo produto com id 
+    return this.angularCollection.doc(p._id).set(p);
+
+
+    // método simple para cadastrar novo produto
+    // return this.angularCollection.add(p);
+  }
+  public deleteProduct(p: ProductFirebase){
+    return this.angularCollection.doc(p._id).delete();
+  }
+  public updateProduct(p: ProductFirebase){
+    return this.angularCollection.doc(p._id).set(p);
   }
 }
