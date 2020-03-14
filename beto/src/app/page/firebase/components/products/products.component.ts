@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 export class ProductsComponent implements OnInit {
   @ViewChild('name', {static:true}) productName:ElementRef;
   public products$: Observable<ProductFirebase[]>;
+  private filterProducts$: Observable<ProductFirebase[]>;
   public displayedColumns: string[] = ['name', 'price', 'stock', 'operations'];
   public productForm = this.fb.group({
     "name": ['', [Validators.required]],
@@ -35,6 +36,7 @@ export class ProductsComponent implements OnInit {
     let p: ProductFirebase = this.productForm.value;
     (p._id) ? this.updateProduct(p) : this.createProduct(p);
   }
+  
   private createProduct(p: ProductFirebase){
     this.firebaseService.createProduct(p)
       .then(res => {
@@ -46,6 +48,7 @@ export class ProductsComponent implements OnInit {
         this.notification('Error on submitting the product.')
       })
   }
+  
   private updateProduct(p: ProductFirebase){
     this.firebaseService.updateProduct(p)
       .then(res => {
@@ -57,9 +60,11 @@ export class ProductsComponent implements OnInit {
         this.notification('Error to delete product');
       })
   }
+  
   public editProduct(p: ProductFirebase){
     this.productForm.setValue(p);
   }
+  
   public delProduct(p: ProductFirebase){
     this.firebaseService.deleteProduct(p)
       .then(res =>{
@@ -70,11 +75,17 @@ export class ProductsComponent implements OnInit {
         this.notification('Error to delete product');
       })
   }
+  
   private notification(msg){
     this.snackbar.open(msg, 'ok', {duration:2000});
   }
+
   private resetAndFocus(){
     this.productForm.reset({"name":'', "price":0, "stock":0, "_id":undefined});
     this.productName.nativeElement.focus();
+  }
+  
+  public filter(event){
+    this.filterProducts$ = this.firebaseService.searchByName(event.target.value);
   }
 }

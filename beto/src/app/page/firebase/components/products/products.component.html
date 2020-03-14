@@ -1,19 +1,19 @@
-<div fxFill>
+<div fxFill class="fire-products">
 
     <mat-tab-group mat-stretch-tabs class="mat-elevation-z4" fxFill>
       <mat-tab label="All products">
           <div fxLayout="column" fxLayoutAlign="space-around stretch" style="padding: 20px; background: #f0f0f0">
             <form (ngSubmit)="onSubmit()" [formGroup]="productForm" fxLayout="row" fxLayoutAlign="space-around stretch" #f>
                 <mat-form-field fxFlex="40">
-                    <input matInput placeholder="Product name"  formControlName='name' #name>
+                    <input autocomplete="off" matInput placeholder="Product name"  formControlName='name' #name>
                 </mat-form-field>
                 
                 <mat-form-field  fxFlex="20">
-                  <input matInput placeholder="Stock" type="number" formControlName='stock'>
+                  <input autocomplete="off" matInput placeholder="Stock" type="number" formControlName='stock'>
                 </mat-form-field>
           
                 <mat-form-field fxFlex="20">
-                  <input matInput placeholder="Price" type="number" formControlName='price'>
+                  <input autocomplete="off" matInput placeholder="Price" type="number" formControlName='price'>
                   <span matPrefix>$&nbsp;</span>
                 </mat-form-field>
           
@@ -64,15 +64,17 @@
   
           <div fxLayout="column" fxLayoutAlign="space-around stretch" style="padding: 20px; background: #f0f0f0">
             <mat-form-field fxFlex>
-                <input matInput placeholder="Search products" >
+                <input matInput autocomplete="off" placeholder="Search products" (keyup)="filter($event)">
             </mat-form-field>
           </div>
   
           <ul>
-            <li>Prod1</li>
-            <li>Prod2</li>
-            <li>Prod3</li>
-            <li>Prod4</li>
+            <li class="itens" *ngFor="let p of filterProducts$ | async">
+              <p>Name: {{p.name}}</p>
+              <p>Price: {{p.price}}</p>
+              <p>Stock: {{p.stock}}</p>
+              <mat-divider style="background: var(--color-light);"></mat-divider>
+            </li>
           </ul>
   
       </mat-tab>
