@@ -15,9 +15,10 @@ export class FirebaseProductsService {
   ) { }
 
   public fetchProducts(): Observable<ProductFirebase[]>{
+    // valueChanges() - observa qualquer alteração na collection do firestore
     return this.angularCollection.valueChanges();
   }
   public createProduct(p: ProductFirebase){
-    this.angularCollection.add(p);
+    return this.angularCollection.add(p);
   }
 }

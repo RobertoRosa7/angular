@@ -44,6 +44,6 @@ export class LoginComponent implements OnInit {
       )
   }
   private notification(msg){
-    this.snackbar.open(msg, 'ok', {duration: 3000});
+    this.snackbar.open(msg, 'ok', {duration:3000});
   }
 }

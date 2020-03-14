@@ -79,6 +79,7 @@ import { FirebaseModule } from './page/firebase/firebase.module';
     BrowserAnimationsModule,
     // AuthModule,
     AuthModule.forRoot(), // módulo exportado com serviços
+    FirebaseModule,
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,

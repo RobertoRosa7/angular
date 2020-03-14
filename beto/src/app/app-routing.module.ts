@@ -11,6 +11,7 @@ import { DvdDetailsComponent } from './components/dvds/dvd-details/dvd-details.c
 import { BookDetailsComponent } from './components/books/book-details/book-details.component';
 import { BookAuthorsComponent } from './components/books/book-authors/book-authors.component';
 import { AuthGuardService } from './auth/auth-guard.service';
+import { FirebaseComponent } from './page/firebase/firebase.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
       ]},
       {path: 'eletronics', loadChildren: './eletronics/eletronics.module#EletronicsModule'},
       {path: 'main', loadChildren: './main/main.module#MainModule'},
-      {path: 'firebase', loadChildren: './page/firebase/firebase.module#FirebaseModule'},
+      // {path: 'firebase', loadChildren: './page/firebase/firebase.module#FirebaseModule'},
+      {path: 'firebase', component: FirebaseComponent},
       {path: 'dvd', component: DvdsComponent},
       {path: 'dvd/:index', component: DvdDetailsComponent},
     ], canActivate: [ AuthGuardService ]
