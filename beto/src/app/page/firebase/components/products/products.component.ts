@@ -34,6 +34,7 @@ export class ProductsComponent implements OnInit {
 
   public onSubmit(){
     let p: ProductFirebase = this.productForm.value;
+    p.name.toLowerCase();
     (p._id) ? this.updateProduct(p) : this.createProduct(p);
   }
   
@@ -86,6 +87,6 @@ export class ProductsComponent implements OnInit {
   }
   
   public filter(event){
-    this.filterProducts$ = this.firebaseService.searchByName(event.target.value);
+    this.filterProducts$ = this.firebaseService.searchByName(event.target.value.toLowerCase());
   }
 }

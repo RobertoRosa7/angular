@@ -31,7 +31,7 @@
           
               <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let element">{{element.name}}</td>
+                <td style="text-transform: capitalize;" mat-cell *matCellDef="let element">{{element.name}}</td>
               </ng-container>
           
               <ng-container matColumnDef="price">
@@ -70,7 +70,7 @@
   
           <ul>
             <li class="itens" *ngFor="let p of filterProducts$ | async">
-              <p>Name: {{p.name}}</p>
+              <p style="text-transform: capitalize;">Name: {{p.name}}</p>
               <p>Price: {{p.price}}</p>
               <p>Stock: {{p.stock}}</p>
               <mat-divider style="background: var(--color-light);"></mat-divider>
