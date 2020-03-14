@@ -16,27 +16,34 @@ export class HomeComponent implements OnInit {
   public onRisze(event?){
     this.screenWdith = window.innerWidth;
   }
-  public title: string = 'beto';
-  public toogleSide: boolean = true;
-  public screenWdith: number;
-  public xsmallScreen: boolean = false;
-  public smallScreen: boolean = false;
-  public options: string = 'DragAndDrop';
-  public subscription: Subject<any> = new Subject;
+  public title:string = 'beto';
+  public toogleSide:boolean = true;
+  public screenWdith:number;
+  public xsmallScreen:boolean = false;
+  public smallScreen:boolean = false;
+  public mediumScreen:boolean = false;
+  public options:string = 'DragAndDrop';
+  public subscription:Subject<any> = new Subject;
   constructor(
-    private productService: ProductsService,
-    private router: Router,
-    public breakpoint: BreakpointObserver
+    private productService:ProductsService,
+    private router:Router,
+    public breakpoint:BreakpointObserver
 
   ) { 
-    breakpoint.observe([Breakpoints.XSmall, Breakpoints.Small])
+    breakpoint.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium])
       .subscribe(br => {
         if(br.breakpoints[Breakpoints.XSmall]){
           this.xsmallScreen = true;
           this.smallScreen = false;
+          this.mediumScreen = false;
         }else if(br.breakpoints[Breakpoints.Small]){
           this.smallScreen = true;
           this.xsmallScreen = false;
+          this.mediumScreen = false;
+        }else if(br.breakpoints[Breakpoints.Medium]){
+          this.mediumScreen = true;
+          this.xsmallScreen = false;
+          this.smallScreen = false;
           this.toogleSide = false;
         }else{
           this.toogleSide = true;

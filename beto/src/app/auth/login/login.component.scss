@@ -10,17 +10,29 @@
     align-items: center;
 }
 .login-card {
-    width: 400px;
-    background: var(--color-black-medium);
-    color: var(--color-white);
-    box-shadow: none;
-
+    width:350px;
+    background:var(--color-black-medium);
+    color:var(--color-white);
+    box-shadow:0 0 5px rgba(0,0,0,0.35);
+    height:400px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius:15px;
+    mat-card-title{
+        font-family:var(--font-main);
+        // font-size:var(--size-lg);
+        font-size:2.5em;
+    }
     .custom-form{
         mat-label{
-            color: var(--color-black-silver);
+            color: var(--color-light);
         }
         input::placeholder, select::placeholder{
-            color: var(--color-light);
+            color:var(--color-light);
+            font-family:var(--font-main);
+            letter-spacing: 0.08em;
+            font-size:0.8em;
         }
         ::ng-deep .mat-select-placeholder, 
         ::ng-deep .mat-select-value, 
@@ -37,14 +49,16 @@
     .reset{
         display: flex;
         justify-content: space-evenly;
+       
     }
     .reset a{
-        text-decoration: none;
-        font-size: 13px;
+        text-decoration:none;
+        font-size:0.8em;
         font-style: normal;
-        font-family: 'Roboto';
-        color: var(--color-light);
-        display: inline-block;
+        color:var(--color-white);
+        display:inline-block;
+        font-family:var(--font-main);
+        letter-spacing: 0.01em;
     }
     button:disabled{
         color: var(--color-light);
@@ -52,7 +66,9 @@
         background: var(--color-black-light);
     }
     button{
-        color: var(--color-green-light);
-        border: 1px solid var(--color-green-light);
+        color:var(--color-green-light);
+        border:1px solid var(--color-green-light);
+        width:120px;
+        font-family:var(--font-main);
     }
 }

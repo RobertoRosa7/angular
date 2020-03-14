@@ -8,9 +8,21 @@
     --color-green: #145A32;
     --color-black-silver: #59596b;
     --color-light: #B2BABB;
+    --color-high-dark:#121212;
 
     // colors -dark
-    --color-black-dark: #1F1F25;
+    // --color-black-dark:#1F1F25;
+    // --color-black-dark:#283747;
+    // --color-black-dark:#1B2631;
+    // --color-black-dark:#212F3C;
+    // --color-black-dark:#1A1717;
+    // --color-black-dark:#2D2727;
+    // --color-black-dark:#3C3232;
+    // --color-black-dark:#1C2319;
+    // --color-black-dark:#121511;
+    // --color-black-dark:#1F201E;
+    --color-black-dark:#292A29;
+
     --color-green-dark: #0B5345;
     --color-red-dark: #641E16;
 
@@ -28,14 +40,14 @@
     --font-main: 'Raleway';
 
     // size
-    --btn-size: 120px;
-    --display-1: 3em;
-    --size-small: 0.9em;
-    --size-sm: 0.9em;
-    --size-xs: 0.7em;
-    --size-md: 1em;
-    --size-lg: 1.5em;
-    --size-xl: 2em;
+    --btn-size:120px;
+    --display-1:3em;
+    --size-small:0.9em;
+    --size-sm:0.9em;
+    --size-xs:0.7em;
+    --size-md:1em;
+    --size-lg:1.5em;
+    --size-xl:2em;
 }
 html, body { 
     height: 100%;
@@ -45,7 +57,8 @@ body {
     margin: 0; 
     padding: 0;
     position: relative;
-    background: var(--color-black-dark);
+    // background: var(--color-black-dark);
+    background: linear-gradient(180deg, var(--color-black-dark) 100%, var(--color-black) 0%);
     font-family: var(--font-main);
 }
 .snack-success{

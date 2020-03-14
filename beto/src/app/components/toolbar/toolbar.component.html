@@ -1,5 +1,5 @@
 <mat-toolbar>
-    <mat-toolbar-row class="container">
+    <mat-toolbar-row *ngIf="!smScreen && !xsScreen; else showDrawToggle" class="container">
         <div>
             <button (click)="drawerToggle()" mat-icon-button>
                 <mat-icon>menu</mat-icon>
@@ -69,4 +69,11 @@
             <button mat-button>Logo</button>
         </mat-toolbar-row>
     </ng-template> -->
+    <ng-template #showDrawToggle>
+        <mat-toolbar-row class="container">
+            <button (click)="drawerToggle()" mat-icon-button>
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </ng-template>
 </mat-toolbar>

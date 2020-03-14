@@ -17,7 +17,6 @@ import { FirebaseComponent } from './page/firebase/firebase.component';
 const routes: Routes = [
   // chidren - indica que será criado um subcamadas dentro da rota raiz
   {path: 'app', component: HomeComponent, children: [
-      {path: '', component: StoreComponent},
       {path: 'component/:name', component: HomeComponent},
       {path: 'store', component: StoreComponent},
       {path: 'http-request', component: ClientsComponent},
