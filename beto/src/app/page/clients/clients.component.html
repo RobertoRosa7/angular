@@ -1,9 +1,9 @@
 <section class="clients">
     <div class="container">
-        <h3>Exemplos Http Clients</h3>
-        <div fxLayout="row wrap" fxLayoutAlign="space-between start" fxLayoutGap="20px">
+        <h1 class="welcome">Exemplos Http Clients</h1>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between start">
           
-            <mat-card fxFlex="26" class="mat-elevation-z8">
+            <mat-card fxFlex="30" class="card">
                 <mat-card-header>
                     <mat-card-title>{{title}} GET Simple </mat-card-title>
                 </mat-card-header>
@@ -25,7 +25,7 @@
                 <mat-card-footer></mat-card-footer>
             </mat-card>
 
-            <mat-card fxFlex="26" class="mat-elevation-z8">
+            <mat-card fxFlex="30" class="card">
                 <mat-card-header>
                     <mat-card-title>{{title}} Error Handler</mat-card-title>
                 </mat-card-header>
@@ -45,7 +45,7 @@
                 <mat-card-footer></mat-card-footer>
             </mat-card>
 
-            <mat-card fxFlex="26" class="mat-elevation-z8">
+            <mat-card fxFlex="30" class="card">
                 <mat-card-header>
                     <mat-card-title>{{title}} Loading</mat-card-title>
                 </mat-card-header>
@@ -64,7 +64,7 @@
                 </mat-card-footer>
             </mat-card>
 
-            <mat-card fxFlex="26" class="mat-elevation-z8">
+            <mat-card fxFlex="30" class="card">
                 <mat-card-header>
                     <mat-card-title>{{title}} GET text</mat-card-title>
                 </mat-card-header>
@@ -88,24 +88,24 @@
                 <mat-card-footer></mat-card-footer>
             </mat-card>
 
-            <mat-card fxFlex="30" class="mat-elevation-z8">
+            <mat-card fxFlex="30" class="card">
                 <mat-card-header>
                     <mat-card-title>{{title}} POST form</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
 
-                 <div fxLayout="column" fxLayoutAlign="space-around stretch">
+                 <div class="custom-form" fxLayout="column" fxLayoutAlign="space-around stretch">
                     <mat-form-field floatLabel="always" appearance="outline">
                         <mat-label>Name</mat-label>
-                        <input matInput placeholder="Product name" value="" type="text" #name>
+                        <input matInput autocomplete="off" placeholder="Product name" value="" type="text" #name>
                     </mat-form-field>  
                     <mat-form-field floatLabel="always" appearance="outline">
                         <mat-label>Department</mat-label>
-                        <input matInput placeholder="Department" value="" type="text" #dep>
+                        <input matInput autocomplete="off" placeholder="Department" value="" type="text" #dep>
                     </mat-form-field>  
                     <mat-form-field floatLabel="always" appearance="outline">
                         <mat-label>Price</mat-label>
-                        <input matInput placeholder="Price" value="" type="number" #price>
+                        <input matInput autocomplete="off" placeholder="Price" value="" type="number" #price>
                     </mat-form-field>
                  </div>
 
@@ -118,7 +118,7 @@
                 <mat-card-footer></mat-card-footer>
             </mat-card>
 
-            <mat-card fxFlex="30" class="mat-elevation-z8">
+            <mat-card fxFlex="30" class="card">
                 <mat-card-header>
                     <mat-card-title>{{title}} DELETE / Edit</mat-card-title>
                 </mat-card-header>

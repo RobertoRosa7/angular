@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
+import { User } from 'src/app/auth/user';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sidenav',
@@ -10,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SidenavComponent implements OnInit {
   @Input('drawer') drawer;
-
+  public user$: Observable<User>;
   public options;
   public listsLinks: any[] = [
     {
@@ -27,11 +30,13 @@ export class SidenavComponent implements OnInit {
     }
   ]
   constructor(
-    private productService: ProductsService,
-    private router: Router
+    private productService:ProductsService,
+    private authService:AuthService,
+    private router:Router
   ) { }
 
   ngOnInit() {
+    this.user$ = this.authService.fetchUser();
   }
 
   public closeSideMenu(){

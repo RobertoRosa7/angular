@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 :root {
     // colors
-    --color-black: #323232;
+    --color-black: #1d1b1b;
     --color-white: #ffffff;
     --color-red: #e22a53;
     --color-green: #145A32;
@@ -21,13 +21,14 @@
     // --color-black-dark:#1C2319;
     // --color-black-dark:#121511;
     // --color-black-dark:#1F201E;
-    --color-black-dark:#292A29;
+    --color-black-dark:#1c1c1d;
 
     --color-green-dark: #0B5345;
     --color-red-dark: #641E16;
 
     // colors - medium
-    --color-black-medium: #2b2c32;
+    // --color-black-medium: #2b2c32;
+    --color-black-medium:#2B2C2F;
     --color-green-medium: #27AE60;
     --color-red-medium: #CB4335;
 
@@ -58,7 +59,7 @@ body {
     padding: 0;
     position: relative;
     // background: var(--color-black-dark);
-    background: linear-gradient(180deg, var(--color-black-dark) 100%, var(--color-black) 0%);
+    background: linear-gradient(180deg, var(--color-black-dark) 60%, var(--color-black) 100%);
     font-family: var(--font-main);
 }
 .snack-success{
@@ -149,4 +150,41 @@ body {
     font-family: 'Verdana', 'sans-serif';
     font-style: normal;
     font-weight: 200;
+}
+@mixin profile-title{
+    font-size:var(--size-lg);
+    color:var(--color-light);
+    letter-spacing:0.05em;
+    font-family:var(--font-main);
+    font-weight:400;
+    text-align:center;
+}
+@mixin welcome{
+    font-size:var(--display-1);
+    color:var(--color-light);
+    text-align:center;
+}
+@mixin card-dark{
+    background-color:var(--color-black-medium);
+    color:var(--color-light);
+}
+@mixin form-dark {
+    width:100%;
+    mat-label{
+        color: var(--color-black-silver);
+    }
+    input::placeholder, select::placeholder{
+        color: var(--color-light);
+    }
+    ::ng-deep .mat-select-placeholder, 
+    ::ng-deep .mat-select-value, 
+    ::ng-deep .mat-select-arrow{
+        color: var(--color-light);
+    }
+    ::ng-deep .mat-select-value-text{
+        color: var(--color-white) !important;
+    }
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
+        color: var(--color-black-silver);
+    }
 }

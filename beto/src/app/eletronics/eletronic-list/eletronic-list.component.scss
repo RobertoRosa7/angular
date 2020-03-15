@@ -3,7 +3,7 @@
 
 .eletro-list{
     .sub-header{
-        color: var(--color-white);
+        @include welcome;
     }
     .list-item{
         color: var(--color-white);

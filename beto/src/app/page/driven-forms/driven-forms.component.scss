@@ -1,0 +1,13 @@
+@import '../../../styles.scss';
+
+.register{
+    .welcome{
+        @include welcome;
+    }
+    .container-form .card{
+        @include card-dark;
+    }
+    .container-form .card .custom-form{
+        @include form-dark;
+    }
+}

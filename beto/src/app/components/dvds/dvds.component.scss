@@ -6,7 +6,7 @@
         padding: 0 5%;
 
         .dvd-title{
-            font-size: var(--display-1);
+            @include welcome;
         }
         .dvd-itens{
             color: var(--color-light);

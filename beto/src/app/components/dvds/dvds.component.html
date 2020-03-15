@@ -1,7 +1,7 @@
 <section class="dvds">
     <div class="container">
         <mat-list>
-            <h2 class="dvd-title">DVD's List</h2>
+            <h1 class="dvd-title">DVD's List</h1>
             <mat-list-item class="dvd-itens" *ngFor="let d of dvd$ | async; let i = index;">
                 <mat-icon mat-list-icon>album</mat-icon>
                 <h4 class="text-md" mat-line>{{d.title}}</h4>

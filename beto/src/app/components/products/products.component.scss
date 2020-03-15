@@ -3,9 +3,7 @@
 .products {
     .container{
         .card{
-            background: var(--color-black-medium);
-            color: var(--color-white);
-            box-shadow: none;
+            @include card-dark;
             .custom-form{
                 width: 100%;
                 mat-label{

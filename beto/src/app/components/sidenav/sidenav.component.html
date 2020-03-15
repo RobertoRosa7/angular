@@ -1,13 +1,29 @@
-<section>
+<section class="sidenav">
     <div class="container">
-        <button mat-icon-button (click)="closeSideMenu()">
+        <button class="btn-close-panel" mat-icon-button (click)="closeSideMenu()">
             <mat-icon>keyboard_backspace</mat-icon>
         </button>
-        <div class="profile" style="margin-top: 50px;">
-            <div>
-                <span>Welcome to my Project</span>
+
+        <div *ngIf="user$ | async as user; else showUser" class="profile" style="margin-top: 50px;">
+            <div class="profile-img">
+                <mat-icon>account_circle</mat-icon>
+            </div>
+            <div class="title">
+                <span>Welcome {{user.firstname}}</span>
             </div>
         </div>
+
+        <!-- SE NÃO EXISTIR USUÁRIO -->
+        <ng-template #showUser>
+            <div class="profile" style="margin-top: 50px;">
+                <div class="profile-img">
+                    <mat-icon>account_circle</mat-icon>
+                </div>
+                <div class="title">
+                    <span>Welcome to my Project</span>
+                </div>
+            </div>
+        </ng-template>
 
         <!-- <mat-nav-list>
             <mat-accordion>

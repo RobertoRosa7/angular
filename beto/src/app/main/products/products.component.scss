@@ -1,8 +1,9 @@
 @import '../../../styles.scss';
 
 .products{
-    color: var(--color-light);
-
+    .welcome{
+        @include welcome;
+    }
     .p-lists p{
         color: var(--color-white);
     }

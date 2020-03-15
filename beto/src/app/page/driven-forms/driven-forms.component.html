@@ -1,12 +1,13 @@
-<section fxLayout="column" fxFill>
-    <div fxLayout="row" fxLayoutAlign="center center">
-        <mat-card class="info-card mat-elevation-z8" fxFlex="80" style="margin-top: 60px;">
+<section class="register" fxLayout="column" fxFill>
+    <h1 class="welcome">Form Default to Register</h1>
+    <div class="container-form" fxLayout="row" fxLayoutAlign="center center">
+        <mat-card class="card" fxFlex="80">
             <mat-card-title></mat-card-title>
             <mat-card-subtitle></mat-card-subtitle>
             <mat-card-content fxLayout="colum" fxLayoutAlign="stretch">
                 <form (ngSubmit)="onSubmit()" #formClient="ngForm" fxLayout="column" fxLayout="start stretch">
                     
-                    <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
+                    <div fxFlex="100" class="custom-form" fxLayout="row" fxLayoutAlign="space-between start">
                         <mat-form-field floatLabel="always" appearance="outline" fxFlex="45">
                             <mat-label>First Name</mat-label>
                             <input
@@ -39,7 +40,7 @@
                         </mat-form-field>
                     </div>
 
-                    <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
+                    <div fxFlex="100" class="custom-form" fxLayout="row" fxLayoutAlign="space-between start">
                         <mat-form-field floatLabel="always" appearance="outline" fxFlex="45">
                             <input
                                 #birth
@@ -62,7 +63,7 @@
                     <div fxFlex="100" fxLayoutAlign="start">
                         <h4>Address:</h4>
                     </div>
-                    <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
+                    <div fxFlex="100" class="custom-form" fxLayout="row" fxLayoutAlign="space-between start">
                         <mat-form-field floatLabel="always" appearance="outline" fxFlex="40">
                             <mat-label>Street</mat-label>
                             <input name="street" [(ngModel)]="client.street" matInput type="text" placeholder="Street" value="" class="form-control">
@@ -82,7 +83,7 @@
                     <div fxFlex="100" fxLayoutAlign="start">
                         <h4>Telefone:</h4>
                     </div>
-                    <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-between start" fxLayoutGap="20px">
+                    <div fxFlex="100" class="custom-form" fxLayout="row wrap" fxLayoutAlign="space-between start" fxLayoutGap="20px">
                         <mat-form-field floatLabel="always" appearance="outline" fxFlex="45">
                             <mat-label>Email</mat-label>
                             <input 

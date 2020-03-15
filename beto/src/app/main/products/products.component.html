@@ -1,5 +1,5 @@
 <section class="products">
-    <h3>Products</h3>
+    <h1 class="welcome">Products</h1>
     <mat-list class="p-lists" *ngIf="(products$ | async)?.length > 0; else noproducts">
         <mat-list-item *ngFor="let p of (products$ | async)">
             <p mat-line>{{p.name}}</p>
