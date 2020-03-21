@@ -13,6 +13,7 @@ import { BookAuthorsComponent } from './components/books/book-authors/book-autho
 import { AuthGuardService } from './auth/auth-guard.service';
 import { FirebaseComponent } from './page/firebase/firebase.component';
 import { PanelProjectsComponent } from './components/panel-projects/panel-projects.component';
+import { DropzoneComponent } from './page/dropzone/dropzone.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
       {path: 'firebase', component: FirebaseComponent},
       {path: 'dvd', component: DvdsComponent},
       {path: 'dvd/:index', component: DvdDetailsComponent},
+      {path: 'dropzone', component: DropzoneComponent}
     ], canActivate: [ AuthGuardService ]
   },
   {path: '', pathMatch: 'full', redirectTo: 'app'},

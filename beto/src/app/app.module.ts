@@ -43,6 +43,7 @@ import { MaterialModule } from './app-material.module';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { FirebaseModule } from './page/firebase/firebase.module';
 import { PanelProjectsComponent } from './components/panel-projects/panel-projects.component';
+import { DropzoneModule } from './page/dropzone/dropzone.module';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { PanelProjectsComponent } from './components/panel-projects/panel-projec
     AuthModule.forRoot(), // módulo exportado com serviços
     AppRoutingModule,
     FirebaseModule,
+    DropzoneModule,
     HttpClientModule,
     MaterialModule,
     // MainModule, // carregado no app-routing lazy loading

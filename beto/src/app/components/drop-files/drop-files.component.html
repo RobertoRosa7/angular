@@ -1,0 +1,9 @@
+<section class="drop-files">
+    <div class="box-dropfile"
+        (drop)="onDropEvent($event)"
+        (dragover)="onDragOverEvent($event)"
+        (dragleave)="onDragLeaveEvent($event)"
+        [class.drag-and-hovering]="isDraggingOver">
+        <span class="text" [class.text-over]="isDraggingOver">Arraste e solte aqui</span>
+    </div>
+</section>

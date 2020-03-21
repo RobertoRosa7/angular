@@ -1,0 +1,40 @@
+@import '../../../styles.scss';
+
+.upload-files{
+    .welcome{
+        @include welcome;
+    }
+    .dropfiles{
+        width:100%;
+        max-width:600px;
+        margin:0 auto;
+    }
+    .card{
+        @include card-dark;
+        margin-bottom: 10px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+    }
+    .card-item{
+        display:flex;
+        justify-content:flex-start;
+        align-items: center;
+    }
+    .title{
+        @include card-title;
+    }
+    .buttons{
+        width:100%;
+        display:flex;
+        justify-content: flex-end;
+        .btn-container{
+            display:flex;
+            justify-content: space-between;
+            width:45%;
+            button{
+                @include btn-send;
+            }
+        }
+    }
+}

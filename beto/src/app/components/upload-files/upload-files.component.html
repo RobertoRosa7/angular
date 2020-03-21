@@ -1,0 +1,50 @@
+<section class="upload-files">
+    <div class="container">
+        <div class="dropfiles">
+            <app-drop-files (droppedFiles)="onDroppedFiles($event)"></app-drop-files>
+        </div>
+        <div class="listfiles">
+            <div fxLayout="column" fxLayoutAlign="space-between stretch">
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <div fxLayout="column" fxFlex="70" *ngIf="files.length > 0;else nofiles">
+                        <h3 class="title">Files:</h3>
+                        <mat-card class="card" *ngFor="let f of files; let i = index;">
+                            <div class="card-item">
+                                <mat-icon>attachment</mat-icon>
+                                &nbsp;
+                                <span>{{f.file.name}}</span>
+                            </div>
+                            <div *ngIf="f.task == null; else running">
+                                <button (click)="removeFileFromList(i)" mat-icon-button>
+                                    <mat-icon style="color:var(--color-red-light)">delete</mat-icon>
+                                </button>
+                            </div>
+                            <ng-template #running>
+                                <div>
+
+                                </div>
+                            </ng-template>
+                        </mat-card>
+                        <div class="buttons">
+                            <div class="btn-container">
+                                <button mat-button>
+                                    <mat-icon style="color:#e22a539e;">cancel</mat-icon>
+                                    &nbsp;
+                                    <span>cancel</span>
+                                </button>
+                                <button mat-button>
+                                    <mat-icon style="color:#27ae60c4;">cloud_upload</mat-icon>
+                                    &nbsp;
+                                    <span>send all</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-template #nofiles>
+                        <span class="welcome">No Files!</span>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

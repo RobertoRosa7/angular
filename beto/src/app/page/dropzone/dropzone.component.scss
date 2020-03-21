@@ -1,0 +1,18 @@
+@import '../../../styles.scss';
+
+.dropzone{
+    .welcome{
+        @include welcome;
+    }
+    .row{
+        display:flex;
+        justify-content:space-around;
+        align-items:flex-start;
+    }
+    .column-6{
+        width:60%;
+    }
+    .column-3{
+        width:30%;
+    }
+}
