@@ -6,9 +6,11 @@
     --color-white: #ffffff;
     --color-red: #e22a53;
     --color-green: #145A32;
-    --color-black-silver: #59596b;
+    --color-black-silver: #44444482;
+    // --color-black-silver: #59596b;
     --color-light: #B2BABB;
     --color-high-dark:#121212;
+    --color-blue:dodgerblue;
 
     // colors -dark
     // --color-black-dark:#1F1F25;
@@ -167,6 +169,27 @@ body {
 @mixin card-dark{
     background-color:var(--color-black-medium);
     color:var(--color-light);
+}
+@mixin card-title{
+    color:var(--color-light);
+    letter-spacing:0.08em;
+    font-weight:bold;
+    font-family:var(--font-main);
+    font-size:1.5em;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+@mixin card-subtitle{
+    color:var(--color-green-light);
+    letter-spacing:0.02em;
+    font-family:var(--font-main);
+    font-style:normal;
+    font-weight:200;
+    font-size:0.8em;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
 }
 @mixin form-dark {
     width:100%;

@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GetContentComponent implements OnInit {
 
+  public options;
+
   constructor() { }
 
   ngOnInit() {
   }
-
+  public onSubmit(){
+    
+  }
 }

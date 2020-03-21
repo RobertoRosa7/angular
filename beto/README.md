@@ -57,3 +57,17 @@ Run `ng generate guard [name]`
 
 ## Add new Enum - angular/cli
 Run `ng generate enum [name]`
+
+# Firebase
+
+# Login
+Run `firebase login`
+
+# Initialize
+Run `firebase init` e selecione um projeto existente na conta google
+
+# Select Directory root
+Escolher depois de fazer building do projeto o diretório publico dist/[nome-do-projeto] - em seguida selecione single-page, por fim não sobreescrever HTML
+
+# Deploy
+Run `firebase deploy`

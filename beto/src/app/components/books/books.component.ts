@@ -12,7 +12,7 @@ import { UtilsService } from 'src/app/services/utils.service';
 export class BooksComponent implements OnInit {
 
   public books$: Observable<Book[]>;
-  private readonly prefix: string = 'book-';
+  public readonly prefix: string = 'book-';
 
   constructor(
     private bookService: BookService,

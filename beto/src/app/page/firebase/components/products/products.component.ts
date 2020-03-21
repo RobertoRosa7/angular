@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 export class ProductsComponent implements OnInit {
   @ViewChild('name', {static:true}) productName:ElementRef;
   public products$: Observable<ProductFirebase[]>;
-  private filterProducts$: Observable<ProductFirebase[]>;
+  public filterProducts$: Observable<ProductFirebase[]>;
   public displayedColumns: string[] = ['name', 'price', 'stock', 'operations'];
   public productForm = this.fb.group({
     "name": ['', [Validators.required]],

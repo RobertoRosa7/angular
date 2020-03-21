@@ -12,11 +12,13 @@ import { BookDetailsComponent } from './components/books/book-details/book-detai
 import { BookAuthorsComponent } from './components/books/book-authors/book-authors.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { FirebaseComponent } from './page/firebase/firebase.component';
+import { PanelProjectsComponent } from './components/panel-projects/panel-projects.component';
 
 
 const routes: Routes = [
   // chidren - indica que será criado um subcamadas dentro da rota raiz
   {path: 'app', component: HomeComponent, children: [
+      {path: '', component: PanelProjectsComponent},
       {path: 'component/:name', component: HomeComponent},
       {path: 'store', component: StoreComponent},
       {path: 'http-request', component: ClientsComponent},

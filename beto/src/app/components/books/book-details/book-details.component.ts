@@ -14,7 +14,7 @@ import { UtilsService } from 'src/app/services/utils.service';
 export class BookDetailsComponent implements OnInit {
 
   public book$: Observable<Book> = null;
-  private readonly prefix: string = 'book-';
+  public readonly prefix: string = 'book-';
   private index: number;
   private authors: string[];
 

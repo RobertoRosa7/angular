@@ -31,5 +31,7 @@ export class FormSimpleValidateComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  public onSubmit(){
+    
+  }
 }

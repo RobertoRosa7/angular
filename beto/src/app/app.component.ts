@@ -1,7 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AuthService } from './auth/auth.service';
-import { Observable } from 'rxjs';
+import { Observable, fromEvent } from 'rxjs';
 import { User } from './auth/user';
 
 @Component({

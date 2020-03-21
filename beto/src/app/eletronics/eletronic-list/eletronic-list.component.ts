@@ -11,7 +11,7 @@ import { UtilsService } from 'src/app/services/utils.service';
 })
 export class EletronicListComponent implements OnInit {
   public eletronics$: Observable<Eletronic[]>;
-  private readonly prefix: string = 'eletro-';
+  public readonly prefix: string = 'eletro-';
 
   constructor(
     private eletroService: EletronicsService,

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, HostListener, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, fromEvent } from 'rxjs';
 import { User } from 'src/app/auth/user';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Router } from '@angular/router';
@@ -45,6 +45,10 @@ export class ToolbarComponent implements OnInit {
           this.smScreen = false;
         }
       })
+      fromEvent(document, 'keyup')
+        .subscribe((k: any) => {
+          if(k.keyCode == 27) this.drawerToggle(k);
+      });
   }
   
   ngOnInit() {
@@ -55,7 +59,7 @@ export class ToolbarComponent implements OnInit {
   public openSideNav(){
     this.sideNavOpened = !this.sideNavOpened;
   }
-  public drawerToggle(){
+  public drawerToggle(event){
     this.drawer.toggle();
   }
   public logout(){

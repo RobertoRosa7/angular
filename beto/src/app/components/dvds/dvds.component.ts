@@ -15,7 +15,7 @@ import { FormCreateComponent } from './form-create/form-create.component';
 export class DvdsComponent implements OnInit {
 
   public dvd$: Observable<Dvd[]>;
-  private readonly prefix: string = 'dvd-';
+  public readonly prefix: string = 'dvd-';
 
   constructor(
     private dvdService: DvdService,

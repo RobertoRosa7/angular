@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     "email": ['', [Validators.required, Validators.email]],
     "password": ['', [Validators.required, Validators.minLength(6)]]
   });
-  private isLoading: boolean = false;
+  public isLoading: boolean = false;
 
   constructor(
     private fb: FormBuilder,

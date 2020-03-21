@@ -42,6 +42,7 @@ import { AuthModule } from './auth/auth.module';
 import { MaterialModule } from './app-material.module';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { FirebaseModule } from './page/firebase/firebase.module';
+import { PanelProjectsComponent } from './components/panel-projects/panel-projects.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { FirebaseModule } from './page/firebase/firebase.module';
     BookDetailsComponent,
     FormCreateComponent,
     BookAuthorsComponent,
+    PanelProjectsComponent,
   ],
   imports: [
     BrowserModule,
