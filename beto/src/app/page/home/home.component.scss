@@ -133,7 +133,8 @@
     box-sizing: border-box;
     
     mat-drawer {
-        background-color: var(--color-black-medium);
+        // background-color: var(--color-black-medium);
+        background: linear-gradient(180deg, var(--color-black-medium) 0%, var(--color-black) 80%);
         color: var(--color-black-silver);
     }
     mat-drawer-content {

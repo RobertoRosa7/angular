@@ -6,13 +6,14 @@
         <div class="listfiles">
             <div fxLayout="column" fxLayoutAlign="space-between stretch">
                 <div fxLayout="row" fxLayoutAlign="center center">
-                    <div fxLayout="column" fxFlex="70" *ngIf="files.length > 0;else nofiles">
+                    <div class="card-container" *ngIf="files.length > 0;else nofiles">
                         <h3 class="title">Files:</h3>
                         <mat-card class="card" *ngFor="let f of files; let i = index;">
-                            <div class="card-item">
+                            <div class="card-item" title="{{f.file.name}}">
                                 <mat-icon>attachment</mat-icon>
                                 &nbsp;
-                                <span>{{f.file.name}}</span>
+                                <!-- <span [class.short-text]="((f.uploading | async) || (f.finished | async || f.paused | async)) || ((f.error | async) || f.canceled | async)">{{f.file.name}}</span> -->
+                                <span [class.short-text]="f.task != null">{{f.file.name}}</span>
                             </div>
                             <div *ngIf="f.task == null; else running">
                                 <button (click)="removeFileFromList(i)" mat-icon-button>
@@ -20,19 +21,28 @@
                                 </button>
                             </div>
                             <ng-template #running>
-                                <div>
-
+                                <div class="pane-controls">
+                                    <!-- SHOW PANEL QUANDO NÃO HÁ ERROS OU QUANDO FINALIZAR -->
+                                    <ng-container *ngIf="!(f.finished | async) && !((f.error | async) || (f.canceled | async))">
+                                        <span class="bytes-uploaded">{{f.bytesuploaded | async}} bytes</span>
+                                        <mat-progress-bar mode="determinate" [value]="f.percentage | async" style="max-width:200px;"></mat-progress-bar>
+                                        <button (click)="f.task.cancel()" mat-icon-button class="icon-error" *ngIf="f.uploading | async"><mat-icon>cancel</mat-icon></button>
+                                        <button (click)="f.task.pause()" mat-icon-button class="icon-pause" *ngIf="f.uploading | async"><mat-icon>pause</mat-icon></button>
+                                        <button (click)="f.task.resume()" mat-icon-button class="icon-play" *ngIf="f.paused | async"><mat-icon>play_arrow</mat-icon></button>
+                                    </ng-container>
+                                    <mat-icon class="icon-error" *ngIf="(f.error | async) || (f.canceled | async)">error</mat-icon>
+                                    <mat-icon class="icon-done" *ngIf="f.finished | async">done</mat-icon>
                                 </div>
                             </ng-template>
                         </mat-card>
-                        <div class="buttons">
+                        <div class="buttons" style="margin-bottom:30px">
                             <div class="btn-container">
                                 <button mat-button>
                                     <mat-icon style="color:#e22a539e;">cancel</mat-icon>
                                     &nbsp;
                                     <span>cancel</span>
                                 </button>
-                                <button mat-button>
+                                <button mat-button (click)="uploadAll()">
                                     <mat-icon style="color:#27ae60c4;">cloud_upload</mat-icon>
                                     &nbsp;
                                     <span>send all</span>

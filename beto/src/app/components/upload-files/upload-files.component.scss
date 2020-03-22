@@ -9,17 +9,48 @@
         max-width:600px;
         margin:0 auto;
     }
+    .card-container{
+        width:100%;
+        display:flex;
+        flex-direction: column;
+        max-width:600px;
+    }
     .card{
         @include card-dark;
-        margin-bottom: 10px;
+        margin-bottom:10px;
         display:flex;
         justify-content:space-between;
         align-items:center;
-    }
-    .card-item{
-        display:flex;
-        justify-content:flex-start;
-        align-items: center;
+        .pane-controls{
+            display:flex;
+            flex-direction:row;
+            justify-content:flex-end;
+            align-items:center;
+            width:62%;
+            .icon-error{
+                color: var(--color-red-light);
+            }
+            .icon-done{
+                color:var(--color-green-light);
+            }
+            .bytes-uploaded{
+                font-style:italic;
+                margin-right:10px;
+                font-size:11.2px;
+                color:var(--color-light-1);
+            }
+        }
+        .card-item{
+            display:flex;
+            justify-content:flex-start;
+            align-items:center;
+        }
+        .short-text{
+            max-width:150px;
+            white-space:nowrap;
+            text-overflow:ellipsis;
+            overflow:hidden;
+        }
     }
     .title{
         @include card-title;
@@ -30,11 +61,20 @@
         justify-content: flex-end;
         .btn-container{
             display:flex;
-            justify-content: space-between;
-            width:45%;
+            justify-content:space-between;
+            width:100%;
+            max-width:260px;
             button{
                 @include btn-send;
             }
         }
     }
+}
+@media (max-width:599px){
+}
+@media (min-width:600px) and (max-width:960px){
+}
+@media (min-width:961px) and (max-width:1280px){
+}
+@media (min-width:1281px) and (max-width:1920px){
 }

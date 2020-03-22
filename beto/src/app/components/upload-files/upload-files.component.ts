@@ -39,4 +39,9 @@ export class UploadFilesComponent implements OnInit {
   public removeFileFromList(i){
     this.files.splice(i,1);
   }
+  public uploadAll(){
+    for(let i = 0; i < this.files.length; i++){
+      this.dropzoneService.upload(this.files[i]);
+    }
+  }
 }

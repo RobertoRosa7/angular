@@ -33,9 +33,12 @@
                     <mat-icon>account_circle</mat-icon>
                 </button>
                 <mat-menu #userMenu>
-                    <p class="menu-item" mat-menu-item>{{ (user$ | async)?.firstname }}</p>
+                    <p class="menu-item" mat-menu-item>
+                        <mat-icon>account_circle</mat-icon>
+                        {{ (user$ | async)?.firstname }}
+                    </p>
                     
-                    <mat-divider></mat-divider>
+                    <!-- <mat-divider></mat-divider> -->
 
                     <!-- <button class="menu-item" mat-menu-item>
                         <mat-icon>dialpad</mat-icon>
@@ -51,6 +54,10 @@
                         <mat-icon>notifications_off</mat-icon>
                         <span>disable alert</span>
                     </button> -->
+                    <button class="menu-item" mat-menu-item>
+                        <mat-icon>settings</mat-icon>
+                        <span>Settings</span>
+                    </button>
                     <button (click)="logout()" class="menu-item" mat-menu-item>
                         <mat-icon>input</mat-icon>
                         <span>sign out</span>

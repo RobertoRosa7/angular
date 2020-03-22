@@ -1,7 +1,8 @@
 @import './../../../styles.scss';
 
 mat-toolbar{
-    background: var(--color-black-medium);
+    // background: var(--color-black-medium);
+    background: linear-gradient(90deg, var(--color-black-medium) 0%, var(--color-black) 80%);
 }
 .container{
     padding: 0 5%;
