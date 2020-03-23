@@ -4,4 +4,24 @@
     .welcome{
         @include welcome;
     }
+    .title{
+        @include card-title;
+        margin-left: 20px;
+    }
+    .list .list-item{
+        color:var(--color-light);
+        .date{
+            color:var(--color-green);
+            font-size:11.2px;
+        }
+    }
+    .container-spinner{
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+    }
+    .container-spinner ::ng-deep mat-spinner circle{
+        stroke:var(--color-green-light);
+    }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DropzoneService } from 'src/app/services/dropzone.service';
 import { UploadFile } from 'src/app/models/upload-files';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-upload-files',
@@ -11,7 +12,7 @@ export class UploadFilesComponent implements OnInit {
   public files:UploadFile[] = [];
 
   constructor(
-    private dropzoneService:DropzoneService
+    private fs:FirestoreService
   ) { }
 
   ngOnInit() {
@@ -21,7 +22,7 @@ export class UploadFilesComponent implements OnInit {
     this.files.splice(0, this.files.length);
 
     for(let i = 0; i < files.length; i++){
-      // this.dropzoneService.uploadFile(files.item(i));
+      // this.fs.uploadFile(files.item(i));
       this.files.push({
         "file":files.item(i),
         "bytesuploaded":null,
@@ -41,7 +42,7 @@ export class UploadFilesComponent implements OnInit {
   }
   public uploadAll(){
     for(let i = 0; i < this.files.length; i++){
-      this.dropzoneService.upload(this.files[i]);
+      this.fs.upload(this.files[i]);
     }
   }
 }

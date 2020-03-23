@@ -1,3 +1,24 @@
 <section class="my-files">
-    <p class="welcome">my-files works!</p>
+    <mat-list class="list" *ngIf="files$ | async; else loading">
+        <h3 class="title">Files:</h3>
+        <ng-container *ngIf="(files$ | async).length > 0; else nofiles">
+            <mat-list-item class="list-item" *ngFor="let f of files$ | async; let i = index;">
+                <mat-icon mat-list-icon style="color:var(--color-red-light-1)">folder</mat-icon>
+                <p mat-line>{{f.filename}}</p>
+                <small class="date" mat-line>{{f.data | date}} - size: {{f.size}} bytes</small>
+                <a [href]="f.url | async"><mat-icon style="color:var(--color-green-light); padding-left:16px;">cloud_download</mat-icon></a>
+                <button (click)="deleteFile(f)" mat-icon-button><mat-icon style="color:var(--color-red-light-1)">delete</mat-icon></button>
+            </mat-list-item>
+        </ng-container>
+     
+        <ng-template #nofiles>
+            <span class="welcome">No Files</span>
+        </ng-template>
+    </mat-list>
+
+    <ng-template #loading>
+        <div class="container-spinner">
+            <mat-spinner></mat-spinner>
+        </div>
+    </ng-template>
 </section>

@@ -4,6 +4,7 @@ import { FirebaseProductsService } from 'src/app/services/firebase-products.serv
 import { MatSnackBar } from '@angular/material';
 import { ProductFirebase } from 'src/app/models/products.model';
 import { Observable } from 'rxjs';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-products',
@@ -24,12 +25,12 @@ export class ProductsComponent implements OnInit {
   
   constructor(
     private fb: FormBuilder,
-    private firebaseService: FirebaseProductsService,
+    private fs: FirestoreService,
     private snackbar: MatSnackBar
   ) { }
 
   ngOnInit() {
-    this.products$ = this.firebaseService.fetchProducts();
+    this.products$ = this.fs.fetchProducts();
   }
 
   public onSubmit(){
@@ -39,7 +40,7 @@ export class ProductsComponent implements OnInit {
   }
   
   private createProduct(p: ProductFirebase){
-    this.firebaseService.createProduct(p)
+    this.fs.createProduct(p)
       .then(res => {
         this.notification('Product added successfuly.');
         this.resetAndFocus();
@@ -51,7 +52,7 @@ export class ProductsComponent implements OnInit {
   }
   
   private updateProduct(p: ProductFirebase){
-    this.firebaseService.updateProduct(p)
+    this.fs.updateProduct(p)
       .then(res => {
         this.notification('Product updated successfuly');
         this.resetAndFocus();
@@ -67,7 +68,7 @@ export class ProductsComponent implements OnInit {
   }
   
   public delProduct(p: ProductFirebase){
-    this.firebaseService.deleteProduct(p)
+    this.fs.deleteProduct(p)
       .then(res =>{
         this.notification('Product deleted successfuly');
       })
@@ -87,6 +88,6 @@ export class ProductsComponent implements OnInit {
   }
   
   public filter(event){
-    this.filterProducts$ = this.firebaseService.searchByName(event.target.value.toLowerCase());
+    this.filterProducts$ = this.fs.searchByName(event.target.value.toLowerCase());
   }
 }

@@ -13,18 +13,16 @@
         margin:0 auto;
     }
     .container-base .container-card{
-        width:60%;
+        width:80%;
         margin:0 auto;
         display:flex;
         flex-direction:column;
         justify-content:center;
         height:90%;
-
-        
     }
     .container-base .container-card .card {
         @include card-dark;
-        height:45%;
+        height:300px;
         position: relative;
 
         .title{
@@ -91,60 +89,6 @@
         }
         .background-red{
             background:var(--color-red);
-        }
-        .first-layer-top, .first-layer-right, .first-layer-bottom, .first-layer-left{
-            position:absolute;
-            height:30px;
-            width:20%;
-
-            .base{
-                position:absolute;
-                width:200px;
-                height:30px;
-                border:1px solid red;
-            }
-            .pine-left, .pine-center, .pine-right{
-                position:absolute;
-                height:100%;
-                width:5px;
-                background:red;
-            }
-
-            .pine-left{
-                top:0;
-                left:0;
-            }
-            .pine-center{
-                top:0;
-                left:50%;
-            }
-            .pine-right{
-                top:0;
-                right:0;
-            }
-        }
-        .first-layer-top{
-            left:50%;
-            top:100%;
-            transform:translateX(-50%);
-            .base{
-                top:100%;
-            }
-        }
-        .first-layer-bottom{
-            left:50%;
-            bottom:100%;
-            transform:translateX(-50%);
-        }
-        .first-layer-right{
-            top:50%;
-            transform: rotate(90deg);
-            right:93%;
-        }
-        .first-layer-left{
-            top:50%;
-            left:93%;
-            transform: rotate(90deg);
         }
     }
 }

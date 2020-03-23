@@ -12,8 +12,8 @@
                             <div class="card-item" title="{{f.file.name}}">
                                 <mat-icon>attachment</mat-icon>
                                 &nbsp;
-                                <!-- <span [class.short-text]="((f.uploading | async) || (f.finished | async || f.paused | async)) || ((f.error | async) || f.canceled | async)">{{f.file.name}}</span> -->
-                                <span [class.short-text]="f.task != null">{{f.file.name}}</span>
+                                <span [class.short-text]="((f.uploading | async) || (f.paused | async)) || (f.error | async)">{{f.file.name}}</span>
+                                <!-- <span [class.short-text]="f.task != null">{{f.file.name}}</span> -->
                             </div>
                             <div *ngIf="f.task == null; else running">
                                 <button (click)="removeFileFromList(i)" mat-icon-button>
@@ -21,7 +21,8 @@
                                 </button>
                             </div>
                             <ng-template #running>
-                                <div class="pane-controls">
+                                <div class="pane-controls" [ngStyle]="{'width':!(f.finished | async) && !((f.error | async) || (f.canceled | async)) ? '62%' : ''}">
+                                    
                                     <!-- SHOW PANEL QUANDO NÃO HÁ ERROS OU QUANDO FINALIZAR -->
                                     <ng-container *ngIf="!(f.finished | async) && !((f.error | async) || (f.canceled | async))">
                                         <span class="bytes-uploaded">{{f.bytesuploaded | async}} bytes</span>
