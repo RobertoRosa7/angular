@@ -27,6 +27,12 @@
 
         .title{
            @include card-title;
+           display:flex;
+           justify-content: space-between;
+           align-items: center;
+           small{
+               font-size:11.2px;
+           }
         }
         .subtitle{
            @include card-subtitle;
@@ -63,14 +69,40 @@
         .col-3{
             width:32%;
         }
+        .col-3 .content span{
+            font-size:11.2px;
+            margin-left: 10px;
+        }
         .col-6{
             width:47%;
+        }
+        .col-6 .content{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .col-6 .content span{
+            font-size:11.2px;
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .col-6 .content .status mat-icon{
+            font-size:18px;
         }
         .col-2{
             width:15%;
         }
+        .col-2 .content .img img{
+            width:100%;
+            object-fit: cover;
+        }
         .col-10{
             width:80%;
+        }
+        .col-10 span{
+            font-size: 11.2px;
+            color:var(--color-light);
         }
         .border-custom{
             position:relative;

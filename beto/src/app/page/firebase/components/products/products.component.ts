@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { FirebaseProductsService } from 'src/app/services/firebase-products.service';
 import { MatSnackBar } from '@angular/material';
 import { ProductFirebase } from 'src/app/models/products.model';
 import { Observable } from 'rxjs';

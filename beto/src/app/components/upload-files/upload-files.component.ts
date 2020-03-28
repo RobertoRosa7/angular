@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DropzoneService } from 'src/app/services/dropzone.service';
 import { UploadFile } from 'src/app/models/upload-files';
 import { FirestoreService } from 'src/app/services/firestore.service';
 

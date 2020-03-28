@@ -2,26 +2,32 @@
     <div class="container-base">
         <div class="container-card">
             <mat-card class="card">
-                <mat-card-title class="title">Novo Projeto</mat-card-title>
+                <mat-card-title class="title">
+                    <span>Novo Projeto</span>
+                    <small>{{today | date}}</small>
+                </mat-card-title>
                 <mat-card-subtitle class="subtitle">Essa semana</mat-card-subtitle>
                 <mat-card-content>
-                    <div class="row" *ngFor="let i of numbers; let i = index">
+                    <div class="row" *ngFor="let p of projects$ | async; let i = index">
                         <div class="col-3 border-custom">
                             <div class="content">
-                                <div class="texts"></div>
+                                <div *ngIf="p.name == ''" class="texts"></div>
+                                <span *ngIf="p.name != ''">{{p.name}}</span>
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="row">
                                 <div class="col-2">
                                     <div class="content">
-                                        <div class="profile"></div>
+                                        <div *ngIf="p.url_image == ''" class="profile"></div>
+                                        <div class="img">
+                                            <img *ngIf="p.url_image != ''" [src]="p.url_image">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-10">
-                                    <div class="content background-red">
-                                        <!-- <div class="texts"></div> -->
-                                    </div>
+                                    <div *ngIf="p.description == ''" class="content background-red"></div>
+                                    <span *ngIf="p.description != ''">{{p.description}}</span>
                                 </div>
                             </div>
                         </div>
@@ -29,12 +35,18 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="content">
-                                        <div class="texts-radius"></div>
+                                        <div *ngIf="p.status == ''" class="texts-radius"></div>
+                                        <div class="status" *ngIf="p.status != ''">
+                                            <span *ngIf="p.status == 'done'"><mat-icon style="color:var(--color-green-light); margin-top:6px;">done</mat-icon>{{p.status}}</span>
+                                            <span *ngIf="p.status == 'undone'"><mat-icon style="color:var(--color-red-light); margin-top:6px;">close</mat-icon>{{p.status}}</span>
+                                            <span *ngIf="p.status == 'pendente'"><mat-icon style="color:gold; margin-top:6px;">access_time</mat-icon>{{p.status}}</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="content">
-                                        <div class="texts-radius background-blue"></div>
+                                        <div *ngIf="!p.date" class="texts-radius background-blue"></div>
+                                        <span style="color:var(--color-blue);" *ngIf="p.date">{{p.date | date}}</span>
                                     </div>
                                 </div>
                             </div>
