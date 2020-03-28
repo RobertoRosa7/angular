@@ -44,6 +44,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { FirebaseModule } from './page/firebase/firebase.module';
 import { PanelProjectsComponent } from './components/panel-projects/panel-projects.component';
 import { DropzoneModule } from './page/dropzone/dropzone.module';
+import { NgrxComponent } from './components/ngrx/ngrx.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { DropzoneModule } from './page/dropzone/dropzone.module';
     FormCreateComponent,
     BookAuthorsComponent,
     PanelProjectsComponent,
+    NgrxComponent,
   ],
   imports: [
     BrowserModule,

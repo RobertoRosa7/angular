@@ -14,28 +14,30 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { FirebaseComponent } from './page/firebase/firebase.component';
 import { PanelProjectsComponent } from './components/panel-projects/panel-projects.component';
 import { DropzoneComponent } from './page/dropzone/dropzone.component';
+import { NgrxComponent } from './components/ngrx/ngrx.component';
 
 
 const routes: Routes = [
   // chidren - indica que será criado um subcamadas dentro da rota raiz
   {path: 'app', component: HomeComponent, children: [
-      {path: '', component: PanelProjectsComponent},
+      {path: '', component: NgrxComponent},
+      // {path: '', component: PanelProjectsComponent},
       {path: 'component/:name', component: HomeComponent},
-      {path: 'store', component: StoreComponent},
-      {path: 'http-request', component: ClientsComponent},
-      {path: 'forms', component: DrivenFormsComponent},
-      {path: 'book', component: BooksComponent, children:[
-        {path: ':index', component: BookDetailsComponent, children: [
-          {path: 'authors/:authors', component: BookAuthorsComponent}
-        ]}
-      ]},
-      {path: 'eletronics', loadChildren: './eletronics/eletronics.module#EletronicsModule'},
-      {path: 'main', loadChildren: './main/main.module#MainModule'},
+      // {path: 'store', component: StoreComponent},
+      // {path: 'http-request', component: ClientsComponent},
+      // {path: 'forms', component: DrivenFormsComponent},
+      // {path: 'book', component: BooksComponent, children:[
+      //   {path: ':index', component: BookDetailsComponent, children: [
+      //     {path: 'authors/:authors', component: BookAuthorsComponent}
+      //   ]}
+      // ]},
+      // {path: 'eletronics', loadChildren: './eletronics/eletronics.module#EletronicsModule'},
+      // {path: 'main', loadChildren: './main/main.module#MainModule'},
       // {path: 'firebase', loadChildren: './page/firebase/firebase.module#FirebaseModule'},
-      {path: 'firebase', component: FirebaseComponent},
-      {path: 'dvd', component: DvdsComponent},
-      {path: 'dvd/:index', component: DvdDetailsComponent},
-      {path: 'dropzone', component: DropzoneComponent}
+      // {path: 'firebase', component: FirebaseComponent},
+      // {path: 'dvd', component: DvdsComponent},
+      // {path: 'dvd/:index', component: DvdDetailsComponent},
+      // {path: 'dropzone', component: DropzoneComponent}
     ], canActivate: [ AuthGuardService ]
   },
   {path: '', pathMatch: 'full', redirectTo: 'app'},

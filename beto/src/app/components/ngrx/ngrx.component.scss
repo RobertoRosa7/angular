@@ -1,0 +1,13 @@
+@import '../../../styles.scss';
+
+.ngrx-container{
+    .welcome{
+        @include welcome;
+    }
+    .content .btn-add{
+        position:fixed;
+        right:40px;
+        bottom:40px;
+        background:var(--color-red-light);
+    }
+}
