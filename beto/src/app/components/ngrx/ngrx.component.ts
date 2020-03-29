@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Person } from '../../models/person';
 import { Observable } from 'rxjs';
 import * as Faker from 'faker';
-import { Store, select } from '@ngrx/store';
-import { AppState, selectPeople, selectPeopleCount } from 'src/app/store';
+import { Store } from '@ngrx/store';
+import { AppState, selectAll } from 'src/app/store';
 import { PersonNew, PersonAll, PersonUpdate, PersonDelete } from 'src/app/store/person.actions';
 
 @Component({
@@ -23,9 +23,10 @@ export class NgrxComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(new PersonAll());
     // this.people$ = this.store.pipe(select('people'));
-    this.people$ = this.store.select(selectPeople);
+    // this.people$ = this.store.select(selectPeople);
     // this.store.select(selectPeopleCount).subscribe(p => console.log(p));
-  
+
+    this.people$ = this.store.select(selectAll);
   }
 
   public addPerson(){
@@ -35,12 +36,12 @@ export class NgrxComponent implements OnInit {
       "age":      Math.round(Math.random() * 100),
       "city":     Faker.address.city(),
       "country":  Faker.address.country(),
-      "_id":      new Date().getMilliseconds().toString()
+      "id":      new Date().getMilliseconds().toString()
     }
     this.store.dispatch(new PersonNew({ person }));
   }
   public delete(p:Person){
-    this.store.dispatch(new PersonDelete({ "id":p._id }));
+    this.store.dispatch(new PersonDelete({ "id":p.id }));
   }
   public update(p:Person){
     const payload = {
@@ -49,8 +50,12 @@ export class NgrxComponent implements OnInit {
       "age":      Math.round(Math.random() * 100),
       "city":     Faker.address.city(),
       "country":  Faker.address.country(),
-      "_id":      p._id
+      "id":      p.id
     }
-    this.store.dispatch(new PersonUpdate({ "person":payload }));
+    // sem entity
+    // this.store.dispatch(new PersonUpdate({ "person":payload }));
+
+    // com entity
+    this.store.dispatch(new PersonUpdate({ "id":p.id, "changes":payload }));
   }
 }

@@ -4,5 +4,5 @@ export interface Person {
     address:number;
     city:string;
     country:string;
-    _id?:string;
+    id?:string;
 }
