@@ -1,8 +1,8 @@
 export interface Person {
-    name:string;
-    age:number;
-    address:number;
-    city:string;
-    country:string;
+    name:string | number;
+    age:number | string;
+    address:number | string;
+    city:string | number;
+    country:string | number;
     id?:string;
 }

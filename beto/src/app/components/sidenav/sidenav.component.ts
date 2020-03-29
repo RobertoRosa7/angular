@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth/auth.service';
-import { User } from 'src/app/auth/user';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user';
 import { Observable } from 'rxjs';
 
 @Component({

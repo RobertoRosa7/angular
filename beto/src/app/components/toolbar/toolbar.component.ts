@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, HostListener, Input } from '@angular/core';
 import { Observable, fromEvent } from 'rxjs';
-import { User } from 'src/app/auth/user';
-import { AuthService } from 'src/app/auth/auth.service';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 

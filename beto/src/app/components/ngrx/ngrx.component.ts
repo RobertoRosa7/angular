@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import * as Faker from 'faker';
 import { Store } from '@ngrx/store';
 import { AppState, selectAll } from 'src/app/store';
-import { PersonNew, PersonAll, PersonUpdate, PersonDelete } from 'src/app/store/person.actions';
+import { PersonNew, PersonAll, PersonUpdate, PersonDelete } from 'src/app/actions/person.actions';
 
 @Component({
   selector: 'app-ngrx',

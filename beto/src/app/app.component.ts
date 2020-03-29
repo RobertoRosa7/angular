@@ -1,8 +1,8 @@
 import { Component, HostListener } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from './services/auth.service';
 import { Observable, fromEvent } from 'rxjs';
-import { User } from './auth/user';
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',

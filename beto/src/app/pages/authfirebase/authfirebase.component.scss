@@ -1,0 +1,14 @@
+@import '../../../styles.scss';
+
+.authfirebase-container{
+    color:var(--color-light);
+
+    .welcome{
+        @include welcome;
+    }
+    .content{
+        width:100%;
+        max-width:1024px;
+        margin: 0 auto;
+    }
+}

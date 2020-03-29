@@ -1,6 +1,6 @@
 import { Person } from '../models/person';
 import { ActionReducerMap, createSelector, createFeatureSelector } from '@ngrx/store';
-import * as fromPersonReducer from './person.reducer';
+import * as fromPersonReducer from '../reducers/person.reducer';
 
 // SEM ENTITY
 // export interface AppState {  people:Person[] }
