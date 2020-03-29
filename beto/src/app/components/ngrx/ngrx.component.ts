@@ -3,7 +3,7 @@ import { Person } from '../../models/person';
 import { Observable } from 'rxjs';
 import * as Faker from 'faker';
 import { Store, select } from '@ngrx/store';
-import { AppState } from 'src/app/store';
+import { AppState, selectPeople, selectPeopleCount } from 'src/app/store';
 import { PersonNew, PersonAll, PersonUpdate, PersonDelete } from 'src/app/store/person.actions';
 
 @Component({
@@ -22,7 +22,10 @@ export class NgrxComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new PersonAll());
-    this.people$ = this.store.pipe(select('people'));
+    // this.people$ = this.store.pipe(select('people'));
+    this.people$ = this.store.select(selectPeople);
+    // this.store.select(selectPeopleCount).subscribe(p => console.log(p));
+  
   }
 
   public addPerson(){
