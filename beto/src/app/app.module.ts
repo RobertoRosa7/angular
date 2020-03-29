@@ -47,6 +47,7 @@ import { DropzoneModule } from './page/dropzone/dropzone.module';
 import { NgrxComponent } from './components/ngrx/ngrx.component';
 import { StoreModule } from '@ngrx/store';
 import { AppReducer } from './store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,9 @@ import { AppReducer } from './store';
     MaterialModule,
     // MainModule, // carregado no app-routing lazy loading
     // FirebaseModule // carregado no app-routing lazy loading
-    StoreModule.forRoot(AppReducer)
+    StoreModule.forRoot(AppReducer),
+    StoreDevtoolsModule.instrument({maxAge:25}) // instrument() capacidade max de estados
+  
   ],
   entryComponents:[
     DialogEditProductComponent,

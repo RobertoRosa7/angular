@@ -4,10 +4,69 @@
     .welcome{
         @include welcome;
     }
+    .content{
+        width:100%;
+        max-width:768px;
+        margin: 0 auto;
+    }
     .content .btn-add{
         position:fixed;
         right:40px;
         bottom:40px;
         background:var(--color-red-light);
+    }
+    .content .list{
+        color:var(--color-light);
+        padding:0;
+    }
+    .content .list .list-item{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        background:var(--color-black-medium);
+        padding:8px 16px;
+        margin-top: 8px;
+    }
+    .content .list .list-item .item-column{
+        width:28%;
+        padding:0;
+        margin:0;
+    }
+    .content .list .list-item .item-column.age{
+        width:10%;
+    }
+    .content .list .list-item .item-column.address{
+        width:40%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .content .list .list-item .item-column.button{
+        width:25%;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .content .list .list-item .item-column.button button{
+        text-transform: uppercase;
+        font-size:13px;
+    }
+    .content .list .list-item .item-column.name{
+        width:25%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .content .list .list-item .item-column strong{
+        display:block;
+        text-transform: uppercase;
+        font-family: 'Roboto';
+        font-size:13px;
+        letter-spacing: 0.08em;
+    }
+    .content .list .list-item .item-column span{
+        font-size:11.2px;
+        letter-spacing: 0.1em;
+        font-style: italic;
     }
 }

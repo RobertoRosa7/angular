@@ -2,7 +2,7 @@ export interface Person {
     name:string;
     age:number;
     address:number;
-    ciyt:string;
+    city:string;
     country:string;
     _id?:string;
 }

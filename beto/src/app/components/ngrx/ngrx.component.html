@@ -3,14 +3,22 @@
     <div class="content">
         <ul class="list">
             <li class="list-item" *ngFor="let p of people$ | async">
-                <p>{{p.name}}</p>
-                <p>{{p.age}}</p>
-                <span>{{p.city}}</span> / <span>{{p.countyr}}</span>
-                <p>{{p.address}}</p>
-                
-                <button mat-button color="primary" (click)="delete(p)">delete</button>
-                <button mat-button color="warn" (click)="update(p)">update</button>
-
+                <p class="item-column name">
+                    <strong>Name:</strong>
+                    <span>{{p.name}}</span>
+                </p>
+                <p class="item-column age">
+                    <strong>Age:</strong>
+                    <span>{{p.age}}</span>
+                </p>
+                <p class="item-column address">
+                    <strong>Address</strong>
+                    <span>{{p.city}}</span> - <span>{{p.country}}</span>
+                </p>
+                <p class="item-column button">
+                    <button mat-button color="warn" (click)="delete(p)">delete</button>
+                    <button mat-button color="primary" (click)="update(p)">change</button>
+                </p>                
             </li>
         </ul>
         <button class="btn-add" mat-fab (click)="addPerson()">New</button>
