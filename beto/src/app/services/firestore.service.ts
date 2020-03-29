@@ -6,6 +6,7 @@ import { MyUploadFile, UploadFile } from '../models/upload-files';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { map, catchError, finalize } from 'rxjs/operators';
 import { Project } from '../models/project';
+import { PersonFirestore } from '../models/person';
 
 @Injectable({
     providedIn:'root'
@@ -13,6 +14,7 @@ import { Project } from '../models/project';
 export class FirestoreService {
     private angularCollection:AngularFirestoreCollection<ProductFirebase> = this.afs.collection('products');
     private filesCollection:AngularFirestoreCollection<MyUploadFile> = this.afs.collection('myfiles', ref => ref.orderBy('data', 'desc'));
+    private peopleCollection:AngularFirestoreCollection<PersonFirestore> = this.afs.collection('people', ref => ref.orderBy('name', 'desc'));
     private projects$:BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>(null);
     private projects:Project[] = [
         {
@@ -51,7 +53,6 @@ export class FirestoreService {
         timer(1000)
             .subscribe(() => this.projects$.next(this.projects))
     }
-
     public fetchProducts():Observable<ProductFirebase[]>{
         // valueChanges() - observa qualquer alteração na collection do firestore
         return this.angularCollection.valueChanges();
@@ -74,15 +75,14 @@ export class FirestoreService {
     public searchByName(name:string):Observable<ProductFirebase[]>{
         return this.afs.collection<ProductFirebase>('products', 
             ref => ref.orderBy('name').startAfter(name).endAt(name + "\uf8ff")).valueChanges();
-        }
-        public uploadFile(f:File){
+    }
+    public uploadFile(f:File){
         const pathFile = `myFiles/${f.name}`;
         const task = this.storage.upload(pathFile, f);
         
         task.snapshotChanges()
             .subscribe((s) => console.log(s));
     }
-
     public upload(f: UploadFile){
         const newFilename = `${new Date().getTime()}_${f.file.name}`;
         const pathFirestoreFile = `myFiles/${newFilename}`;
@@ -112,7 +112,6 @@ export class FirestoreService {
             })
             ).subscribe();
     }
-
     private fillAttribute(f: UploadFile){
         f.percentage = f.task.percentageChanges();
         f.uploading = f.state.pipe(map((s) => s === 'running'));
@@ -122,7 +121,6 @@ export class FirestoreService {
         f.canceled = f.state.pipe(map((s) => s === 'canceled'));
         f.bytesuploaded = f.task.snapshotChanges().pipe(map((s) => s.bytesTransferred));
     }
-
     public fetchFiles(): Observable<MyUploadFile[]>{
     return this.filesCollection.snapshotChanges()
         .pipe(
@@ -145,5 +143,11 @@ export class FirestoreService {
     }
     public fetchProjects():Observable<Project[]>{
         return this.projects$.asObservable();
+    }
+    public fetchPeople():Observable<PersonFirestore[]>{
+        return this.peopleCollection.valueChanges();
+    }
+    public addPerson(p:PersonFirestore){
+        this.peopleCollection.add(p);
     }
 }

@@ -49,6 +49,8 @@ import { StoreModule } from '@ngrx/store';
 import { AppReducer } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AuthfirebaseModule } from './modules/authfirebase.module';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +90,7 @@ import { AuthfirebaseModule } from './modules/authfirebase.module';
     BrowserAnimationsModule,
     // AuthModule,
     // AuthModule.forRoot(), // módulo exportado com serviços - forRoot por causa da função
-    AppRoutingModule,
+    AuthfirebaseModule,
     // FirebaseModule,
     // DropzoneModule,
     HttpClientModule,
@@ -97,7 +99,7 @@ import { AuthfirebaseModule } from './modules/authfirebase.module';
     // FirebaseModule // carregado no app-routing lazy loading
     StoreModule.forRoot(AppReducer),
     StoreDevtoolsModule.instrument({maxAge:25}), // instrument() capacidade max de estados
-    AuthfirebaseModule 
+    AppRoutingModule,
   
   ],
   entryComponents:[
