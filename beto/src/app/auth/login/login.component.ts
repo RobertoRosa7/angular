@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (u) => {
           this.notification('Login successfuly!');
-          this.router.navigateByUrl('/app/firebase');
+          this.router.navigateByUrl('/app');
           this.isLoading = false;
         },
         (e) => {

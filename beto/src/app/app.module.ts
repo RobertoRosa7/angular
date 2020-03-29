@@ -45,6 +45,8 @@ import { FirebaseModule } from './page/firebase/firebase.module';
 import { PanelProjectsComponent } from './components/panel-projects/panel-projects.component';
 import { DropzoneModule } from './page/dropzone/dropzone.module';
 import { NgrxComponent } from './components/ngrx/ngrx.component';
+import { StoreModule } from '@ngrx/store';
+import { AppReducer } from './store';
 
 @NgModule({
   declarations: [
@@ -85,12 +87,13 @@ import { NgrxComponent } from './components/ngrx/ngrx.component';
     // AuthModule,
     AuthModule.forRoot(), // módulo exportado com serviços
     AppRoutingModule,
-    FirebaseModule,
-    DropzoneModule,
+    // FirebaseModule,
+    // DropzoneModule,
     HttpClientModule,
     MaterialModule,
     // MainModule, // carregado no app-routing lazy loading
     // FirebaseModule // carregado no app-routing lazy loading
+    StoreModule.forRoot(AppReducer)
   ],
   entryComponents:[
     DialogEditProductComponent,
