@@ -16,6 +16,7 @@ import { PanelProjectsComponent } from './components/panel-projects/panel-projec
 import { DropzoneComponent } from './pages/dropzone/dropzone.component';
 import { NgrxComponent } from './components/ngrx/ngrx.component';
 import { AuthfirebaseComponent } from './pages/authfirebase/authfirebase.component';
+import { AuthfirebaseGuard } from './guards/authfirebase-guard';
 
 
 const routes: Routes = [
@@ -40,7 +41,7 @@ const routes: Routes = [
       // {path: 'dvd', component: DvdsComponent},
       // {path: 'dvd/:index', component: DvdDetailsComponent},
       // {path: 'dropzone', component: DropzoneComponent}
-    ]
+    ], canActivate:[ AuthfirebaseGuard ]
   },
   {path: '', pathMatch: 'full', redirectTo: 'app'},
   {path: '**', component: PageNotFoundComponent}

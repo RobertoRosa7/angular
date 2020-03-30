@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, HostListener, Input } from '@angular/core';
 import { Observable, fromEvent } from 'rxjs';
-import { User } from 'src/app/models/user';
+import { User, UserFirestore } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -20,12 +21,14 @@ export class ToolbarComponent implements OnInit {
   public screenWidth: number;
   public sideNavOpened: boolean = false;
   public authenticated$: Observable<boolean>;
-  public user$: Observable<User>;
+  // public user$: Observable<User>;
+  public user$: Observable<UserFirestore>;
   public xsScreen:boolean = false;
   public smScreen:boolean = false;
   public mdScreen:boolean = false;
   constructor(
     private authService: AuthService,
+    private fs: FirestoreService,
     private breakpoints: BreakpointObserver,
     private router: Router
   ) { 
@@ -53,8 +56,10 @@ export class ToolbarComponent implements OnInit {
   
   ngOnInit() {
     this.screenWidth = window.innerWidth;
-    this.authenticated$ = this.authService.isAuthenticated();
-    this.user$ = this.authService.fetchUser();
+    // this.authenticated$ = this.authService.isAuthenticated();
+    this.authenticated$ = this.fs.isAuthenticated();
+    // this.user$ = this.authService.fetchUser();
+    this.user$ = this.fs.fetchUser();
   }
   public openSideNav(){
     this.sideNavOpened = !this.sideNavOpened;
@@ -63,7 +68,8 @@ export class ToolbarComponent implements OnInit {
     this.drawer.toggle();
   }
   public logout(){
-    this.authService.logout();
+    // this.authService.logout();
+    this.fs.logoutFire();
     this.router.navigateByUrl('/auth/login');
   }
 }

@@ -178,4 +178,10 @@ export class FirestoreService {
     public logoutFire(){
         this.afa.auth.signOut();
     }
+    public fetchUser():Observable<UserFirestore>{
+        return this.afa.authState.pipe( switchMap(u => (u) ? this.usersCollection.doc<UserFirestore>(u.uid).valueChanges() : of(null)) )
+    }
+    public isAuthenticated():Observable<boolean>{
+        return this.afa.authState.pipe( map(u => (u) ? true : false) )
+    }
 }

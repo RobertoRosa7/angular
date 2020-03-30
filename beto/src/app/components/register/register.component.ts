@@ -4,6 +4,7 @@ import { User, UserFirestore } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { FirestoreService } from '../../services/firestore.service'
 
 @Component({
   selector: 'app-register',
@@ -59,7 +60,8 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private snackbar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private fs: FirestoreService
   ) { }
 
   ngOnInit() {
@@ -80,6 +82,14 @@ export class RegisterComponent implements OnInit {
 
     // Firestore
     const user: UserFirestore = {...this.formRegister.value, "password":this.formRegister.value.password1};
+    this.fs.registerFire(user)
+      .subscribe(
+        (u) => {
+          this.notification('Usuário registrado com sucesso');
+          this.router.navigateByUrl('/auth/login');
+        },
+        (e) => {this.notification(e)}
+      )
   }
   private matchPasswords(group: FormGroup){
     if(group){
