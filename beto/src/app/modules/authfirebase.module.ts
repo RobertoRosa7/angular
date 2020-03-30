@@ -21,12 +21,12 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
   ],
   imports: [
     CommonModule,
-    AuthfirebaseRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
+    AuthfirebaseRoutingModule,
     MaterialModule
   ]
 })

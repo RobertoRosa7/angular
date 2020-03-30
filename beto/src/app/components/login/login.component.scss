@@ -47,8 +47,7 @@
     }
     .reset{
         display: flex;
-        justify-content: space-evenly;
-       
+        justify-content: flex-start;
     }
     .reset a{
         text-decoration:none;
@@ -58,16 +57,17 @@
         display:inline-block;
         font-family:var(--font-main);
         letter-spacing: 0.01em;
+        margin-right: 8px;
     }
     button:disabled{
-        color: var(--color-light);
-        border: 1px solid transparent;
-        background: var(--color-black-light);
+       @include btn-login-disabled;
     }
     button{
-        color:var(--color-green-light);
-        border:1px solid var(--color-green-light);
-        width:120px;
-        font-family:var(--font-main);
+        @include btn-login;
+    }
+    .login-google{
+        border:transparent;
+        background:var(--color-red-light);
+        color:var(--color-white);
     }
 }

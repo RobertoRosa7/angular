@@ -42,13 +42,10 @@
         display: inline-block;
     }
     button:disabled{
-        color: var(--color-light);
-        border: 1px solid transparent;
-        background: var(--color-black-light);
+      @include btn-login-disabled;
     }
     button{
-        color: var(--color-green-light);
-        border: 1px solid var(--color-green-light);
+       @include btn-login;
     }
 }
 // só funciona fora da class produts

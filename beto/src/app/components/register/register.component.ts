@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { User } from '../../models/user';
+import { User, UserFirestore } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
@@ -67,15 +67,19 @@ export class RegisterComponent implements OnInit {
   }
 
   public onSubmit(){
-    const user: User = {...this.formRegister.value, "password": this.formRegister.value.password1};
-    this.authService.register(user)
-      .subscribe(
-        (u) => {
-          this.notification('User register successfuly!');
-          this.router.navigateByUrl('/auth/login');
-        },
-        (e) => this.notification(e.error.msg)
-      );
+    // MongoDB:
+    // const user: User = {...this.formRegister.value, "password": this.formRegister.value.password1};
+    // this.authService.register(user)
+    //   .subscribe(
+    //     (u) => {
+    //       this.notification('User register successfuly!');
+    //       this.router.navigateByUrl('/auth/login');
+    //     },
+    //     (e) => this.notification(e.error.msg)
+    //   );
+
+    // Firestore
+    const user: UserFirestore = {...this.formRegister.value, "password":this.formRegister.value.password1};
   }
   private matchPasswords(group: FormGroup){
     if(group){

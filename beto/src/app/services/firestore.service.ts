@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { ProductFirebase } from '../models/products.model';
-import { Observable, of, from, BehaviorSubject, timer } from 'rxjs';
+import { Observable, of, from, BehaviorSubject, timer, throwError } from 'rxjs';
 import { MyUploadFile, UploadFile } from '../models/upload-files';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { map, catchError, finalize } from 'rxjs/operators';
+import { map, catchError, finalize, switchMap } from 'rxjs/operators';
 import { Project } from '../models/project';
 import { PersonFirestore } from '../models/person';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { UserFirestore } from '../models/user';
 
 @Injectable({
     providedIn:'root'
@@ -15,6 +17,7 @@ export class FirestoreService {
     private angularCollection:AngularFirestoreCollection<ProductFirebase> = this.afs.collection('products');
     private filesCollection:AngularFirestoreCollection<MyUploadFile> = this.afs.collection('myfiles', ref => ref.orderBy('data', 'desc'));
     private peopleCollection:AngularFirestoreCollection<PersonFirestore> = this.afs.collection('people', ref => ref.orderBy('name', 'desc'));
+    private usersCollection:AngularFirestoreCollection<UserFirestore> = this.afs.collection('users', ref => ref.orderBy('name', 'desc'));
     private projects$:BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>(null);
     private projects:Project[] = [
         {
@@ -49,6 +52,7 @@ export class FirestoreService {
     constructor(
         private afs:AngularFirestore,
         private storage:AngularFireStorage,
+        private afa:AngularFireAuth
     ){ 
         timer(1000)
             .subscribe(() => this.projects$.next(this.projects))
@@ -149,5 +153,29 @@ export class FirestoreService {
     }
     public addPerson(p:PersonFirestore){
         this.peopleCollection.add(p);
+    }
+    public registerFire(user: UserFirestore):Observable<boolean>{
+        return from(this.afa.auth
+            .createUserWithEmailAndPassword(user.email, user.password))
+            .pipe(
+                switchMap((u: firebase.auth.UserCredential) => 
+                    this.usersCollection.doc(u.user.uid).set({...user, "id":u.user.uid}).then(() => true)
+                ),
+                catchError((e) => throwError(e))
+            )
+
+    }
+    public loginFire(password:string, email:string):Observable<PersonFirestore>{
+        return from(this.afa.auth
+            .signInWithEmailAndPassword(email, password))
+            .pipe(
+                switchMap((u:firebase.auth.UserCredential) => 
+                    this.usersCollection.doc<PersonFirestore>(u.user.uid).valueChanges()
+                ),
+                catchError((e) => throwError('Usuário não registrado ou credências inválidas'))
+            )
+    }
+    public logoutFire(){
+        this.afa.auth.signOut();
     }
 }

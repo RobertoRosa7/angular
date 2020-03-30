@@ -25,7 +25,12 @@
              
             </mat-card-content>
 
-            <mat-card-actions fxLayout="row" fxLayoutAlign="end center" >
+            <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
+              <button class="login-google" [disabled]="loading" mat-button type="button" (click)="loginGoogle()">
+                <mat-icon style="font-size: 18px; margin-top: 4px; margin-left: -12px">check</mat-icon>
+                Google
+              </button>
+
               <button mat-button type="submit" [disabled]="!loginForm.valid">
                 <mat-icon style="font-size: 18px; margin-top: 4px; margin-left: -12px">check</mat-icon>
                 Login
