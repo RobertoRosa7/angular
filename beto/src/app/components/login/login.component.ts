@@ -50,15 +50,30 @@ export class LoginComponent implements OnInit {
     this.fs.loginFire(password, email)
       .subscribe(
         (u) => {
-          this.notification('login realizado com sucesso.');
+          this.notification('Login realizado com sucesso.');
           this.router.navigateByUrl('/');
           this.isLoading = false;
         },
         (e) => {
-          this.notification(e);
+          this.notification('Não foi possível realizar seu login.');
           this.isLoading = false;
         }
-      )
+      );
+  }
+  public loginGoogle(){
+    this.isLoading = true;
+    this.fs.loginWidthGoogle()
+      .subscribe(
+        (u) => {
+          this.notification('Login realizado com sucesso.');
+          this.router.navigateByUrl('/');
+          this.isLoading = false;
+        },
+        (e) => {
+          this.notification('Não foi possível realizar seu login.');
+          this.isLoading = false;
+        }
+      );
   }
   private notification(msg){
     this.snackbar.open(msg, 'ok', {duration:3000});

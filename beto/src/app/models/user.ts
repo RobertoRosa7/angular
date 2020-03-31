@@ -20,5 +20,5 @@ export interface UserFirestore{
     mobilephone: string,
     email: string,
     password?: string,
-    _id?: string,
+    id?: string,
 }

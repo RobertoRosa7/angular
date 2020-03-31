@@ -186,12 +186,59 @@ export class FirestoreService {
     public isAuthenticated():Observable<boolean>{
         return this.afa.authState.pipe( map(u => (u) ? true : false) )
     }
+    private async updateUserFirestoreData(u: auth.UserCredential){
+        try{
+            const payload: UserFirestore = {
+                "firstname": u.user.displayName,
+                "lastname":'',
+                "address":'',
+                "city":'',
+                "state":'',
+                "phone":'',
+                "mobilephone":'',
+                "email":u.user.email,
+                "password":'',
+                "id":u.user.uid
+            }
+            await this.usersCollection.doc(u.user.uid).set(payload);
+            return payload;
+        }catch(e){
+            throw new Error(e);
+        }
+    }
+    private async loginWithGoogleAccount(){
+        try{
+            const provider = new auth.GoogleAuthProvider();
+            const credentials = await this.afa.auth.signInWithPopup(provider);
+            const user: UserFirestore = await this.updateUserFirestoreData(credentials);
+            return user;
+        }catch(e){
+            throw new Error(e);
+        }
+    }
     public loginWidthGoogle():Observable<UserFirestore>{
+        return from(this.loginWithGoogleAccount());
+    }
+    public loginWidthGoogleOld():Observable<UserFirestore>{
         const provider = new auth.GoogleAuthProvider();
         return from(this.afa.auth.signInWithPopup(provider))
             .pipe(
                 tap((data) => console.log(data)),
-                map(() => null)
+                switchMap((u: auth.UserCredential) => {
+                    const payload: UserFirestore = {
+                        "firstname": u.user.displayName,
+                        "lastname":'',
+                        "address":'',
+                        "city":'',
+                        "state":'',
+                        "phone":'',
+                        "mobilephone":'',
+                        "email":u.user.email,
+                        "password":'',
+                        "id":u.user.uid
+                    }
+                    return this.usersCollection.doc(u.user.uid).set(payload).then(() => payload)
+                })
             )
     }
 }
