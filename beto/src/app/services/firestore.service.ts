@@ -4,11 +4,12 @@ import { ProductFirebase } from '../models/products.model';
 import { Observable, of, from, BehaviorSubject, timer, throwError } from 'rxjs';
 import { MyUploadFile, UploadFile } from '../models/upload-files';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { map, catchError, finalize, switchMap } from 'rxjs/operators';
+import { map, catchError, finalize, switchMap, tap } from 'rxjs/operators';
 import { Project } from '../models/project';
 import { PersonFirestore } from '../models/person';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UserFirestore } from '../models/user';
+import { auth } from 'firebase/app';
 
 @Injectable({
     providedIn:'root'
@@ -49,6 +50,7 @@ export class FirestoreService {
             "status":'pendente'
         },
     ]
+    
     constructor(
         private afs:AngularFirestore,
         private storage:AngularFireStorage,
@@ -183,5 +185,13 @@ export class FirestoreService {
     }
     public isAuthenticated():Observable<boolean>{
         return this.afa.authState.pipe( map(u => (u) ? true : false) )
+    }
+    public loginWidthGoogle():Observable<UserFirestore>{
+        const provider = new auth.GoogleAuthProvider();
+        return from(this.afa.auth.signInWithPopup(provider))
+            .pipe(
+                tap((data) => console.log(data)),
+                map(() => null)
+            )
     }
 }
