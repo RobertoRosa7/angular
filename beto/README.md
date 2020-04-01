@@ -71,3 +71,8 @@ Escolher depois de fazer building do projeto o diretório publico dist/[nome-do-
 
 # Deploy
 Run `firebase deploy`
+
+
+# Socket IO
+    [ ] Sobre o projeto
+    [ ] Criação do Projeto Angular
