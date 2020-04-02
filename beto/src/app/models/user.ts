@@ -21,4 +21,5 @@ export interface UserFirestore{
     email: string,
     password?: string,
     id?: string,
+    photoURL?:string
 }

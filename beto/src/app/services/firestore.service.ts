@@ -198,7 +198,8 @@ export class FirestoreService {
                 "mobilephone":'',
                 "email":u.user.email,
                 "password":'',
-                "id":u.user.uid
+                "id":u.user.uid,
+                "photoURL":u.user.photoURL
             }
             await this.usersCollection.doc(u.user.uid).set(payload);
             return payload;

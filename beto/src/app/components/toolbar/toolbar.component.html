@@ -30,7 +30,10 @@
     
             <ng-container *ngIf="(authenticated$ | async) && (user$ | async)">
                 <button mat-icon-button [matMenuTriggerFor]="userMenu">
-                    <mat-icon>account_circle</mat-icon>
+                    <mat-icon *ngIf="!(user$ | async)?.photoURL">account_circle</mat-icon>
+                    <div class="img">
+                        <img [src]="(user$ | async)?.photoURL">
+                    </div>
                 </button>
                 <mat-menu #userMenu>
                     <p class="menu-item" mat-menu-item>
