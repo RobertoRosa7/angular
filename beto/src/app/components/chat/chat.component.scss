@@ -1,7 +1,57 @@
 @import '../../../styles.scss';
 
 .chat{
+    width:100%;
+    background: inherit;
+
+    .chat-container{
+        width:100%;
+        max-width:992px;
+        margin: 0 auto;
+        display:flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        color: var(--color-light);
+
+        .message-container{
+            max-height:400px;
+            width:100%;
+            max-width:496px;
+            overflow: hidden;
+            padding:20px;
+
+            .messages{
+                height:310px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                background: var(--color-black);
+                margin: 10px 0;
+            }
+            .controls{
+                height:50px;
+                background: var(--color-black);
+            }
+        }
+    }
     .welcome{
         @include welcome;
+    }
+}
+@media (max-width:600px){
+    .chat .chat-container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+        width:90%;
+        .message-container{
+            padding:0;
+            margin-bottom: 20px;
+        }
+    }
+}
+@media (min-width:601px) and (max-width:992px){
+    .chat .chat-container .message-container{
+        padding:1.3%;
     }
 }
