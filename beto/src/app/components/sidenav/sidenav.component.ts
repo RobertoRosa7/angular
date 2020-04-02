@@ -3,8 +3,9 @@ import { ProductsService } from 'src/app/services/products.service';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from 'src/app/models/user';
+import { User, UserFirestore } from 'src/app/models/user';
 import { Observable } from 'rxjs';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -13,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class SidenavComponent implements OnInit {
   @Input('drawer') drawer;
-  public user$: Observable<User>;
+  public user$: Observable<UserFirestore>;
   public options;
   public listsLinks: any[] = [
     {
@@ -31,12 +32,12 @@ export class SidenavComponent implements OnInit {
   ]
   constructor(
     private productService:ProductsService,
-    private authService:AuthService,
+    private fs: FirestoreService,
     private router:Router
   ) { }
 
   ngOnInit() {
-    this.user$ = this.authService.fetchUser();
+    this.user$ = this.fs.fetchUser();
   }
 
   public closeSideMenu(){

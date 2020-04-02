@@ -6,7 +6,10 @@
 
         <div *ngIf="user$ | async as user; else showUser" class="profile" style="margin-top: 50px;">
             <div class="profile-img">
-                <mat-icon>account_circle</mat-icon>
+                <mat-icon *ngIf="!(user$ | async)?.photoURL">account_circle</mat-icon>
+                <div class="img" *ngIf="(user$ | async)?.photoURL">
+                    <img [src]="user?.photoURL">
+                </div>
             </div>
             <div class="title">
                 <span>Welcome {{user.firstname}}</span>

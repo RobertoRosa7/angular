@@ -20,6 +20,19 @@
         }
         .profile-img{
             text-align:center;
+            .img{
+                width:100%;
+                max-width:80px;
+                border-radius: 50%;
+                margin: 0 auto;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                img{
+                    width:100%;
+                    border-radius: 50%;
+                }
+            }
         }
         .profile-img mat-icon{
             font-size:6em;
