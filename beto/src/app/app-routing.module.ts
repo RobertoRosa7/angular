@@ -17,12 +17,14 @@ import { DropzoneComponent } from './pages/dropzone/dropzone.component';
 import { NgrxComponent } from './components/ngrx/ngrx.component';
 import { AuthfirebaseComponent } from './pages/authfirebase/authfirebase.component';
 import { AuthfirebaseGuard } from './guards/authfirebase-guard';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 const routes: Routes = [
   // chidren - indica que será criado um subcamadas dentro da rota raiz
   {path: 'app', component: HomeComponent, children: [
-      {path: '', component: AuthfirebaseComponent},
+      {path: '', component: ChatComponent},
+      // {path: '', component: AuthfirebaseComponent},
       // {path: '', component: NgrxComponent},
       // {path: '', component: PanelProjectsComponent},
       {path: 'component/:name', component: HomeComponent},

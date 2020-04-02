@@ -51,6 +51,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AuthfirebaseModule } from './modules/authfirebase.module';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { RegisterComponent } from './components/register/register.component';
     BookAuthorsComponent,
     PanelProjectsComponent,
     NgrxComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
