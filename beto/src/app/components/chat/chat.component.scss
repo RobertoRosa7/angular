@@ -26,10 +26,125 @@
                 overflow-y: auto;
                 background: var(--color-black);
                 margin: 10px 0;
+                .receptor, .emitter{
+                    padding:0 16px;
+                    position:relative;
+                    margin:8px 0;
+                }
+                .receptor .text .text-container, .emitter .text .text-container{
+                    padding: 6px 12px;
+                    display:flex;
+                    flex-direction:column;
+                    span{
+                        font-size:13px;
+                        color:var(--color-white);
+                        font-weight:100;
+                        letter-spacing: 0.1em;
+                        padding:5px 0;
+                        font-family: Helvetica, sans-serif;
+                    }
+                    small{
+                        font-size:10px;
+                        color:var(--color-light);
+                        font-weight: 400;
+                        letter-spacing: 0.08em;
+                        padding:0;
+                        margin: 0;
+                    }
+                    .time{
+                        text-align:right;
+                        font-family:Helvetica, sans-serif;
+                        display:flex;
+                        justify-content:flex-end;
+                        align-items:center;
+                        mat-icon{
+                            font-size:16px;
+                            width:10px;
+                            height:17px;
+                        }
+                    }
+                    .name{
+                        font-style: italic;
+                        text-align: left;
+                        color: var(--color-gold);
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+                .receptor .text{
+                    background: var(--color-black-dark);
+                    border-radius:0px 8px 8px 8px;
+                    max-width:100%;
+                }
+                .receptor .text .text-container{
+                    background: var(--color-black-dark);
+                    border-radius:0px 8px 8px 8px;
+                    position:relative;
+                }
+                .receptor .text::before{
+                    content:'';
+                    position:absolute;
+                    top:0;
+                    left:8px;
+                    width: 0; 
+                    height: 0; 
+                    border-top: 0px solid transparent;
+                    border-bottom: 25px solid transparent;
+                    border-right: 25px solid var(--color-black-dark);
+                }
+                .emitter .text{
+                    background-color: var(--color-green-dark);
+                    border-radius:8px 0 8px 8px;
+                    max-width:100%;
+                }
+                .emitter .text .text-container{
+                    background: var(--color-green-dark);
+                    border-radius:8px 0 8px 8px;
+                    position:relative;
+                }
+                .emitter .text::before{
+                    content:'';
+                    position:absolute;
+                    top:0;
+                    right:8px;
+                    width: 0; 
+                    height: 0; 
+                    border-top: 0px solid transparent;
+                    border-bottom: 25px solid transparent;
+                    border-left: 25px solid var(--color-green-dark);
+                }
+                .receptor{
+                    display:flex;
+                    justify-content: flex-start;
+                }
+                .emitter{
+                    display:flex;
+                    justify-content: flex-end;
+                }
+               
+            }
+            .messages.emitter{
+                flex-direction: column-reverse;
+            }
+            .messages.receptor{
+                flex-direction: column;
             }
             .controls{
                 height:50px;
                 background: var(--color-black);
+
+                .input-controls{
+                    width:100%;
+                   
+                }
+                ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex{
+                    padding:0;
+                    border-radius:32px;
+                }
+                ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex{
+                    background-color: var(--color-black-light);
+                }
             }
         }
     }

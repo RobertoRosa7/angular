@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
-
+  public currentTime = new Date().getTime();
   constructor() { }
 
   ngOnInit() {

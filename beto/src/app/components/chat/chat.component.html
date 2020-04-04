@@ -2,15 +2,80 @@
     <h1 class="welcome">Welcome to chat</h1>
 
     <div class="chat-container">
+
         <div class="message-container">
             <span>chat 1</span>
-            <div class="messages"> messages </div>
-            <div class="controls"> controls </div>
+            <div class="messages receptor">
+                <div class="receptor">
+                    <div class="text">
+                        <div class="text-container">
+                            <small class="name">Pedro</small>
+                            <span class="msg">Lorem alias autem veritatis.</span>
+                            <small class="time">
+                                {{currentTime | date:'H:m'}}
+                                &nbsp;
+                                <mat-icon>done</mat-icon>
+                                <mat-icon>done</mat-icon>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="emitter">
+                    <div class="text">
+                        <div class="text-container">
+                            <small class="name">Maria</small>
+                            <span class="msg">balão emissor</span>
+                            <small class="time">
+                                {{currentTime | date:'H:m'}}
+                                &nbsp;
+                                <mat-icon>done</mat-icon>
+                                <mat-icon>done</mat-icon>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="controls">
+                <mat-form-field appearance="fill" class="input-controls">
+                    <input matInput placeholder="Digite aqui">
+                </mat-form-field>
+            </div>
         </div>
-        <div class="message-container">
+
+        <!-- <div class="message-container">
             <span>chat 2</span>
-            <div class="messages"> messages </div>
+            <div class="messages emitter">
+                <div class="receptor">
+                    <div class="text">
+                        <div class="text-container">
+                            <small class="name">João</small>
+                            <span class="msg">balão receptor</span>
+                            <small class="time">
+                                {{currentTime | date:'H:m'}}
+                                &nbsp;
+                                <mat-icon>done</mat-icon>
+                                <mat-icon>done</mat-icon>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="emitter">
+                    <div class="text">
+                        <div class="text-container">
+                            <small class="name">Sandra</small>
+                            <span class="msg">balão emissor</span>
+                            <small class="time">
+                                {{currentTime | date:'H:m'}}
+                                &nbsp;
+                                <mat-icon>done</mat-icon>
+                                <mat-icon>done</mat-icon>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="controls"> controls </div>
-        </div>
+        </div> -->
     </div>
 </section>
