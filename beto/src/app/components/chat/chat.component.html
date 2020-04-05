@@ -5,12 +5,12 @@
 
         <div class="message-container">
             <span>chat 1</span>
-            <div class="messages receptor">
-                <div class="receptor">
+            <div #messagesContainer class="messages receptor">
+                <div #messagesList [class.receptor]="m.from != user?.firstname" [class.emitter]="m.from == user?.firstname" *ngFor="let m of messages">
                     <div class="text">
                         <div class="text-container">
-                            <small class="name">Pedro</small>
-                            <span class="msg">Lorem alias autem veritatis.</span>
+                            <small class="name">{{m.from}}</small>
+                            <span class="msg">{{m.message}}</span>
                             <small class="time">
                                 {{currentTime | date:'H:m'}}
                                 &nbsp;
@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-                <div class="emitter">
+                <!-- <div class="emitter">
                     <div class="text">
                         <div class="text-container">
                             <small class="name">Maria</small>
@@ -34,12 +34,15 @@
                             </small>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="controls">
                 <mat-form-field appearance="fill" class="input-controls">
-                    <input matInput placeholder="Digite aqui">
+                    <input #input (keyup.enter)="send()" [(ngModel)]="message.message" matInput placeholder="Digite aqui">
                 </mat-form-field>
+                <button (click)="send()" [disabled]="!blockbutton" mat-icon-button>
+                    <mat-icon>send</mat-icon>
+                </button>
             </div>
         </div>
 

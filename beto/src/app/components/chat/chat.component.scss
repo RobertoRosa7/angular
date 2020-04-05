@@ -26,6 +26,15 @@
                 overflow-y: auto;
                 background: var(--color-black);
                 margin: 10px 0;
+                
+                mat-list-item{
+                    padding:0 !important;
+                    margin-bottom:5% !important;
+                    max-width:100% !important;
+                    ::ng-deep .mat-list-item-content{
+                        display:block;
+                    }
+                }
                 .receptor, .emitter{
                     padding:0 16px;
                     position:relative;
@@ -42,6 +51,7 @@
                         letter-spacing: 0.1em;
                         padding:5px 0;
                         font-family: Helvetica, sans-serif;
+                        word-break: break-all;
                     }
                     small{
                         font-size:10px;
@@ -132,11 +142,40 @@
             }
             .controls{
                 height:50px;
-                background: var(--color-black);
+                background: transparent;
+                display:flex;
+                justify-content: space-between;
+                align-items: center;
 
                 .input-controls{
-                    width:100%;
-                   
+                    width:80%;
+
+                   input{
+                        padding: 10px 0 10px 20px;
+                        width:90%;
+                        white-space: wrap;
+                   }
+                   input::placeholder{
+                       color: var(--color-light);
+                       letter-spacing: 0.1em;
+                       font-size:12px;
+                   }
+                }
+                button{
+                    background: var(--color-black-light);
+                    display:flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    mat-icon{
+                        font-size:18px;
+                        margin-left: 5px;
+                        margin-top: -2px;
+                    }
+                }
+                button:disabled{
+                    color: var(--color-light);
+                    background:var(--color-black);
                 }
                 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex{
                     padding:0;
@@ -144,6 +183,19 @@
                 }
                 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex{
                     background-color: var(--color-black-light);
+                }
+                ::ng-deep .mat-form-field-underline{
+                    display: none;
+                }
+                ::ng-deep .mat-form-field-appearance-fill .mat-form-field-infix{
+                    padding:0;
+                }
+                ::ng-deep .mat-form-field-infix{
+                    border:none;
+                    padding:0;
+                }
+                ::ng-deep .mat-form-field-wrapper{
+                    padding-bottom: 0;
                 }
             }
         }
