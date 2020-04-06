@@ -4,6 +4,9 @@ import { MessageText } from 'src/app/models/messages';
 import { fromEvent, Subscription } from 'rxjs';
 import { SocketService } from 'src/app/services/socket.service';
 import { MatListItem, MatList } from '@angular/material';
+import { Store } from '@ngrx/store';
+import { AppState, usersStore } from 'src/app/store';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-chat',
@@ -24,17 +27,32 @@ export class ChatComponent implements OnInit {
   private messagesSubscriptionList: Subscription;
   constructor(
     private fs: FirestoreService,
-    private ss: SocketService
+    private ss: SocketService,
+    private store: Store<AppState>
   ) { }
 
   ngOnInit() {
-    this.fs.fetchUser()
-      .subscribe((u) => {
+    // this.fs.fetchUser()
+    //   .subscribe((u) => {
+    //     if(u){
+    //       this.user = u;
+    //       this.message.from = u.firstname
+    //     }
+    //   });
+
+    this.store.select(usersStore.selectEntities)
+      .pipe(
+        map((u) => {
+          for(const id in u){
+            return u[id];
+          }
+        })
+      ).subscribe(u => {
         if(u){
           this.user = u;
           this.message.from = u.firstname
         }
-      });
+      })
 
     fromEvent(this.input.nativeElement, 'keyup')
       .subscribe((k: KeyboardEvent) => {

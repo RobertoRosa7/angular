@@ -31,14 +31,14 @@
             <ng-container *ngIf="(authenticated$ | async) && (user$ | async)">
                 <button mat-icon-button [matMenuTriggerFor]="userMenu">
                     <mat-icon *ngIf="!(user$ | async)?.photoURL">account_circle</mat-icon>
-                    <div *ngIf="(user$ | async)?.photoURL" class="img">
+                    <div *ngIf="(user$ | async )?.photoURL" class="img">
                         <img [src]="(user$ | async)?.photoURL">
                     </div>
                 </button>
                 <mat-menu #userMenu>
                     <p class="menu-item" mat-menu-item>
                         <mat-icon>account_circle</mat-icon>
-                        {{ (user$ | async)?.firstname }}
+                        {{ (user$ | async )?.firstname }}
                     </p>
                     
                     <!-- <mat-divider></mat-divider> -->

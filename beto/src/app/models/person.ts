@@ -7,10 +7,10 @@ export interface Person {
     id?:string;
 }
 export interface PersonFirestore {
-    name:string | number;
-    age:number | string;
-    email:string;
-    city:string | number;
-    country:string | number;
+    name?:string | number;
+    age?:number | string;
+    email?:string;
+    city?:string | number;
+    country?:string | number;
     id?:string;
 }

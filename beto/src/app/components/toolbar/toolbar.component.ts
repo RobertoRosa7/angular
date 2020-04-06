@@ -6,6 +6,9 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { EventEmitterService } from 'src/app/services/broadcast.service';
 import { MatDrawerToggleResult, MatDrawer } from '@angular/material';
+import { Store } from '@ngrx/store';
+import { AppState, usersState, usersStore } from 'src/app/store';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-toolbar',
@@ -34,6 +37,7 @@ export class ToolbarComponent implements OnInit {
     private fs: FirestoreService,
     private breakpoints: BreakpointObserver,
     private router: Router,
+    private store: Store<AppState>
   ) { 
     this.breakpoints.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium])
       .subscribe(br => {
@@ -58,7 +62,19 @@ export class ToolbarComponent implements OnInit {
     // this.authenticated$ = this.authService.isAuthenticated();
     this.authenticated$ = this.fs.isAuthenticated();
     // this.user$ = this.authService.fetchUser();
-    this.user$ = this.fs.fetchUser();
+    // this.user$ = this.fs.fetchUser();
+    // this.user$ = this.store.select(usersStore.selectAll);
+    // this.store.select(usersStore.selectAll)
+    //   .subscribe((u) => (u) ? this.user = u[0] : null);
+
+    this.user$ = this.store.select(usersStore.selectEntities)
+      .pipe(
+        map((u) => {
+            for(const id in u){
+              return u[id];
+            }
+        })
+      )
   }
   ngAfterViewInit(){
     fromEvent(document, 'keyup')

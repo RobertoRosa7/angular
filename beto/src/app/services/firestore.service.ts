@@ -10,6 +10,9 @@ import { PersonFirestore } from '../models/person';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UserFirestore } from '../models/user';
 import { auth } from 'firebase/app';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store';
+import { UserNew } from '../actions/user.actions';
 
 @Injectable({
     providedIn:'root'
@@ -54,10 +57,13 @@ export class FirestoreService {
     constructor(
         private afs:AngularFirestore,
         private storage:AngularFireStorage,
-        private afa:AngularFireAuth
+        private afa:AngularFireAuth,
+        private store: Store<AppState>
     ){ 
         timer(1000)
             .subscribe(() => this.projects$.next(this.projects))
+        this.fetchUser()
+            .subscribe((u) => this.store.dispatch(new UserNew({ user: u})));
     }
     public fetchProducts():Observable<ProductFirebase[]>{
         // valueChanges() - observa qualquer alteração na collection do firestore
@@ -181,7 +187,7 @@ export class FirestoreService {
         this.afa.auth.signOut();
     }
     public fetchUser():Observable<UserFirestore>{
-        return this.afa.authState.pipe( switchMap(u => (u) ? this.usersCollection.doc<UserFirestore>(u.uid).valueChanges() : of(null)) )
+        return this.afa.authState.pipe( switchMap((u: any) => (u) ? this.usersCollection.doc<UserFirestore>(u.uid).valueChanges() : of(null)))
     }
     public isAuthenticated():Observable<boolean>{
         return this.afa.authState.pipe( map(u => (u) ? true : false) )
