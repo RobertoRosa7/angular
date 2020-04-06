@@ -1,13 +1,13 @@
 <section class="panel-project">
     <div class="container-base">
         <div class="container-card">
-            <mat-card class="card">
+            <mat-card class="card" *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">
                 <mat-card-title class="title">
                     <span>Novo Projeto</span>
                     <small>{{today | date}}</small>
                 </mat-card-title>
                 <mat-card-subtitle class="subtitle">Essa semana</mat-card-subtitle>
-                <mat-card-content>
+                <!-- <mat-card-content>
                     <div class="row" *ngFor="let p of projects$ | async; let i = index">
                         <div class="col-3 border-custom">
                             <div class="content">
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                     </div>
-                </mat-card-content>
+                </mat-card-content> -->
             </mat-card>
         </div>
     </div>

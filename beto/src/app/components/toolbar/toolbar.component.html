@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar #bar>
     <mat-toolbar-row *ngIf="!smScreen && !xsScreen; else showDrawToggle" class="container">
         <div>
             <button (click)="drawerToggle($event)" mat-icon-button>

@@ -1,10 +1,11 @@
 <section class="sidenav">
     <mat-drawer-container class="example-container">
         <mat-drawer
+            style="max-width:240px"
             [ngStyle]="{'width':(xsmallScreen) ? '60%' : (smallScreen) ? '40%' : '20%'}"
             [opened]="toogleSide" 
             #drawer 
-            mode="side" 
+            mode="over" 
             class="example-sidenav">
             <app-sidenav [drawer]="drawer"></app-sidenav>
         </mat-drawer>

@@ -23,10 +23,10 @@ import { ChatComponent } from './components/chat/chat.component';
 const routes: Routes = [
   // chidren - indica que será criado um subcamadas dentro da rota raiz
   {path: 'app', component: HomeComponent, children: [
-      {path: '', component: ChatComponent},
+      // {path: '', component: ChatComponent},
       // {path: '', component: AuthfirebaseComponent},
       // {path: '', component: NgrxComponent},
-      // {path: '', component: PanelProjectsComponent},
+      {path: '', component: PanelProjectsComponent},
       {path: 'component/:name', component: HomeComponent},
       // {path: 'store', component: StoreComponent},
       // {path: 'http-request', component: ClientsComponent},

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';

@@ -1,8 +1,8 @@
 @import '../../../styles.scss';
 
 .panel-project{
-    height:100%;
     width:100%;
+    margin-top:65px;
     .welcome{
         @include welcome;
     }
@@ -22,9 +22,8 @@
     }
     .container-base .container-card .card {
         @include card-dark;
-        height:300px;
         position: relative;
-
+        margin: 8px 0;
         .title{
            @include card-title;
            display:flex;

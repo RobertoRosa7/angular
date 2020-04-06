@@ -3,6 +3,11 @@
 mat-toolbar{
     // background: var(--color-black-medium);
     background: linear-gradient(90deg, var(--color-black-medium) 0%, var(--color-black) 80%);
+    z-index: 9999;
+    width:100%;
+    max-width: 1920px;
+    position:fixed;
+
 }
 .container{
     padding: 0 5%;

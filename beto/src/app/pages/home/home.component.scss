@@ -1,13 +1,14 @@
 @import '../../../styles.scss';
 
 .page-home{
-    background: var(--color-black-dark);
+    // background: var(--color-black-dark);
+    @include background-dark;
     width: 100%;
     max-width: 1920px;
     position: relative;
     z-index: 1;
     height: 100%;
-
+    margin: 0 auto;
     .background-banner{
         background: var(--color-black-dark);
         height: 300px;
@@ -138,7 +139,8 @@
         color: var(--color-black-silver);
     }
     mat-drawer-content {
-        background-color: var(--color-black-dark);
+        // background-color: var(--color-black-dark);
+        @include background-dark;
     }
 }
 .example-container {

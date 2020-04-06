@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore.service';
-import { Observable } from 'rxjs';
+import { Observable, fromEvent } from 'rxjs';
 import { Project } from 'src/app/models/project';
 import { map } from 'rxjs/operators';
+import { MatListItem } from '@angular/material';
 
 @Component({
   selector: 'app-panel-projects',
@@ -14,6 +15,7 @@ export class PanelProjectsComponent implements OnInit {
   public numbers:number[] = [0,1,2,3];
   public projects$:Observable<Project[]>;
   public today = new Date().getTime();
+
   constructor(
     private fs:FirestoreService
   ) { }

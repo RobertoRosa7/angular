@@ -10,8 +10,7 @@ import { User } from './models/user';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @HostListener('window:resize', ['$event'])
-  public onRisze(event?){
+  @HostListener('window:resize', ['$event']) public onRisze(event?){
     this.screenWdith = window.innerWidth;
   }
   public title: string = 'beto';

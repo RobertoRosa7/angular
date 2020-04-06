@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, HostListener, ElementRef } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { Router, RouterEvent } from '@angular/router';
 import { filter, switchAll, mergeAll, map, takeLast, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Subject, fromEvent } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { EventEmitterService } from 'src/app/services/broadcast.service';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +13,10 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class HomeComponent implements OnInit {
-  @HostListener('window:resize', ['$event'])
-  public onRisze(event?){
+  @HostListener('window:resize', ['$event']) public onRisze(event?){
     this.screenWdith = window.innerWidth;
   }
+  // @ViewChild('content', {read: ElementRef, static: true}) private content:ElementRef;
   public title:string = 'beto';
   public toogleSide:boolean = true;
   public screenWdith:number;
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
   public mediumScreen:boolean = false;
   public options:string = 'DragAndDrop';
   public subscription:Subject<any> = new Subject;
+
   constructor(
     private productService:ProductsService,
     private router:Router,
@@ -46,9 +48,9 @@ export class HomeComponent implements OnInit {
           this.smallScreen = false;
           this.toogleSide = false;
         }else{
-          this.toogleSide = true;
+          this.toogleSide = false;
         }
-      })
+      });
   }
   ngOnInit() {
     this.screenWdith = window.innerWidth;
@@ -59,5 +61,9 @@ export class HomeComponent implements OnInit {
           this.options = sp[2];
         }
       })
+  }
+  ngAfterViewInit(){
+    // fromEvent(this.content.nativeElement, 'scroll')
+    //   .subscribe((e:Event) => EventEmitterService.get('onscroll').emit(e));
   }
 }

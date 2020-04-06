@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewEncapsulation, HostListener, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, HostListener, Input, ViewChild, ElementRef, Inject } from '@angular/core';
 import { Observable, fromEvent } from 'rxjs';
 import { User, UserFirestore } from 'src/app/models/user';
-import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { EventEmitterService } from 'src/app/services/broadcast.service';
+import { MatDrawerToggleResult, MatDrawer } from '@angular/material';
 
 @Component({
   selector: 'app-toolbar',
@@ -13,24 +14,26 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class ToolbarComponent implements OnInit {
-  @Input('drawer') drawer;
-  @HostListener('window:resize', ['$event'])
-  onResize(event?){
+  @Input('drawer') drawer:MatDrawer;
+  @HostListener('window:resize', ['$event']) public onResize(event?){
     this.screenWidth = window.innerWidth;
   }
+  @ViewChild('bar', {read:ElementRef, static: true}) bar:ElementRef;
+  public navIsFixed:boolean;
   public screenWidth: number;
   public sideNavOpened: boolean = false;
   public authenticated$: Observable<boolean>;
-  // public user$: Observable<User>;
   public user$: Observable<UserFirestore>;
   public xsScreen:boolean = false;
   public smScreen:boolean = false;
   public mdScreen:boolean = false;
+  public itemHeight;
+  public numberOfItems;
+ 
   constructor(
-    private authService: AuthService,
     private fs: FirestoreService,
     private breakpoints: BreakpointObserver,
-    private router: Router
+    private router: Router,
   ) { 
     this.breakpoints.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium])
       .subscribe(br => {
@@ -47,10 +50,6 @@ export class ToolbarComponent implements OnInit {
           this.xsScreen = false;
           this.smScreen = false;
         }
-      })
-      fromEvent(document, 'keyup')
-        .subscribe((k: any) => {
-          if(k.keyCode == 27) this.drawerToggle(k);
       });
   }
   
@@ -60,6 +59,12 @@ export class ToolbarComponent implements OnInit {
     this.authenticated$ = this.fs.isAuthenticated();
     // this.user$ = this.authService.fetchUser();
     this.user$ = this.fs.fetchUser();
+  }
+  ngAfterViewInit(){
+    fromEvent(document, 'keyup')
+      .subscribe((k: any) => {
+        if(k.keyCode == 27) this.drawer.close();
+    });
   }
   public openSideNav(){
     this.sideNavOpened = !this.sideNavOpened;
