@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   }
   // @ViewChild('content', {read: ElementRef, static: true}) private content:ElementRef;
   public title:string = 'beto';
-  public toogleSide:boolean = true;
+  public toogleSide:boolean = false;
   public screenWdith:number;
   public xsmallScreen:boolean = false;
   public smallScreen:boolean = false;
@@ -32,25 +32,25 @@ export class HomeComponent implements OnInit {
     public breakpoint:BreakpointObserver
 
   ) { 
-    breakpoint.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium])
-      .subscribe(br => {
-        if(br.breakpoints[Breakpoints.XSmall]){
-          this.xsmallScreen = true;
-          this.smallScreen = false;
-          this.mediumScreen = false;
-        }else if(br.breakpoints[Breakpoints.Small]){
-          this.smallScreen = true;
-          this.xsmallScreen = false;
-          this.mediumScreen = false;
-        }else if(br.breakpoints[Breakpoints.Medium]){
-          this.mediumScreen = true;
-          this.xsmallScreen = false;
-          this.smallScreen = false;
-          this.toogleSide = false;
-        }else{
-          this.toogleSide = false;
-        }
-      });
+    // breakpoint.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium])
+    //   .subscribe(br => {
+    //     if(br.breakpoints[Breakpoints.XSmall]){
+    //       this.xsmallScreen = true;
+    //       this.smallScreen = false;
+    //       this.mediumScreen = false;
+    //     }else if(br.breakpoints[Breakpoints.Small]){
+    //       this.smallScreen = true;
+    //       this.xsmallScreen = false;
+    //       this.mediumScreen = false;
+    //     }else if(br.breakpoints[Breakpoints.Medium]){
+    //       this.mediumScreen = true;
+    //       this.xsmallScreen = false;
+    //       this.smallScreen = false;
+    //       this.toogleSide = false;
+    //     }else{
+    //       this.toogleSide = false;
+    //     }
+    //   });
   }
   ngOnInit() {
     this.screenWdith = window.innerWidth;

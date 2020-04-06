@@ -9,16 +9,16 @@
     .container-base{
         position:relative;
         height:100%;
-        width:86.6%;
-        margin:0 auto;
+        padding:0 20px;
     }
     .container-base .container-card{
-        width:80%;
+        width:100%;
         margin:0 auto;
         display:flex;
         flex-direction:column;
         justify-content:center;
         height:90%;
+        max-width:768px;
     }
     .container-base .container-card .card {
         @include card-dark;
