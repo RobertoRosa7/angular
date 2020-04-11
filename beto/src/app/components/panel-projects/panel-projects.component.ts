@@ -1,9 +1,10 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef, ViewChildren, QueryList, Output } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { Observable, fromEvent } from 'rxjs';
-import { Project } from 'src/app/models/project';
+import { Project, ProjectModel } from 'src/app/models/project';
 import { map } from 'rxjs/operators';
-import { MatListItem } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
+import { EventEmitterService } from 'src/app/services/broadcast.service';
 
 @Component({
   selector: 'app-panel-projects',
@@ -11,38 +12,47 @@ import { MatListItem } from '@angular/material';
   styleUrls: ['./panel-projects.component.scss']
 })
 export class PanelProjectsComponent implements OnInit {
-  public colors:string[] = ['#e22a53', '#27AE60','#2B2C2F','#FF2D00', '#e22a53'];
-  public numbers:number[] = [0,1,2,3];
   public projects$:Observable<Project[]>;
   public today = new Date().getTime();
+  public liked:number = 0;
+  public unliked:number = 0;
+  public viewed:number = 0;
+  public commits:number = 0;
+  public projetos: ProjectModel[] = [];
+  public switchActions:string = '';
 
   constructor(
-    private fs:FirestoreService
+    private fs:FirestoreService,
+    private snackbar: MatSnackBar
   ) { }
 
   ngOnInit() {
-    this.projects$ = this.fs.fetchProjects()
-      .pipe(
-        map((p:Project[]) => {
-          if(p){
-            return p.map(w => {
-              return {
-                ...w, 
-                description:this.cutwords(w.description),
-                name:this.cutwords(w.name)
-              }
-            });
-          }
-        })
-      )
-  }
-  public cutwords(words:string){
-    let shortText:string = ''
+    this.fs.fetchLocalProject()
+        .subscribe((p) => (p) ? this.projetos = p : this.projetos = []);
     
-    if(words.length > 50) shortText = words.substring(0, 50) + '...';
-    else shortText = words;
-
-    return shortText;
+    this.broadcastEvent();
   }
-
+  private broadcastEvent(){
+    const eventList = [
+      'delete-project'
+    ]
+    eventList.forEach((e, i) => {
+      switch(e){
+        case 'delete-project':
+          EventEmitterService.get(e)
+            .subscribe((p: ProjectModel)=> {
+              const i = this.projetos.findIndex(i => i.id_project === p.id_project);
+              if(i >= 0) this.projetos.splice(i, 1);
+              this.notification('Projeto deletado com sucesso')
+            });
+        break;
+      }
+    });
+  }
+  public openFormCreateProject(){
+    this.switchActions = 'create-project';
+  }
+  public notification(msg){
+    this.snackbar.open(msg, 'ok', {duration:2000});
+  }
 }

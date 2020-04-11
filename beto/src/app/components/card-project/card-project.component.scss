@@ -1,0 +1,85 @@
+@import '../../../styles.scss';
+
+.container-base{
+    position:relative;
+    height:100%;
+    padding:0 20px;
+}
+.container-base .container-card{
+    width:100%;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    height:90%;
+    max-width:768px;
+}
+.container-base .container-card .card {
+    @include card-dark;
+    position: relative;
+    margin: 8px 0;
+    .title{
+       display:flex;
+       justify-content: space-between;
+       align-items: center;
+       @include card-title;
+
+       .menu-project{
+           button{
+            color:var(--color-light);
+           }
+       }
+    }
+    .title div{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        small{
+            font-size:11.2px;
+        }
+    }
+
+    .subtitle{
+       @include card-subtitle;
+    }
+    .row{
+        display:flex;
+        flex-direction:row;
+        width:100%;
+        justify-content:space-between;
+        margin:1% 0;
+    }
+    .content{
+        width:100%;
+    }
+    .social, .author{
+        width:30%;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        span{
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size:12px;
+            cursor:pointer;
+
+            mat-icon{
+                font-size:16px;
+                width:auto;
+                height:auto;
+            }
+            .liked{
+                color:#77b7f5;
+            }
+            .unliked{
+                color:#bf5e7f;
+            }
+        }
+    }
+    .author{
+        padding:8px 0;
+        span{
+            color:var(--color-light);
+        }
+    }
+}

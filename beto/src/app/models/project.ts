@@ -6,3 +6,27 @@ export interface Project {
     status:string,
     id?:string
 }
+export interface ProjectModel{
+    name:string;
+    color?:string;
+    desc?:string;
+    image?:string;
+    album?:string[];
+    created_at?:number;
+    social?:{
+        liked?:boolean;
+        unliked?:boolean;
+        totalLiked:number;
+        totalUnliked:number;
+        viewed?:number;
+        commited:number;
+        commits?:{
+            author?:string;
+            email?:string;
+            text?:string;
+            created_at?:number;
+        };
+        id_social?:string;
+    }
+    id_project?:string;
+}

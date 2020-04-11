@@ -5,7 +5,7 @@ import { Observable, of, from, BehaviorSubject, timer, throwError } from 'rxjs';
 import { MyUploadFile, UploadFile } from '../models/upload-files';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { map, catchError, finalize, switchMap, tap } from 'rxjs/operators';
-import { Project } from '../models/project';
+import { ProjectModel, Project } from '../models/project';
 import { PersonFirestore } from '../models/person';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UserFirestore } from '../models/user';
@@ -23,34 +23,102 @@ export class FirestoreService {
     private peopleCollection:AngularFirestoreCollection<PersonFirestore> = this.afs.collection('people', ref => ref.orderBy('name', 'desc'));
     private usersCollection:AngularFirestoreCollection<UserFirestore> = this.afs.collection('users', ref => ref.orderBy('name', 'desc'));
     private projects$:BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>(null);
-    private projects:Project[] = [
+    public projetos = [
         {
-            "name":'Projeto 1',
-            "date": new Date().getTime(),
-            "description":'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis impedit praesentium, possimus ea commodi doloribus dicta voluptatibus. Laboriosam obcaecati, sunt expedita doloribus ad eius ipsam repellendus libero corporis odio sequi?',
-            "url_image":'',
-            "status":'undone'
+          name:'Novo Projeto',
+          color:'#D35400',
+          desc: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus asperiores quis quam, laborum vero et quos error similique. Non consequuntur itaque obcaecati aliquid labore doloremque, cumque quidem ipsa dicta dolorem.',
+          created_at: new Date().getTime(),
+          social:{
+            liked:false,
+            unliked:false,
+            viewed:34,
+            commited:34,
+            totalLiked:1,
+            totalUnliked:1,
+            commits:{
+              author:'kakashi',
+              text:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus asperiores quis quam, laborum vero et quos error similique. Non consequuntur itaque obcaecati aliquid',
+              created_at: new Date().getTime(),
+              email:'kakashi@gmail.com'
+            },
+            id_social:'0'
+          },
+          image:'',
+          album:[],
+          id_project:'0'
         },
         {
-            "name":'',
-            "date": new Date().getTime(),
-            "description":'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis impedit praesentium, possimus ea commodi doloribus dicta voluptatibus. Laboriosam obcaecati, sunt expedita doloribus ad eius ipsam repellendus libero corporis odio sequi?',
-            "url_image":'/assets/img/printscreen.png',
-            "status":'pendente'
+          name:'Novo Projeto',
+          color:'#2ECC71',
+          desc: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus asperiores quis quam, laborum vero et quos error similique. Non consequuntur itaque obcaecati aliquid labore doloremque, cumque quidem ipsa dicta dolorem.',
+          created_at: new Date().getTime(),
+          social:{
+            liked:false,
+            unliked:false,
+            viewed:0,
+            commited:0,
+            totalLiked:0,
+            totalUnliked:0,
+            commits:{
+              author:'kakashi',
+              text:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus asperiores quis quam, laborum vero et quos error similique. Non consequuntur itaque obcaecati aliquid',
+              created_at: new Date().getTime(),
+              email:'kakashi@gmail.com'
+            },
+            id_social:'1'
+          },
+          image:'',
+          album:[],
+          id_project:'1'
         },
         {
-            "name":'Projeto 3',
-            "date": new Date().getTime(),
-            "description":'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis impedit praesentium, possimus ea commodi doloribus dicta voluptatibus. Laboriosam obcaecati, sunt expedita doloribus ad eius ipsam repellendus libero corporis odio sequi?',
-            "url_image":'',
-            "status":'done'
+          name:'Novo Projeto',
+          color:'#A569BD',
+          desc: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus asperiores quis quam, laborum vero et quos error similique. Non consequuntur itaque obcaecati aliquid labore doloremque, cumque quidem ipsa dicta dolorem.',
+          created_at: new Date().getTime(),
+          social:{
+            liked:false,
+            unliked:false,
+            viewed:0,
+            commited:0,
+            totalLiked:0,
+            totalUnliked:0,
+            commits:{
+              author:'kakashi',
+              text:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus asperiores quis quam, laborum vero et quos error similique. Non consequuntur itaque obcaecati aliquid',
+              created_at: new Date().getTime(),
+              email:'kakashi@gmail.com'
+            },
+            id_social:'2'
+          },
+          image:'',
+          album:[],
+          id_project:'2'
         },
         {
-            "name":'Projeto 4',
-            "date": new Date().getTime(),
-            "description":'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis impedit praesentium, possimus ea commodi doloribus dicta voluptatibus. Laboriosam obcaecati, sunt expedita doloribus ad eius ipsam repellendus libero corporis odio sequi?',
-            "url_image":'',
-            "status":'pendente'
+          name:'Novo Projeto',
+          color:'#3498DB',
+          desc: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus asperiores quis quam, laborum vero et quos error similique. Non consequuntur itaque obcaecati aliquid labore doloremque, cumque quidem ipsa dicta dolorem.',
+          created_at: new Date().getTime(),
+          social:{
+            liked:false,
+            unliked:false,
+            viewed:2424,
+            commited:33,
+            totalLiked:142,
+            totalUnliked:234,
+            commits:{
+              author:'kakashi',
+              text:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus asperiores quis quam, laborum vero et quos error similique. Non consequuntur itaque obcaecati aliquid',
+              created_at: new Date().getTime(),
+              email:'kakashi@gmail.com'
+            },
+            id_social:'3'
+          },
+          image:'',
+          album:[],
+          id_project:'3'
         },
     ]
     
@@ -60,10 +128,11 @@ export class FirestoreService {
         private afa:AngularFireAuth,
         private store: Store<AppState>
     ){ 
-        timer(1000)
-            .subscribe(() => this.projects$.next(this.projects))
         this.fetchUser()
             .subscribe((u) => this.store.dispatch(new UserNew({ user: u})));
+    }
+    public fetchLocalProject():Observable<ProjectModel[]>{
+        return of(this.projetos);
     }
     public fetchProducts():Observable<ProductFirebase[]>{
         // valueChanges() - observa qualquer alteração na collection do firestore

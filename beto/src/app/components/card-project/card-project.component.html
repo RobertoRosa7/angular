@@ -1,0 +1,48 @@
+<div class="container-base">
+    <div class="container-card">
+        <mat-card [style.border-left]="'1px solid' + projeto.color" class="card">
+            <mat-card-title class="title">
+                <div style="width:75%">
+                    <span>{{projeto.name}}</span>
+                </div>
+    
+               <div style="width:25%; text-align: right;">
+                    <small>{{projeto.created_at | date}}</small>&nbsp;
+                   <button [matMenuTriggerFor]="menu" mat-icon-button>
+                       <mat-icon>keyboard_arrow_down</mat-icon>
+                   </button>
+    
+                    <mat-menu class="menu-project" overlapTrigger="true" #menu>
+                        <button style="color: var(--color-light)" (click)="storeProject(projeto)" mat-menu-item>
+                            <mat-icon style="color: var(--color-light)">bookmark</mat-icon>
+                            Guardar
+                        </button>
+                        <button style="color: var(--color-light)" (click)="editProject(projeto)" mat-menu-item>
+                            <mat-icon style="color: var(--color-light)">edit</mat-icon>
+                            Editar
+                        </button>
+                        <button style="color: var(--color-light)" (click)="deleteProject(projeto)" mat-menu-item>
+                            <mat-icon style="color: var(--color-light)">delete</mat-icon>
+                            Excluir
+                        </button>
+                    </mat-menu>
+               </div>
+            </mat-card-title>
+            <mat-card-subtitle class="subtitle">Essa semana</mat-card-subtitle>
+            <mat-card-content class="content">
+                <div class="description">
+                    <span>{{projeto.desc}}</span>
+                </div>
+                <div class="author">
+                    <span [style.color]="projeto.color"><mat-icon>alternate_email</mat-icon>&nbsp;kakashi kisura</span>
+                </div>
+                <div class="social">
+                    <span><mat-icon>feedback</mat-icon>&nbsp;&nbsp;&nbsp;{{projeto.social.commited}}</span>
+                    <span (click)="socialLiked(projeto)"><mat-icon [ngClass]="{'liked':projeto.social.liked}">thumb_up</mat-icon>&nbsp;&nbsp;&nbsp;{{projeto.social.totalLiked}}</span>
+                    <span (click)="socialUnliked(projeto)"><mat-icon [ngClass]="{'unliked':projeto.social.unliked}">thumb_down</mat-icon>&nbsp;&nbsp;&nbsp;{{projeto.social.totalUnliked}}</span>
+                    <span><mat-icon>visibility</mat-icon>&nbsp;&nbsp;&nbsp;{{projeto.social.viewed}}</span>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

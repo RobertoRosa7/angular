@@ -192,9 +192,11 @@ body {
     white-space:nowrap;
     text-overflow:ellipsis;
     overflow:hidden;
+    width:100%;
 }
 @mixin card-subtitle{
-    color:var(--color-green-light);
+    // color:var(--color-green-light);
+    color:var(--color-gold);
     letter-spacing:0.02em;
     font-family:var(--font-main);
     font-style:normal;

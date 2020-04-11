@@ -52,6 +52,7 @@ import { AuthfirebaseModule } from './modules/authfirebase.module';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { CardProjectComponent } from './components/card-project/card-project.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { ChatComponent } from './components/chat/chat.component';
     PanelProjectsComponent,
     NgrxComponent,
     ChatComponent,
+    CardProjectComponent,
   ],
   imports: [
     BrowserModule,
