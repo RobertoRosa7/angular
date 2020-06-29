@@ -30,7 +30,7 @@ export class FirestoreService {
           desc: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus asperiores quis quam, laborum vero et quos error similique. Non consequuntur itaque obcaecati aliquid labore doloremque, cumque quidem ipsa dicta dolorem.',
           created_at: new Date().getTime(),
           social:{
-            liked:false,
+            liked:true,
             unliked:false,
             viewed:34,
             commited:34,
@@ -79,11 +79,11 @@ export class FirestoreService {
           created_at: new Date().getTime(),
           social:{
             liked:false,
-            unliked:false,
+            unliked:true,
             viewed:0,
             commited:0,
             totalLiked:0,
-            totalUnliked:0,
+            totalUnliked:1,
             commits:{
               author:'kakashi',
               text:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus asperiores quis quam, laborum vero et quos error similique. Non consequuntur itaque obcaecati aliquid',
@@ -205,14 +205,14 @@ export class FirestoreService {
     public fetchFiles(): Observable<MyUploadFile[]>{
     return this.filesCollection.snapshotChanges()
         .pipe(
-        map((actions) => {
-            return actions.map(a => {
-            const file: MyUploadFile = a.payload.doc.data();
-            const id = a.payload.doc.id;
-            const url = this.storage.ref(file.path).getDownloadURL();
-            return {id, ...file, url};
+            map((actions) => {
+                return actions.map(a => {
+                    const file: MyUploadFile = a.payload.doc.data();
+                    const id = a.payload.doc.id;
+                    const url = this.storage.ref(file.path).getDownloadURL();
+                    return {id, ...file, url};
+                })
             })
-        })
         )
     }
     public deleteFile(f:MyUploadFile){

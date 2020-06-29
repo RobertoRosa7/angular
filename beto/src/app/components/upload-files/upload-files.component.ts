@@ -41,7 +41,8 @@ export class UploadFilesComponent implements OnInit {
   }
   public uploadAll(){
     for(let i = 0; i < this.files.length; i++){
-      this.fs.upload(this.files[i]);
+      // this.fs.upload(this.files[i]);
+      console.log(this.files[i])
     }
   }
 }

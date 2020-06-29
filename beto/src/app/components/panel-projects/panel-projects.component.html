@@ -4,10 +4,27 @@
             <mat-icon>arrow_back</mat-icon>
         </button>
         <div [ngSwitch]="switchActions">
-            <div *ngSwitchCase="'create-project'">
+            <div *ngSwitchCase="'create-project'" class="animated zoomIn faster">
+                <app-form-create-project></app-form-create-project>
             </div>
-            <div *ngSwitchDefault>
-                <app-card-project *ngFor="let p of projetos" [projeto]="p"></app-card-project>
+            <div *ngSwitchDefault class="animated zoomIn faster">
+                <!-- <app-card-project *ngFor="let p of projetos" [projeto]="p"></app-card-project> -->
+                <div class="infinite-load">
+                    <div class="infinite-container">
+                      <div class="dna">
+                        <div class="cell"></div>
+                        <div class="cell"></div>
+                        <div class="cell"></div>
+                        <div class="cell"></div>
+                        <div class="cell"></div>
+                        <div class="cell"></div>
+                        <div class="cell"></div>
+                        <div class="cell"></div>
+                        <div class="cell"></div>
+                        <div class="cell"></div>
+                      </div>
+                    </div>
+                  </div>
             </div>
         </div>
     </div>

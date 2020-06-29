@@ -38,8 +38,8 @@
                 </div>
                 <div class="social">
                     <span><mat-icon>feedback</mat-icon>&nbsp;&nbsp;&nbsp;{{projeto.social.commited}}</span>
-                    <span (click)="socialLiked(projeto)"><mat-icon [ngClass]="{'liked':projeto.social.liked}">thumb_up</mat-icon>&nbsp;&nbsp;&nbsp;{{projeto.social.totalLiked}}</span>
-                    <span (click)="socialUnliked(projeto)"><mat-icon [ngClass]="{'unliked':projeto.social.unliked}">thumb_down</mat-icon>&nbsp;&nbsp;&nbsp;{{projeto.social.totalUnliked}}</span>
+                    <span (click)="socialLiked(projeto)"><mat-icon class="custom-icon" [ngClass]="{'liked':projeto.social.liked}">thumb_up</mat-icon>&nbsp;&nbsp;&nbsp;{{projeto.social.totalLiked}}</span>
+                    <span (click)="socialUnliked(projeto)"><mat-icon class="custom-icon" [ngClass]="{'unliked':projeto.social.unliked}">thumb_down</mat-icon>&nbsp;&nbsp;&nbsp;{{projeto.social.totalUnliked}}</span>
                     <span><mat-icon>visibility</mat-icon>&nbsp;&nbsp;&nbsp;{{projeto.social.viewed}}</span>
                 </div>
             </mat-card-content>

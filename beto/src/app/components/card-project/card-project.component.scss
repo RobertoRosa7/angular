@@ -68,6 +68,12 @@
                 width:auto;
                 height:auto;
             }
+            .custom-icon:hover{
+                -webkit-transform: scale(1.2);
+                -moz-transform: scale(1.2);
+                -o-transform: scale(1.2);
+                transform: scale(1.2);
+            }
             .liked{
                 color:#77b7f5;
             }

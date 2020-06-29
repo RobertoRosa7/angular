@@ -1,13 +1,22 @@
 @import '../../../styles.scss';
+$b-height: 1.15em;
+$el-size: 3vh;
+$DNA_scale: 0.45; //divides '$el-size'
+$t: 2.1s;
+$td: -0.89;
 
+$c_a : rgb(255, 132, 144) rgb(255, 115, 124) rgb(245, 247, 249); // top / bottom / BG 
+$c2_a: rgb(255, 218, 178) rgb(255, 50, 155); // Fade-anim colors
+
+$ease-circ: cubic-bezier(0.42 , 0, 0.58, 1);
 .panel-project{
     width:100%;
     margin-top:65px;
+
     .welcome{
         @include welcome;
     }
     .container-base{
-        position:relative;
         height:100%;
         padding:0 20px;
     }
@@ -17,3 +26,103 @@
         right:40px;
     }
 }
+.dna {
+    display: inline-block;
+    position: relative;
+    transform: scale($DNA_scale);
+  }
+  
+  .cell {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+
+    &:not(:last-child){
+      margin-right: $el-size*1.62;
+    }
+    
+    &:before, &:after {
+      content: "";
+      display: inline-block;
+      width: $el-size;
+      height: $el-size;
+      border-radius: 50%; 
+      position: absolute;
+    }
+    
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+          animation-delay: $i*($td*$t);
+        &:before {
+          animation: animBefore $t $ease-circ infinite;
+          animation-delay: $i*($td*$t);
+          background-color: nth($c_a, 1);
+        }
+        &:after {
+          animation: animAfter $t $ease-circ infinite;
+          animation-delay: $i*($td*$t)  ;
+          background-color: nth($c_a, 2);
+        }
+      }
+    }
+  }
+  
+  
+  @keyframes animBefore {
+    0% {
+      top: $el-size *-2;
+      z-index: 1;
+    }
+    
+    25% {
+      transform: scale(1.2) ;
+      z-index: 1;
+    }
+    
+    50% {
+     // background-color: nth($c_a, 1) ;
+      top: $el-size *2;
+      z-index: -1;
+    }
+    
+    75% {
+      background-color: nth($c2_a, 1);
+      transform: scale(0.8) ;
+      z-index: -1;
+    }
+    
+    100% {
+      
+      top: $el-size *-2;
+      z-index: -1;
+    }
+  }
+  
+  @keyframes animAfter {
+    0% {
+      top: $el-size *2;
+      z-index: -1;
+    }
+    
+    25% {
+      background-color: nth($c2_a, 2) ;
+      transform: scale(0.8) ;
+      z-index: -1;
+    }
+    
+    50% {
+    //  background-color: nth($c_a, 2) ;
+      top: $el-size *-2;
+      z-index: 1;
+    }
+    
+    75% {
+      transform: scale(1.2) ;
+      z-index: 1;
+    }
+    
+    100% {
+      top: $el-size *2;
+      z-index: 1;
+    }
+  }

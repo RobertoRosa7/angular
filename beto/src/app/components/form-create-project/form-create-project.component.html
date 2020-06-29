@@ -1,0 +1,87 @@
+<section class="form-create">
+    <div class="form-container">
+        <mat-card class="card">
+            <span class="title">Adicione novo projeto</span>
+            <mat-card-content>
+                <form [formGroup]="formProject" enctype="multipart/form-data" class="form" (ngSubmit)="createProject()">
+                    <div class="form-group">
+                        <mat-form-field class="custom-form" floatLabel="always" appearance="outline">
+                            <mat-label>Name</mat-label>
+                            <input
+                                required
+                                formControlName="name"
+                                matInput 
+                                placeholder="Nome do projeto">
+                                <mat-error *ngIf="formProject.get('name').hasError('required')">Nome obrigatório</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <mat-form-field class="custom-form" floatLabel="always" appearance="outline">
+                            <mat-label>Descrição</mat-label>
+                            <input
+                                formControlName="desc" 
+                                matInput 
+                                placeholder="Descrição">
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-file">
+                            <label
+                                [class.in-area-label]="isHovering"
+                                class="area-label"
+                                (drop)="onDropEvent($event)"
+                                (dragover)="onDragOverEvent($event)"
+                                (dragleave)="onDragLeaveEvent($event)" 
+                                for="input-file">Upload de imagens</label>
+                            <input
+                                multiple
+                                (change)="onUploadFile($event)"
+                                name="input-file"
+                                id="input-file"
+                                type="file">
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <div class="buttons">
+                            <button class="cancel" mat-button type="reset">CLEAR</button>
+                            <button [disabled]="!formProject.valid" class="send" mat-button type="submit">SEND</button>
+                        </div>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</section>
+<div *ngIf="showUploadSnackbar" class="custom-snackbar animated fadeInLeft fast">
+    <mat-accordion>
+        <!-- [expanded]="files.length > 0" -->
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">
+                    <span>Uploading... <small style="color:var(--color-green-light); font-size:11.5px;"> ( {{files.length}} )</small></span>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-panel-description class="description">
+                <div class="controler-upload" *ngFor="let f of files; let i = index;">
+                    <div class="info-files">
+                        <span>[ {{i + 1}} ]</span>
+                        <span>size: {{utilsService.formatBytes(f.file.size)}}</span>
+                        <!-- <span>{{f.file.lastModified | date}}</span> -->
+                    </div>
+                    <div class="control">
+                        <mat-progress-bar value="50" style="width:100%;"></mat-progress-bar>
+                        <!-- <button mat-icon-button><mat-icon>cancel</mat-icon></button> -->
+                        <!-- <button mat-icon-button><mat-icon>pause</mat-icon></button> -->
+                        <button mat-icon-button><mat-icon>play_arrow</mat-icon></button>
+                    </div>
+                </div>
+            </mat-panel-description>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+<script>
+    function abrir(){
+        // exec fn
+        console.log('working!');
+    }
+</script>

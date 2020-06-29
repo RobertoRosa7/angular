@@ -53,6 +53,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { CardProjectComponent } from './components/card-project/card-project.component';
+import { FormCreateProjectComponent } from './components/form-create-project/form-create-project.component';
+import { UploadFilesComponent } from './components/upload-files/upload-files.component';
+import { DropFilesComponent } from './components/drop-files/drop-files.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +90,7 @@ import { CardProjectComponent } from './components/card-project/card-project.com
     NgrxComponent,
     ChatComponent,
     CardProjectComponent,
+    FormCreateProjectComponent,
   ],
   imports: [
     BrowserModule,

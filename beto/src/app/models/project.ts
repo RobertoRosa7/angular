@@ -30,3 +30,18 @@ export interface ProjectModel{
     }
     id_project?:string;
 }
+export interface Social {
+    liked?:boolean;
+    unliked?:boolean;
+    totalLiked:number;
+    totalUnliked:number;
+    viewed?:number;
+    commited:number;
+    commits?:{
+        author?:string;
+        email?:string;
+        text?:string;
+        created_at?:number;
+    };
+    id_social?:string;
+}

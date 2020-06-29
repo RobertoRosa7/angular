@@ -1,0 +1,151 @@
+@import '../../../styles.scss';
+
+.form-create{
+    .form-container{
+        .title{
+            @include welcome;
+            display:inline-block;
+            margin: 8px 0;
+        }
+        .card{
+            @include card-dark;
+            .custom-form{
+                width: 100%;
+                mat-label{
+                    color: var(--color-light);
+                }
+                input::placeholder, select::placeholder{
+                    color: var(--color-light);
+                }
+                ::ng-deep .mat-select-placeholder, 
+                ::ng-deep .mat-select-value, 
+                ::ng-deep .mat-select-arrow{
+                    color: var(--color-light);
+                }
+                ::ng-deep .mat-select-value-text{
+                    color: var(--color-white) !important;
+                }
+                
+            }
+            ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
+                color: var(--color-black-silver);
+            }
+
+            .form{
+                .form-group{
+                    .input-file{
+                        input[type="file"]{
+                            display:none;
+                        }
+                        .area-label{
+                            width:100%;
+                            padding:8px;
+                            display:block;
+                            background:var(--color-black-medium);
+                        }
+                        .in-area-label{
+                            background:var(--color-black-silver);
+                        }
+                    }
+                }
+                .btn-group{
+                    display:flex;
+                    justify-content: flex-end;
+
+                    .buttons{
+                        display:flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        width:100%;
+                        max-width:320px;
+                        .send{
+                            @include btn-send;
+                            margin: 8px 0;
+                        }
+                        .cancel{
+                            @include btn-cancel;
+                            margin: 8px 0;
+                        }
+                        button:disabled{
+                            @include btn-login-disabled;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.custom-snackbar{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    max-width:450px;
+    ::ng-deep .mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover{
+        background: rgba(30,30,30);
+    }
+    @media (max-width:600px){
+        width:100%;
+    }
+    ::ng-deep .mat-expansion-panel{
+        // background: var(--color-black-silver) !important;
+        background: rgba(30,30,30);
+    }
+    ::ng-deep .mat-expansion-panel-header-title{
+        color:var(--color-white);
+    }
+    ::ng-deep .mat-expansion-indicator::after{
+        color:var(--color-white);
+    }
+    ::ng-deep .mat-progress-bar-fill::after{
+        background:var(--color-green-light);
+    }
+    .title{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .description{
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-height:230px;
+
+        .controler-upload{
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            .info-files{
+                width:40%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                flex-wrap: wrap;
+                span{
+                    font-size:11.5px;
+                    color:var(--color-light);
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    margin-right: 10px;
+                }
+            }
+            .control{
+                width:50%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                button{
+                    mat-icon{
+                        color:var(--color-light);
+                    }
+                }
+            }
+        }
+    }
+
+    // ::ng-deep .mat-expansion-panel-header-description{
+    //     flex-direction: column;
+    // }
+}
