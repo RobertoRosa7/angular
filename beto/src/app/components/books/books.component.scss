@@ -1,21 +1,21 @@
-@import './../../../styles.scss';
+@import "./../../../styles.scss";
 
-.books{
-    color: var(--color-light);
+.books {
+  color: var(--color-light);
 
-    .container{
-        padding: 0 5%;
+  .container {
+    padding: 0 5%;
 
-        .book-title{
-            @include welcome;
-        }
-        .books-itens{
-            color: var(--color-light);
-        }
-        .add-button{
-            position: fixed;
-            right: 40px;
-            bottom: 40px;
-        }
+    .book-title {
+      @include welcome;
     }
+    .books-itens {
+      color: var(--color-light);
+    }
+    .add-button {
+      position: fixed;
+      right: 40px;
+      bottom: 40px;
+    }
+  }
 }

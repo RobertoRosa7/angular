@@ -1,17 +1,22 @@
 <section class="books">
-    <div class="container">
-        <mat-nav-list>
-            <h1 class="book-title">Book List</h1>
-            <a [routerLink]="'/book/' + encrypto(prefix + i) " class="books-itens" mat-list-item *ngFor="let b of books$ | async; let i = index;">
-                <mat-icon mat-list-icon>library_books</mat-icon>
-                <h4 mat-line>{{b.title}}</h4>
-                <h5 mat-line>Pages: {{b.pages}}</h5>
-            </a>
-        </mat-nav-list>
-        <button mat-fab class="add-button">
-            <mat-icon>add</mat-icon>
-        </button>
-    </div>
+  <div class="container">
+    <mat-nav-list>
+      <h1 class="book-title">Book List</h1>
+      <a
+        [routerLink]="'/book/' + encrypto(prefix + i)"
+        class="books-itens"
+        mat-list-item
+        *ngFor="let b of books$ | async; let i = index"
+      >
+        <mat-icon mat-list-icon>library_books</mat-icon>
+        <h4 mat-line>{{ b.title }}</h4>
+        <h5 mat-line>Pages: {{ b.pages }}</h5>
+      </a>
+    </mat-nav-list>
+    <button mat-fab class="add-button">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </section>
 <!-- MASTER DETAILS - USANDO ROTA PARA MOSTRAR DETALHES DE LIVROS -->
 <mat-divider></mat-divider>
