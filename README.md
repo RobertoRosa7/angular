@@ -1,5 +1,3 @@
-# Angular
+# Angular - Cursos
 
 ###### 01/03/2020
-
-* [x] Projeto Pessoa - Beto
